@@ -1,0 +1,110 @@
+.cls-1 {
+    fill: #141414;
+}
+
+.cls-2 {
+    fill: rgba(48, 48, 48, .6);
+      text-align: center;
+
+}
+
+.cls-3 {
+    fill: #4c4c4c;
+      text-align: center;
+
+}
+
+.cls-4 {
+    fill: #303030;
+      text-align: center;
+
+}
+
+.cls-5 {
+    fill: #fff2b4;
+}
+
+
+.cls-7 {
+    fill: rgba(20, 20, 20, .6);
+}
+
+
+.cls-text {
+    fill: #fff2b4;
+    font-family: "rubik";
+    font-size: 1.5rem;
+    
+     text-anchor: middle;      /* מרכז אופקי */
+    dominant-baseline: central; /* מרכז אנכי מדויק */
+    alignment-baseline: central;
+}
+
+.animation-start {
+    animation: pulse 1.8s ease infinite;
+    transition: transform 0.25s ease;
+    transform-origin: center center;
+    transform-box: fill-box;
+    cursor: pointer;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.07);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+#Layer_2 {
+    overflow: visible;
+}
+
+.big-navbar {
+    height: 40rem;
+}
+
+.animation-start:hover {
+    transform: scale(1.075);
+    animation: none;
+}
+
+/* regular-navbar */
+
+.navbar-wrapper {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+      text-align: center;
+
+}
+
+.small-navbar {
+    height: 25rem;
+}
+
+@media (max-width: 1300px) {
+    .navbar-wrapper {
+        bottom: 0.5rem;
+        right: 0.5rem;
+    }
+
+}
+
+@media (max-width: 1000px) {
+    .small-navbar {
+        height: 20rem;
+    }
+}
+
+@media (max-height: 800px) {
+    .small-navbar {
+        height: 20rem;
+    }
+}

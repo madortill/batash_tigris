@@ -1,0 +1,104 @@
+.svg-wrapper {
+    position: relative;
+    top: 7rem;
+    right: 15rem;
+}
+
+.content-start-title {
+    font-family: "rubik-black";
+    font-size: 4rem;
+    position: relative;
+    top: 13rem;
+    left: 10rem;
+    color: #073799;
+}
+
+.jeep-start {
+    bottom: 14rem;
+    position: relative;
+    right: -20rem;
+    width: 35rem;
+}
+
+@media (max-height: 650px) {
+ .svg-wrapper {
+    position: relative;
+    top: 2rem;
+    right: 15rem;
+}
+
+.content-start-title {
+    font-size: 3.5rem;
+    top: 10rem;
+    left: 10rem;
+}
+
+.jeep-start {
+    right: -10rem;
+    width: 25rem;
+}
+
+}
+
+.navbar-start {
+    width: 15rem;
+    cursor: pointer;
+}
+
+
+@media (max-width: 1050px) {
+    .content-start-title {
+        left: 7rem;
+    }
+    .jeep-start {
+    right: -10rem;
+    width: 25rem;
+}
+}
+
+.title {
+    font-family: "rubik-black";
+    font-size: 2.6rem;
+    color: #073799;
+    margin-bottom: 2rem;
+}
+
+.boldText {
+    font-family: "assistant-bold";
+}
+
+.galBubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.galImg-small {
+    height: 10rem;
+    margin-top: 0;
+}
+.galBubble-small {
+    width: 17rem;
+    margin-bottom: -0.5rem;
+}
+.galImg-big {
+    height: 15rem;
+    margin-top: 0;
+}
+.galBubble-big {
+    width: 28rem;
+    margin-bottom: 0rem;
+}
+
+.blur-background {
+    background-color: rgb(224, 224, 224, 0.6);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
+    z-index: 3;
+}
+
+
+

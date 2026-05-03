@@ -1,0 +1,120 @@
+.tigris-general-page {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 500px;
+  direction: rtl;
+}
+
+.tigris-general-title {
+  position: absolute;
+  top: clamp(3.5rem, 7vh, 5.5rem);
+  right: 50%;
+  transform: translateX(50%);
+  margin: 0;
+  color: #003f9e;
+  font-family: "rubik-black";
+  font-size: clamp(2rem, 2.5vw, 3rem);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.tigris-cards-grid {
+  position: absolute;
+  left: 50%; 
+  top: clamp(9rem, 18vh, 13rem);
+  transform: translateX(-50%); 
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* השתמש ב-1fr במקום auto */
+  gap: 3rem;
+}
+
+.tigris-cards-grid .flip-card:nth-child(4) {
+  grid-column: 1;
+}
+
+.tigris-cards-grid .flip-card:nth-child(5) {
+  grid-column: 2;
+}
+
+
+/* flipCard -----------------*/
+.flip-card {
+  width: clamp(9rem, 10vw, 12.2rem);
+  aspect-ratio: 1 / 1;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.65s ease;
+  transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  border-radius: clamp(1rem, 1.2vw, 1.4rem);
+  backface-visibility: hidden;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  padding: clamp(0.7rem, 1vw, 1.2rem);
+}
+
+.flip-card-front,
+.flip-card-back {
+  background-color: #ed9b00;
+}
+
+.flip-card:nth-child(2) .flip-card-front,
+.flip-card:nth-child(2) .flip-card-back {
+  background-color: #003f9e;
+}
+
+.flip-card:nth-child(3) .flip-card-front,
+.flip-card:nth-child(3) .flip-card-back {
+  background-color: #3f73df;
+}
+
+.flip-card:nth-child(4) .flip-card-front,
+.flip-card:nth-child(4) .flip-card-back {
+  background-color: #8cc9df;
+}
+
+.flip-card:nth-child(5) .flip-card-front,
+.flip-card:nth-child(5) .flip-card-back {
+  background-color: #d8a553;
+}
+
+.flip-card-img {
+  width: 78%;
+  height: 78%;
+  object-fit: contain;
+}
+
+.flip-card-back p {
+  margin: 0;
+  color: white;
+  font-weight: bold;
+  font-size: clamp(0.9rem, 1.05vw, 1.2rem);
+  line-height: 1.35;
+  white-space: pre-line;
+}
+
+

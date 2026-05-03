@@ -1,0 +1,475 @@
+.backBtn {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    font-family: "assistant-bold";
+    color: #073799;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    transition: transform 0.8s ease;
+}
+
+.backBtnImg {
+    height: 4.5rem;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+}
+
+.backBtnImg:hover {
+    transform: scale(1.13);
+}
+
+/* startPage */
+
+.about-btn {
+    border: none;
+    color: #FEECD8;
+    font-size: 2rem;
+    background-color: #073799;
+    border-radius: 150px;
+    width: 3rem;
+    height: 3rem;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    transition: transform 0.25s ease;
+    cursor: pointer;
+}
+
+.aboutBtnContainer {
+    position: absolute;
+    left: 1rem;
+    bottom: 0.5rem;
+    text-align: center;
+    font-family: "assistant-bold";
+    color: #073799;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.about-btn:hover {
+    transform: scale(1.15);
+}
+
+.div-about {
+    position: absolute;
+    color: #FFF2B4;
+    width: 15rem;
+    height: 25rem;
+    left: 1rem;
+    bottom: 6rem;
+    font-family: "assistant";
+    background: #073799;
+    border-radius: 1rem;
+    box-shadow: 0 15px 20px -20px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+    /* direction: rtl; */
+}
+
+.list-text-about {
+    transition: background-color 0.5s ease;
+    margin: 5%;
+}
+
+.list-text-about:hover {
+    background-color: #dbdbdb;
+}
+
+.fade-in {
+    opacity: 1;
+    pointer-events: auto;
+    max-height: 500px;
+}
+
+.fade-out {
+    opacity: 0;
+    pointer-events: none;
+    max-height: 0;
+}
+
+.start-main-content-text {
+    font-family: "rubik";
+    font-size: 3.5rem;
+    color: #E69907;
+}
+
+.start-main-content {
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.davidCard {
+    height: 35rem;
+    border-radius: 17px;
+    margin-top: 1rem;
+}
+
+.letsStartBtn {
+    height: 9rem;
+    position: relative;
+    top: 39rem;
+    right: 20rem;
+    cursor: pointer;
+    animation: pulse 1.8s ease infinite;
+    display: inline-block;
+    transition: transform 0.25s ease;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.letsStartBtn:hover {
+    animation: none;
+    transform: scale(1.13);
+}
+
+@media (max-width: 950px) {
+    .davidCard {
+        height: 30rem;
+    }
+
+    .letsStartBtn {
+        height: 7rem;
+        top: 36rem;
+        right: 16rem;
+    }
+}
+
+@media (max-height: 750px) {
+    .davidCard {
+        height: 30rem;
+    }
+
+    .letsStartBtn {
+        height: 7rem;
+        top: 32rem;
+        right: 16rem;
+    }
+}
+
+@media (max-height: 650px) {
+    .davidCard {
+        height: 28rem;
+    }
+
+    .letsStartBtn {
+        height: 7rem;
+        top: 27rem;
+        right: 15rem;
+    }
+}
+
+/* infoPage */
+
+.info-container {
+    background-color: #073899b2;
+    height: 40rem;
+    width: 33rem;
+    border-radius: 20px;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    color: #FFF2B4;
+    padding: 1rem;
+    font-family: "assistant";
+    font-size: 1.4rem;
+    text-align: start;
+    /* direction: rtl; */
+}
+
+.info-title {
+    font-family: "rubik";
+    font-size: 2.2rem;
+    text-align: center;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-text {
+    width: 80%;
+}
+
+.languageBtn {
+    border: 0px;
+    height: 3.3rem;
+    width: 3.3rem;
+    border-radius: 3rem;
+    font-family: "assistant";
+    font-size: 1.7rem;
+    color: #073799;
+    background-color: #FFF2B4;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease;
+    position: relative;
+    right: 25rem;
+    bottom: 25rem;
+    cursor: pointer;
+}
+
+.languageBtn:hover {
+    transform: scale(1.25);
+}
+
+.galGalgalInfo {
+    height: 7rem;
+    position: relative;
+    bottom: 15rem;
+    right: 23rem;
+}
+
+.backBtnInfo {
+    height: 4rem;
+}
+
+.infoBtnContainer {
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 8.5rem;
+}
+
+.infoBtnExplain {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0rem 1rem;
+}
+
+.nextBtn {
+    border: 0rem;
+    color: #FFF2B4;
+    background-color: #E69907;
+    font-family: "assistant-extraBold";
+    font-size: 1.5rem;
+    border-radius: 8px;
+    height: 3.5rem;
+    width: 6.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.8s ease;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+}
+
+.nextBtn:hover {
+    transform: scale(1.25);
+}
+
+.nextBtnInfo {
+    font-size: 1.5rem;
+    height: 3rem;
+    width: 6rem;
+    cursor: default;
+    position: relative;
+    bottom: 0rem;
+    left: 0rem;
+}
+
+.nextBtnInfo:hover {
+    transform: scale(1);
+}
+
+.nextBtnDisable {
+    background-color: #BFBFBF;
+    color: #EEEEEE;
+    cursor: default;
+}
+
+.nextBtnDisable:hover {
+    transform: scale(1);
+}
+
+.narrationBtnInfo {
+    border: 3px solid #073799;
+    border-radius: 8px;
+    font-family: "assistant-bold";
+    color: #073799;
+    background-color: #FFF2B4;
+    height: 4.5rem;
+    width: 11rem;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin: 0rem 1rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.narrationBtnInfo:hover {
+    transform: scale(1.15);
+}
+
+.narrationContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    bottom: 7.8rem;
+}
+
+.narrationExplain {
+    position: relative;
+    bottom: 7.5rem;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.narration-toggle-info {
+    pointer-events: none;
+}
+
+.narrationText {
+    position: relative;
+    bottom: 8rem;
+}
+
+.narration-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    position: relative;
+    bottom: 7.5rem;
+}
+
+/* welcomePage */
+.welcome-title {
+    font-family: "rubik-black";
+    font-size: 2.9rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-text {
+    color: black;
+    font-size: 1.9rem;
+    font-weight: bold;
+     white-space: 'pre-line' 
+}
+
+.welcome-mainContent {
+    width: 70rem;
+    position: relative;
+    top: 12rem;
+    right: 12rem;
+}
+
+.welcome-road {
+    position: relative;
+    height: 100%;
+    left: 10rem;
+}
+.start-road {
+    position: relative;
+    height: 100%;
+    right: 0rem;
+      position: absolute;
+  right: 2%;  /* שימוש באחוזים במקום בפיקסלים */
+  top: 10%;
+  width: 80%; /* התמונה תקטן ככל שהמסך יקטן */
+}
+.tigris-start {
+    position: relative;
+    bottom: 10rem;
+
+}
+
+.welcome-nextBtn {
+    margin-top: 4rem;
+    width: 12rem;
+    height: 3.2rem;
+    ;
+    font-size: 1.7rem;
+    cursor: pointer;
+    position: relative;
+    top: 0rem;
+    right: 0rem;
+    z-index: 3;
+}
+
+.welcome-gal {
+    position: relative;
+    z-index: 1;
+    height: 20rem;
+    top: 25rem;
+    right: 26rem;
+}
+
+@media (max-width: 1600px) {
+    .welcome-mainContent {
+        right: 18rem;
+    }
+
+    .welcome-road {
+        left: 20rem;
+    }
+
+    .welcome-gal {
+        right: 20rem;
+        top: 20rem;
+    }
+}
+
+@media (max-width: 1350px) {
+    .welcome-mainContent {
+        right: 20rem;
+    }
+
+    .welcome-road {
+        left: 22rem;
+    }
+
+    .welcome-gal {
+        right: 16rem;
+        top: 23rem;
+        height: 17rem;
+    }
+}
+
+@media (max-width: 1250px) {
+    .welcome-mainContent {
+        right: 29rem;
+    }
+
+    .welcome-road {
+        left: 18rem;
+    }
+
+    .welcome-gal {
+        right: 21rem;
+        top: 23rem;
+        height: 17rem;
+    }
+}
+
+@media (max-height: 770px) {
+    .welcome-gal {
+        right: 20rem;
+        top: 20rem;
+        height: 17rem;
+    }
+}

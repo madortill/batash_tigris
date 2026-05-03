@@ -1,0 +1,134 @@
+.intro-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  min-height: 720px;
+  overflow: hidden;
+  direction: rtl;
+}
+
+.road-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.road-svg {
+  position: absolute;
+  width: min(58vw, 58rem);
+  height: auto;
+  right: -2vw;
+  bottom: -3vh;
+}
+
+.road-path {
+  fill: none;
+  stroke: #315da8;
+  stroke-width: 82;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.road-path + path,
+#jeepPath {
+  stroke: transparent;
+}
+
+.tigris-start {
+  position: absolute;
+  width: clamp(4.5rem, 8vw, 8.5rem);
+  z-index: 2;
+
+  offset-path: path("M 770 560 C 650 500, 640 410, 710 330 C 780 250, 835 315, 755 385 C 670 455, 535 435, 520 330 C 505 230, 575 160, 700 155 C 770 152, 790 115, 750 55");
+  offset-rotate: auto;
+  animation: driveTigris 6s ease-in-out forwards;
+
+  /* התאמה למיקום ה-SVG */
+  right: -2vw;
+  bottom: -3vh;
+  transform-origin: center;
+}
+
+@keyframes driveTigris {
+  0% {
+    offset-distance: 0%;
+    scale: 0.45;
+  }
+
+  35% {
+    scale: 0.65;
+  }
+
+  65% {
+    scale: 0.9;
+  }
+
+  100% {
+    offset-distance: 100%;
+    scale: 1.18;
+  }
+}
+
+.welcome-mainContent {
+  position: relative;
+  z-index: 3;
+  width: min(70rem, 58vw);
+  top: clamp(7rem, 16vh, 12rem);
+  right: clamp(8rem, 13vw, 18rem);
+}
+
+.welcome-title {
+  font-family: "rubik-black";
+  font-size: clamp(2.1rem, 3vw, 2.9rem);
+  margin-bottom: 1rem;
+}
+
+.welcome-text {
+  color: black;
+  font-size: clamp(1.35rem, 2vw, 1.9rem);
+  font-weight: bold;
+  white-space: pre-line;
+}
+
+.welcome-nextBtn {
+  margin-top: clamp(2rem, 4vh, 4rem);
+  width: clamp(9rem, 12vw, 12rem);
+  height: 3.2rem;
+  font-size: clamp(1.25rem, 1.6vw, 1.7rem);
+  cursor: pointer;
+  position: relative;
+  z-index: 4;
+}
+
+@media (max-width: 1350px) {
+  .road-svg {
+    width: 64vw;
+    right: -6vw;
+  }
+
+  .tigris-start {
+    right: -6vw;
+  }
+
+  .welcome-mainContent {
+    right: 18rem;
+    width: 55vw;
+  }
+}
+
+@media (max-width: 1150px) {
+  .road-svg {
+    width: 70vw;
+    right: -12vw;
+  }
+
+  .tigris-start {
+    right: -12vw;
+  }
+
+  .welcome-mainContent {
+    right: 20rem;
+    width: 52vw;
+  }
+}
