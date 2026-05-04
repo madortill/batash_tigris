@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../style/GeneralBack.css";
+import "../../../style/GeneralBack.css";
 
 function FlipCard({ img, backText, onSeen, className = "" }) {
   const [flipped, setFlipped] = useState(false);

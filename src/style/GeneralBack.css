@@ -19,16 +19,6 @@
   white-space: nowrap;
 }
 
-.tigris-cards-grid {
-  position: absolute;
-  left: 50%; 
-  top: clamp(9rem, 18vh, 13rem);
-  transform: translateX(-50%); 
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* השתמש ב-1fr במקום auto */
-  gap: 3rem;
-}
-
 .tigris-cards-grid .flip-card:nth-child(4) {
   grid-column: 1;
 }
@@ -39,11 +29,24 @@
 
 
 /* flipCard -----------------*/
+
+.tigris-cards-grid {
+  position: absolute;
+  left: 50%;
+  top: 50%; /* מוריד את הגריד קצת יותר למטה למרכז */
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 80%; /* מגביל רוחב כדי שייווצרו שורות */
+  max-width: 800px;
+}
+
 .flip-card {
-  width: clamp(9rem, 10vw, 12.2rem);
+  flex: 0 0 auto; /* מונע מהכרטיסיות להימתח */
+  width: clamp(10rem, 12vw, 14rem);
   aspect-ratio: 1 / 1;
-  perspective: 1000px;
-  cursor: pointer;
 }
 
 .flip-card-inner {

@@ -1,7 +1,7 @@
 import React from "react";
-import "../../style/Navbar.css";
+import "../../../style/Navbar.css";
 import { useState } from "react";
-import { useData } from "../../context/DataContext";
+import { useData } from "../../../context/DataContext";
 
 function TiresNavbar({ contentStart, changeToSection, navSection }) {
   const { data } = useData();

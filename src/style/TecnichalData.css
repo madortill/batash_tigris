@@ -1,0 +1,96 @@
+
+/* TechnicalData */
+
+.technicalData-title {
+    font-family: "rubik-black";
+    font-size: 2.6rem;
+    position: relative;
+    top: 4rem;
+    left: 12rem;
+}
+
+.hover-table {
+    border-collapse: collapse;
+    width: 50rem;
+    text-align: center;
+    color: black;
+    background-color: #FFFFFF;
+    position: relative;
+    top: 7rem;
+    right: 0rem;
+    z-index: 1;
+}
+
+.hover-table td {
+    border: 1px solid #073799;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.hover-table td:hover {
+    background-color: #FFF2B4;
+}
+
+.hover-table td.first-row {
+    background-color: #E69907;
+}
+
+.hover-table td.bold-cell {
+    font-weight: bold;
+}
+
+.hover-table tr.highlight-row td {
+    background-color: #FFE6CC; /* דוגמה – תשני לצבע שתרצי */
+}
+
+.hover-table tr.highlight-row td:hover {
+    background-color: #FFD28A;
+}
+
+.galBubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.galTechnicalImg {
+    height: 10rem;
+}
+
+.galTechnical {
+    position: relative;
+    bottom: 14rem;
+    right: 35.5rem;
+}
+
+.galTechnicalBubble {
+    width: 13rem;
+}
+
+
+@media (max-width: 1300px) {
+    .hover-table {
+        width: 38rem;
+       right: -3rem;
+    }
+
+    .galTechnical {
+        right: 23rem;
+    }
+}
+@media (max-width: 1050px) {
+    .hover-table {
+        width: 38rem;
+       right: -1rem;
+    }
+
+    .galTechnical {
+        right: 23.5rem;
+    }
+}
+
+@media (max-height: 950px) {
+    .hover-table {
+        top: 5rem;
+    }
+}

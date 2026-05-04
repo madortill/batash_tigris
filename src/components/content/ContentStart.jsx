@@ -3,7 +3,8 @@ import "../../style/Content.css";
 import { useState } from "react";
 import { useData } from "../../context/DataContext";
 import tigrisJeep from "../../assets/images/tigrisJeep.svg"
-import TiresNavbar from "./TiresNavbar.jsx";
+import TiresNavbar from "./navbar/TiresNavbar.jsx";
+import JeepTracks from "./knowCar/JeepTracks.jsx";
 
 const ContentStart=({ changeToSection })=> {
   const { data } = useData();
@@ -16,7 +17,8 @@ const ContentStart=({ changeToSection })=> {
         <TiresNavbar className="navbar-start" contentStart={true} changeToSection={changeToSection}/>
       </div>
     </div>
-        <img src={tigrisJeep} className="jeep-start"></img>
+        {/* <img src={tigrisJeep} className="jeep-start"></img> */}
+        <JeepTracks/>
     </>
   );
 }

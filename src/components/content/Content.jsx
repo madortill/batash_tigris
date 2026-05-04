@@ -3,21 +3,20 @@ import React from "react";
 import "../../style/Content.css";
 import { useState } from "react";
 import ContentStart from "./ContentStart";
-import GeneralBack from "./GeneralBack.jsx";
-import NavBar from "./NavBar.jsx";
-
+import GeneralBack from "./knowCar/GeneralBack.jsx";
+import NavBar from "./navbar/NavBar.jsx";
+import TecnichalData from "./tecnichalData/TechnicalData.jsx"
 
 const  Content= () => {
   const [section, setSection] = useState(0);
   const [sectionStartPages, setSectionStartPages] = useState({});
   const [navSection, setNavSection] = useState(0);
   const SECTION_RETURN_PAGE_MAP = {
-    1: 7,
-    2: 3,
+    1: 0,
+    2: 1,
     3: 8
   };
   const handleChangeSection = (targetSection, returnToLast = false) => {
-    // חזרה לתפריט הראשי
     if (targetSection === 6) {
       setSection(0);
       return;
@@ -39,16 +38,16 @@ const  Content= () => {
       {section == 0 && <ContentStart changeToSection={handleChangeSection} />}
      {section == 1 && <GeneralBack changeToSection={handleChangeSection}
           startingPage={sectionStartPages[1] ?? 0}/>}
-      {/* {section == 2 && (
-        <Practices
+      {section == 2 && (
+        <TecnichalData
           changeToSection={handleChangeSection}
           startingPage={sectionStartPages[2] ?? 0}
         />
       )}
-      {section == 3 && <SpecialConditions changeToSection={handleChangeSection}
+      {/* {section == 3 && <SpecialConditions changeToSection={handleChangeSection}
           startingPage={sectionStartPages[3] ?? 0}/>}
-          {section == 4 && <Summary changeToSection={handleChangeSection}/>}
-       */}
+          {section == 4 && <Summary changeToSection={handleChangeSection}/>} */}
+      
        {section !== 0 && (
         <NavBar navSection={navSection} setNavSection={setNavSection} />
       )}

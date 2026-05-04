@@ -6,7 +6,7 @@ import StartPage from "./StartPage";
 import InfoPage from "./InfoPage";
 import IntroPage from "./IntroPage";
 import WelcomePage from "./WelcomePage";
-import GeneralBack from "../content/GeneralBack";
+import GeneralBack from "../content/knowCar/GeneralBack";
 
 function Start() {
   const [page, setPage] = useState(0);

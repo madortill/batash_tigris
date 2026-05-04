@@ -1,21 +1,20 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useData } from "../../context/DataContext";
+import { useData } from "../../../context/DataContext";
 
 import FlipCard from "./FlipCard";
 import FlipCardsGate from "./IsFliped";
-import backBtn from "../../assets/images/backBtn.svg";
+import backBtn from "../../../assets/images/backBtn.svg";
 
-import fox from "../../assets/images/wolf.svg";
-import madeInIsrael from "../../assets/images/hebrowIsrael.svg";
-import target from "../../assets/images/target.svg";
-import ford from "../../assets/images/ford.svg";
-import clock from "../../assets/images/time.svg";
+import fox from "../../../assets/images/wolf.svg";
+import madeInIsrael from "../../../assets/images/hebrowIsrael.svg";
+import target from "../../../assets/images/target.svg";
+import ford from "../../../assets/images/ford.svg";
+import clock from "../../../assets/images/time.svg";
 
-import NavBar from "./NavBar";
-import "../../style/GeneralBack.css";
+import "../../../style/GeneralBack.css";
 
-const GeneralBack = ({handleChangeSection}) => {
+const GeneralBack = ({changeToSection, startingPage}) => {
 
   const navigate = useNavigate();
   const { data } = useData();
@@ -51,13 +50,12 @@ const GeneralBack = ({handleChangeSection}) => {
     handleChangeSection(2);
   };
   const previousPage = () => {
-        handleChangeSection(0);
-;
+    handleChangeSection(0);
   };
 
   return (
     <div className="tigris-general-page">
-      <h1 className="tigris-general-title">{pageData.title}</h1>
+      <h1 className="tigris-general-title effect-underline">{pageData.title}</h1>
 
       <div className="backBtn">
               <img
