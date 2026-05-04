@@ -5,7 +5,8 @@ import { useState } from "react";
 import ContentStart from "./ContentStart";
 import GeneralBack from "./knowCar/GeneralBack.jsx";
 import NavBar from "./navbar/NavBar.jsx";
-import TecnichalData from "./tecnichalData/TechnicalData.jsx"
+import TecnichalData from "./tecnichalData/TecnicalData.jsx"
+import TecnichalManager from "./tecnichalData/TecnichalManager.jsx";
 
 const  Content= () => {
   const [section, setSection] = useState(0);
@@ -39,7 +40,7 @@ const  Content= () => {
      {section == 1 && <GeneralBack changeToSection={handleChangeSection}
           startingPage={sectionStartPages[1] ?? 0}/>}
       {section == 2 && (
-        <TecnichalData
+        <TecnichalManager
           changeToSection={handleChangeSection}
           startingPage={sectionStartPages[2] ?? 0}
         />
