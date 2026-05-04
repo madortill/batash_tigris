@@ -121,3 +121,109 @@
 }
 
 
+/* tracks */
+.jeep-tracks-wrapper {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.jeep-tracks-scene {
+  position: absolute;
+
+  /* מיקום כל האזור כמו בתמונה המקורית */
+  right: clamp(2rem, 7vw, 8rem);
+  top: clamp(11rem, 30vh, 19rem);
+
+  width: clamp(30rem, 44vw, 48rem);
+  height: clamp(18rem, 28vw, 31rem);
+}
+
+.tigris-jeep-img {
+  position: absolute;
+  right: 18%;
+  top: 42%;
+
+  width: clamp(20rem, 30vw, 35rem);
+  z-index: 3;
+
+  display: block;
+  transform-origin: center bottom;
+  filter: drop-shadow(0 1.1rem 0.8rem rgba(0, 0, 0, 0.24));
+}
+
+.tracks-holder {
+  position: absolute;
+
+  /* השובל מאחורי הג׳יפ, באלכסון כמו בדוגמה */
+  right: 2%;
+  top: -4%;
+
+  width: clamp(8rem, 12vw, 14rem);
+  height: clamp(18rem, 27vw, 30rem);
+
+  z-index: 1;
+  transform: rotate(-24deg);
+  transform-origin: bottom center;
+}
+
+.track-svg {
+  position: absolute;
+  top: 0;
+  width: 48%;
+  height: 100%;
+  opacity: 0.75;
+
+  transform: scaleY(1.15);
+  transform-origin: center;
+}
+
+.track-svg-one {
+  right: 0;
+}
+
+.track-svg-two {
+  left: 0;
+}
+
+/* התאמות למסכי דסקטופ צרים יותר */
+@media (max-width: 1450px) {
+  .jeep-tracks-scene {
+    right: clamp(1rem, 5vw, 5rem);
+    top: clamp(10rem, 29vh, 17rem);
+    width: clamp(28rem, 47vw, 44rem);
+  }
+
+  .tigris-jeep-img {
+    right: 16%;
+    top: 44%;
+  }
+
+  .tracks-holder {
+    right: 1%;
+    top: -2%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .jeep-tracks-scene {
+    right: 2rem;
+    top: 32vh;
+    width: 42rem;
+  }
+
+  .tigris-jeep-img {
+    width: 25rem;
+    right: 17%;
+    top: 47%;
+  }
+
+  .tracks-holder {
+    width: 10rem;
+    height: 23rem;
+    right: 4%;
+    top: 2%;
+  }
+}

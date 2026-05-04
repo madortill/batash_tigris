@@ -1,5 +1,7 @@
 .cls-1 {
     fill: #141414;
+            cursor: pointer;
+
 }
 
 .cls-2 {
@@ -34,7 +36,8 @@
     fill: #fff2b4;
     font-family: "rubik";
     font-size: 1.5rem;
-    
+            cursor: pointer;
+
      /* text-anchor: middle;      
     dominant-baseline: central; 
     alignment-baseline: central; */

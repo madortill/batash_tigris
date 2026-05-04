@@ -5,7 +5,7 @@ import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 import galGalgal from "../../../assets/images/galGalgal.png";
 
-function TechnicalData({ setPage, changeToSection }) {
+const TechnicalData=({ setPage, changeToSection })=> {
   const { data } = useData();
   const nextBtn = data.general[1].text;
   const backBtnText = data.general[0].text;
@@ -13,11 +13,11 @@ function TechnicalData({ setPage, changeToSection }) {
   const technicalTitle = data.TechnicalData[1].title;
 
   const previousPage = () => {
-    setPage(0);
+    changeToSection(1);
   };
 
   const nextPage = () => {
-    changeToSection(2);
+    setPage(1);
   };
 
   return (
@@ -37,7 +37,7 @@ function TechnicalData({ setPage, changeToSection }) {
           {tableData.map((row, rowIdx) => (
             <tr
               key={rowIdx}
-              className={rowIdx >= 6 && rowIdx <= 8 ? "highlight-row" : ""}
+              className={rowIdx >= 6 && rowIdx <= 8 ? "highlight-row1" : ""}
             >
               {row.map((cellText, colIdx) => (
                 <td

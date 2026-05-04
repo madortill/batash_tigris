@@ -11,20 +11,23 @@
 
 .hover-table {
     border-collapse: collapse;
-    width: 50rem;
+    width: 55rem;
     text-align: center;
     color: black;
     background-color: #FFFFFF;
     position: relative;
-    top: 7rem;
+    top: 12rem;
     right: 0rem;
     z-index: 1;
 }
 
 .hover-table td {
-    border: 1px solid #073799;
-    padding: 10px;
+    border: 1.5px solid #073799;
+    padding: 18px;
+    padding-left: 5rem;
+    padding-right: 5rem;
     transition: background-color 0.3s;
+     font-size: 1.5rem;
 }
 
 .hover-table td:hover {

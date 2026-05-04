@@ -1,4 +1,5 @@
 import React from "react";
+import "../../../style/GeneralBack.css"
 import { motion } from "framer-motion";
 import tigrisJeep from "../../../assets/images/tigrisJeep.svg";
 
@@ -130,103 +131,6 @@ const TRACK_PATHS = [
 
 ];
 
-const JeepTracks = () => {
-  const unitVariants = {
-    hidden: { x: "100vw", scale: 0.6, opacity: 0 },
-    visible: { 
-      x: 0, 
-      scale: 1, 
-      opacity: 1,
-      transition: { 
-        duration: 1.8, 
-        ease: "easeOut",
-        when: "beforeChildren", // הג'יפ נכנס קודם, ואז העקבות מופיעות
-        staggerChildren: 0.1    // יוצר את אפקט ה-Stagger של הקודפן
-      }
-    }
-  };
-
-  const treadVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 0.6, transition: { duration: 0.3 } }
-  };
-
-  return (
-    <motion.div
-      variants={unitVariants}
-      initial="hidden"
-      animate="visible"
-      style={{
-        position: "absolute",
-        bottom: "10%",
-        right: "5%",
-        width: "35vw", // רספונסיבי לפי רוחב המסך
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center"
-      }}
-    >
-      {/* <img 
-        src={tigrisJeep} 
-        alt="jeep" 
-        style={{ width: "100%", zIndex: 2, position: "relative" }} 
-      /> */}
-
-      {/* ה-SVG של העקבות */}
-      <svg
-        viewBox="0 0 487 547.9"
-        style={{
-          position: "absolute",
-          top: "40%", // מתחיל מתחת לגלגלים
-          width: "90%",
-          zIndex: 1,
-          transform: "rotate(-5deg)" // התאמה קלה לזווית הנסיעה
-        }}
-      >
-        {TRACK_PATHS.map((pathData, index) => (
-          <motion.path
-            key={index}
-            d={pathData}
-            fill="#A19081" // הצבע מה-CSS ששלחת
-            variants={treadVariants}
-            className="Tread"
-          />
-        ))}
-      </svg>
-      {/* ה-SVG של העקבות */}
-      <svg
-        viewBox="0 0 487 547.9"
-        style={{
-          position: "absolute",
-          top: "45%", // מתחיל מתחת לגלגלים
-          width: "90%",
-          zIndex: 1,
-          transform: "rotate(-5deg)" 
-        }}
-      >
-        {TRACK_PATHS.map((pathData, index) => (
-          <motion.path
-            key={index}
-            d={pathData}
-            fill="#A19081" // הצבע מה-CSS ששלחת
-            variants={treadVariants}
-            className="Tread"
-          />
-        ))}
-      </svg>
-         {/* תמונת הג'יפ */}
-      <img 
-        src={tigrisJeep} 
-        alt="jeep" 
-        style={{ width: "80%", zIndex: 2, position: "relative" }} 
-      />
-
-    </motion.div>
-    
-  );
-};
-
-export default JeepTracks;
 // const JeepTracks = () => {
 //   // אנימציית הכניסה של הג'יפ - נסיעה פנימה מהצד
 //   const jeepVariants = {
@@ -320,3 +224,81 @@ export default JeepTracks;
 // };
 
 // export default JeepTracks;
+const JeepTracks = () => {
+  const jeepVariants = {
+    hidden: {
+      x: "26vw",
+      y: "-8vh",
+      scale: 0.58,
+      rotate: -7,
+      opacity: 0,
+    },
+    visible: {
+      x: 0,
+      y: 0,
+      scale: 1,
+      rotate: -4,
+      opacity: 1,
+      transition: {
+        duration: 2,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
+
+  const trackVariants = {
+    hidden: {
+      opacity: 0,
+      clipPath: "inset(0 0 100% 0)",
+    },
+    visible: {
+      opacity: 0.72,
+      clipPath: "inset(0 0 0% 0)",
+      transition: {
+        delay: 0.35,
+        duration: 1.65,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  return (
+    <div className="jeep-tracks-wrapper">
+      <div className="jeep-tracks-scene">
+        <motion.div
+          className="tracks-holder"
+          variants={trackVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <svg className="track-svg track-svg-one" viewBox="0 0 487 547.9">
+            <g>
+              {TRACK_PATHS.map((pathData, index) => (
+                <path key={`track-one-${index}`} d={pathData} fill="#817965" />
+              ))}
+            </g>
+          </svg>
+
+          <svg className="track-svg track-svg-two" viewBox="0 0 487 547.9">
+            <g>
+              {TRACK_PATHS.map((pathData, index) => (
+                <path key={`track-two-${index}`} d={pathData} fill="#817965" />
+              ))}
+            </g>
+          </svg>
+        </motion.div>
+
+        <motion.img
+          src={tigrisJeep}
+          alt="tigris jeep"
+          className="tigris-jeep-img"
+          variants={jeepVariants}
+          initial="hidden"
+          animate="visible"
+        />
+      </div>
+    </div>
+  );
+};
+
+export default JeepTracks;

@@ -47,10 +47,10 @@ const GeneralBack = ({changeToSection, startingPage}) => {
   ];
 
   const nextPage = () => {
-    handleChangeSection(2);
+    changeToSection(2);
   };
   const previousPage = () => {
-    handleChangeSection(0);
+    changeToSection(0);
   };
 
   return (
