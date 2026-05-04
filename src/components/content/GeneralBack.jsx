@@ -12,6 +12,7 @@ import target from "../../assets/images/target.svg";
 import ford from "../../assets/images/ford.svg";
 import clock from "../../assets/images/time.svg";
 
+import NavBar from "./NavBar";
 import "../../style/GeneralBack.css";
 
 const GeneralBack = ({handleChangeSection}) => {

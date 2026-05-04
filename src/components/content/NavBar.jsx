@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from "react";
-import { useData } from "../context/DataContext";
-import "../style/Navbar.css";
+import { useData } from "../../context/DataContext";
+import "../../style/Navbar.css";
 
 import TiresNavbar from "./TiresNavbar";
 

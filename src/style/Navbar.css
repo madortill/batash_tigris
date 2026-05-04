@@ -35,9 +35,9 @@
     font-family: "rubik";
     font-size: 1.5rem;
     
-     text-anchor: middle;      /* מרכז אופקי */
-    dominant-baseline: central; /* מרכז אנכי מדויק */
-    alignment-baseline: central;
+     /* text-anchor: middle;      
+    dominant-baseline: central; 
+    alignment-baseline: central; */
 }
 
 .animation-start {

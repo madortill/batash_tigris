@@ -1,3 +1,11 @@
+/* .content {
+      position: relative;
+  width: 100vw;
+  height: 100vh;
+} */
+
+
+
 .svg-wrapper {
     position: relative;
     top: 7rem;
@@ -49,6 +57,16 @@
 @media (max-width: 1050px) {
     .content-start-title {
         left: 7rem;
+    }
+    .jeep-start {
+    right: -10rem;
+    width: 25rem;
+}
+}
+@media (max-heigth: 800px) {
+    .content-start-title {
+        left: 7rem;
+        font-size: smaller;
     }
     .jeep-start {
     right: -10rem;

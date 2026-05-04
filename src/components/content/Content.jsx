@@ -4,8 +4,10 @@ import "../../style/Content.css";
 import { useState } from "react";
 import ContentStart from "./ContentStart";
 import GeneralBack from "./GeneralBack.jsx";
+import NavBar from "./NavBar.jsx";
 
-function Content() {
+
+const  Content= () => {
   const [section, setSection] = useState(0);
   const [sectionStartPages, setSectionStartPages] = useState({});
   const [navSection, setNavSection] = useState(0);
@@ -46,9 +48,10 @@ function Content() {
       {section == 3 && <SpecialConditions changeToSection={handleChangeSection}
           startingPage={sectionStartPages[3] ?? 0}/>}
           {section == 4 && <Summary changeToSection={handleChangeSection}/>}
-      {section !== 0 && (
+       */}
+       {section !== 0 && (
         <NavBar navSection={navSection} setNavSection={setNavSection} />
-      )} */}
+      )}
     </div>
   );
 }
