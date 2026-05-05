@@ -1,0 +1,14 @@
+.the-type-writer {
+    position: relative;
+    height: fit-content;
+    flex-direction: column;
+    display: flex;
+    left: 50%;
+    transform: translate(-50%);
+    direction: rtl;
+    margin-top: -3rem;
+    margin-right: 2rem;
+}
+
+
+

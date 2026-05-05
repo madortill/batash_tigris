@@ -5,22 +5,26 @@ import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 import galGalgal from "../../../assets/images/galGalgal.png";
 
-const TechnicalData=({ onSendData, changeToSection })=> {
+const TechnicalData=({ onSendData, startPage })=> {
   const { data } = useData();
   const nextBtn = data.general[1].text;
   const backBtnText = data.general[0].text;
   const tableData = data.TechnicalData[0].tableData;
   const technicalTitle = data.TechnicalData[1].title;
+  const [page, setPage] = useState(startPage);
 
 
   const previousPage = () => {
-    changeToSection(1);     
+    setPage(0);
   };
 
+  // const nextPage = () => {
+  //   onSendData(1); 
+  // };
   const nextPage = () => {
-    onSendData(1); 
-  };
-
+        onSendData(1);
+    }
+  
 
   return (
     <div className="TechnicalData">

@@ -6,10 +6,10 @@ import { useData } from "../../../context/DataContext";
 function TiresNavbar({ contentStart, changeToSection, navSection }) {
   const { data } = useData();
   const knowCar = data.TiresNavbar[0].KnowCar;
-  const defender = data.TiresNavbar[0].Tecnical;
-  const highlix = data.TiresNavbar[0].Box;
-  const accident = data.TiresNavbar[0].systems;
-  const summary = data.TiresNavbar[0].uses;
+  const tecnichalData = data.TiresNavbar[0].Tecnical;
+  const boxes = data.TiresNavbar[0].Box;
+  const system = data.TiresNavbar[0].systems;
+  const uses = data.TiresNavbar[0].uses;
   const changeSection = () => {
     changeToSection(1);
   };
@@ -262,7 +262,7 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
           />
           <text className="cls-text" transform="translate(56.54 281.96)">
             <tspan x="90" y="0">
-              {defender}
+              {tecnichalData}
             </tspan>
           </text>
         </g>
@@ -448,7 +448,7 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
           />
           <text className="cls-text" transform="translate(52.14 356.25)">
             <tspan x="95" y="0">
-              {highlix}
+              {boxes}
             </tspan>
           </text>
           <path
@@ -543,7 +543,7 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
           />
           <text className="cls-text" transform="translate(44.53 431.49)">
             <tspan x="110" y="0">
-              {accident}
+              {system}
             </tspan>
           </text>
         </g>
@@ -634,7 +634,7 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
           />
           <text className="cls-text" transform="translate(61.03 502.03)">
             <tspan x="75" y="0">
-              {summary}
+              {uses}
             </tspan>
           </text>
         </g>

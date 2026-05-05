@@ -2,6 +2,9 @@ import React from "react";
 import "../../../style/GeneralBack.css"
 import { motion } from "framer-motion";
 import tigrisJeep from "../../../assets/images/tigrisJeep.svg";
+import { useData } from "../../../context/DataContext";
+
+
 
 const TRACK_PATHS = [
   // --- Group: One ---
@@ -130,6 +133,7 @@ const TRACK_PATHS = [
 
 
 ];
+
 
 // const JeepTracks = () => {
 //   // אנימציית הכניסה של הג'יפ - נסיעה פנימה מהצד
@@ -261,6 +265,9 @@ const JeepTracks = () => {
       },
     },
   };
+const {data} = useData();
+const toolTip= data.contentStart[1].text; 
+
 
   return (
     <div className="jeep-tracks-wrapper">
@@ -287,7 +294,8 @@ const JeepTracks = () => {
             </g>
           </svg>
         </motion.div>
-
+          {/* <div className="tooltip-container">
+          <span className="tooltip-text">{toolTip}</span> */}
         <motion.img
           src={tigrisJeep}
           alt="tigris jeep"
@@ -295,8 +303,9 @@ const JeepTracks = () => {
           variants={jeepVariants}
           initial="hidden"
           animate="visible"
-        />
-      </div>
+          /> 
+          </div>
+      {/* </div> */}
     </div>
   );
 };

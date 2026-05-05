@@ -5,9 +5,8 @@ import { useState } from "react";
 import ContentStart from "./ContentStart";
 import GeneralBack from "./knowCar/GeneralBack.jsx";
 import NavBar from "./navbar/NavBar.jsx";
-import TecnichalData from "./tecnichalData/TecnicalData.jsx"
-import TecnichalManager from "./tecnichalData/TecnichalManager.jsx";
-
+import TecnichalManager from "./tecnichalData/TecnichalNav.jsx";
+import GearboxNav from "./gearBox/GearboxNav.jsx"
 const  Content= () => {
   const [section, setSection] = useState(0);
   const [sectionStartPages, setSectionStartPages] = useState({});
@@ -27,7 +26,7 @@ const  Content= () => {
 
     setSectionStartPages((prev) => ({
       ...prev,
-      [targetSection]: returnToLast
+      [targetSection]: returnToLast 
         ? SECTION_RETURN_PAGE_MAP[targetSection] ?? 0
         : 0,
     }));
@@ -45,9 +44,10 @@ const  Content= () => {
           startingPage={sectionStartPages[2] ?? 0}
         />
       )}
-      {/* {section == 3 && <SpecialConditions changeToSection={handleChangeSection}
+      {section == 3 && <GearboxNav changeToSection={handleChangeSection}
           startingPage={sectionStartPages[3] ?? 0}/>}
-          {section == 4 && <Summary changeToSection={handleChangeSection}/>} */}
+
+          {/* {section == 4 && <Summary changeToSection={handleChangeSection}/>} */}
       
        {section !== 0 && (
         <NavBar navSection={navSection} setNavSection={setNavSection} />

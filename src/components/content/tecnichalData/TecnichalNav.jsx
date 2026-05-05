@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import TechnicalData from './TecnicalData.jsx';
 import LicenseTigris from "./LicenseTigris.jsx" ;
 
-const  TecnichalManager= ({ changeToSection, startingPage })=> {
+const  TecnichalNav= ({ changeToSection, startingPage })=> {
+
   const [page, setPage] = useState(startingPage);
   const [startPage, setStartPage] = useState(0);
     const handleChangePage = (data) => {
@@ -12,10 +13,10 @@ const  TecnichalManager= ({ changeToSection, startingPage })=> {
       setPage(data);
     };
   return (
-    <div className='TecnichalManager'>
-      {page == 0 && <TechnicalData startPage={startPage}  onSendData={handleChangePage}/>}
-      {page == 1 && <LicenseTigris  changeToSection={changeToSection} setPage={setPage}/>}
+    <div className='TecnichalNav'>
+      {page == 0 && <TechnicalData startPage={startPage}  onSendData={handleChangePage} />}
+      {page == 1 && <LicenseTigris  changeToSection={changeToSection} setPage={setPage} />}
     </div>
   )
 }
-export default TecnichalManager;
+export default TecnichalNav;
