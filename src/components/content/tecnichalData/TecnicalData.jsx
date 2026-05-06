@@ -14,13 +14,15 @@ const TechnicalData=({ onSendData, startPage })=> {
   const [page, setPage] = useState(startPage);
 
 
-  const previousPage = () => {
-    setPage(0);
-  };
-
-  // const nextPage = () => {
-  //   onSendData(1); 
+  // const previousPage = () => {
+  //   setPage(0);
   // };
+   const previousPage = () => {
+    changeToSection(1); 
+  };
+  
+
+
   const nextPage = () => {
         onSendData(1);
     }

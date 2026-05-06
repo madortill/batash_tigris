@@ -16,6 +16,7 @@
     height: 4.5rem;
     transition: transform 0.2s ease;
     cursor: pointer;
+    z-index: 10;
 }
 
 .backBtnImg:hover {

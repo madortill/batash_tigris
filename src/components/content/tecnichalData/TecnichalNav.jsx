@@ -14,7 +14,7 @@ const  TecnichalNav= ({ changeToSection, startingPage })=> {
     };
   return (
     <div className='TecnichalNav'>
-      {page == 0 && <TechnicalData startPage={startPage}  onSendData={handleChangePage} />}
+      {page == 0 && <TechnicalData startPage={startPage}  onSendData={handleChangePage} changeToSection={changeToSection}/>}
       {page == 1 && <LicenseTigris  changeToSection={changeToSection} setPage={setPage} />}
     </div>
   )

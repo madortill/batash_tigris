@@ -3,11 +3,13 @@ import { useData } from "../../../context/DataContext";
 import Gearbox from "./Gearbox.jsx" 
 import { useState } from "react";
 import backBtn from "../../../assets/images/backBtn.svg";
+import "../../../style/GearboxNav.css"
 
 
 const GearboxNav= ({ changeToSection, startingPage }) => {
   const [page, setPage] = useState(startingPage);
   const [startPage, setStartPage] = useState(0);
+  
   const { data } = useData();
   const pagesMap = {
     0: 0,
