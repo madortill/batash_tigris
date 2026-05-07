@@ -50,4 +50,73 @@
 
 
 
+.text-gearbox {
+    position: relative;
+    top: 8rem;
+    font-size: 1.5rem;
+    color: black;
 
+}
+
+.div-box{
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    position: relative;
+    top: 20rem;
+    right: 30%;
+    width: fit-content;
+}
+.box-container {
+  width: 300px;
+  margin: 100px auto;
+  cursor: pointer;
+}
+
+.main-svg {
+  overflow: visible;
+}
+
+.lid {
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-box: fill-box;
+  transform-origin: bottom;
+}
+
+/* אנימציית כנף שמאל: פתיחה הצידה ולמעלה */
+.box-container:hover #lid-left {
+  transform: rotate(-120deg) skewX(20deg) scaleY(0.8);
+}
+
+/* אנימציית כנף ימין: פתיחה הצידה ולמעלה */
+.box-container:hover #lid-right {
+  transform: rotate(120deg) skewX(-20deg) scaleY(0.8);
+}
+
+/* האלמנט שיוצא מהקופסה */
+.floating-item {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.6s ease-out;
+  transition-delay: 0.2s; /* מתחיל קצת אחרי פתיחת הכנפיים */
+}
+
+.box-container:hover .floating-item {
+  opacity: 1;
+  transform: translateY(-80px); /* יוצא למעלה */
+  animation: float-soft 2s infinite ease-in-out 0.8s; /* מתחיל לצוף אחרי שיצא */
+}
+
+/* אנימציית ציפה עדינה אחרי שהאלמנט בחוץ */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(-80px); }
+  50% { transform: translateY(-95px); }
+}
+
+/* עיצוב הטקסט */
+#box-label {
+  transition: all 0.5s ease;
+}
+.box-container:hover #box-label {
+  fill: #D39E33; /* שינוי צבע הטקסט בזמן הפתיחה */
+}
