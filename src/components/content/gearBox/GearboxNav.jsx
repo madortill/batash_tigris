@@ -4,6 +4,7 @@ import Gearbox from "./Gearbox.jsx"
 import { useState } from "react";
 import backBtn from "../../../assets/images/backBtn.svg";
 import "../../../style/GearboxNav.css"
+import TransferCaseBox from "./TransferCaseBox.jsx";
 
 
 const GearboxNav= ({ changeToSection, startingPage }) => {
@@ -32,10 +33,12 @@ const GearboxNav= ({ changeToSection, startingPage }) => {
   const handleChangeSection = (section, returnToLast = false) => {
     if (changeToSection) changeToSection(section, returnToLast);
   };
+  console.log("Rendering GearboxNav. Current page:", page, "Type of page:", typeof page);
+
   return (
     <div className='GearboxNav'>
-     {page == 0 && <Gearbox changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
-     {/* {page == 1 && <HighlixVideo changeToPage={handleChangePage} startPage={startPage} />} */}
+     {page === 0 && <Gearbox changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
+     {page === 1 && <TransferCaseBox changeToPage={handleChangePage} startPage={startPage} />}
      {/* {page == 2 && <FrontSeren changeToPage={handleChangePage}/>}
      {page == 3 && <SwitchBoard changeToPage={handleChangePage}/>}
      {page == 4 && <Handbrake changeToPage={handleChangePage} startPage={startPage}/>}

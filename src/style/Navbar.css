@@ -35,8 +35,8 @@
 .cls-text {
     fill: #fff2b4;
     font-family: "rubik";
-    font-size: 1.5rem;
-            cursor: pointer;
+    font-size: 1.22rem;
+    cursor: pointer;
 
      /* text-anchor: middle;      
     dominant-baseline: central; 
@@ -94,8 +94,8 @@
 
 @media (max-width: 1300px) {
     .navbar-wrapper {
-        bottom: 0.5rem;
-        right: 0.5rem;
+        bottom: 0.9rem;
+        right: 0.9rem;
     }
 
 }

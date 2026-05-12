@@ -171,7 +171,8 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
             />
           </g>
         </g>
-        <g id="two">
+        <g id="two"  onClick={changeSection}
+>
           <path
             className={navSection > 1 ? "cls-1" : "cls-7"}
             d="M3.88,301.77c.03-3.21.13-6.42.09-9.63-.03-2.28.99-3.17,3.21-3.14,4.42.06,8.85.09,13.27-.02,2.29-.06,3.75.85,4.8,2.82,3.06,5.76,6.19,11.49,9.29,17.23-7.38.04-14.75.21-22.12.07-4.45-.08-7.36-2.82-8.53-7.33h0Z"
@@ -365,7 +366,9 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
             </tspan>
           </text>
         </g>
-        <g id="three">
+        <g id="three"
+          onClick={changeSection}
+        >
           <path
             className={navSection > 2 ? "cls-1" : "cls-7"}
             d="M3.77,374.38c.03-3.21.13-6.42.09-9.63-.03-2.28.99-3.17,3.21-3.14,4.42.06,8.85.09,13.27-.02,2.29-.06,3.75.85,4.8,2.82,3.06,5.76,6.19,11.49,9.29,17.23-7.38.04-14.75.21-22.12.07-4.45-.08-7.36-2.82-8.53-7.33h0Z"
@@ -456,7 +459,8 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
             d="M17.22,315.96l.56,4.4,4.21.67s-.43,1.16-.63,1.52c-.59,1.09-.13,1.16-1.76,1.36-1.53.18-4.05-1.18-4.05-1.18l-1.66-.77,3.32-6Z"
           />
         </g>
-        <g id="four">
+        <g id="four" onClick={changeSection}>
+
           <path
             className={navSection > 3 ? "cls-1" : "cls-7"}
             d="M2.51,446.98c.03-3.21.13-6.42.09-9.63-.03-2.28.99-3.17,3.21-3.14,4.42.06,8.85.09,13.27-.02,2.29-.06,3.75.85,4.8,2.82,3.06,5.76,6.19,11.49,9.29,17.23-7.38.04-14.75.21-22.12.07-4.45-.08-7.36-2.82-8.53-7.33h0Z"
@@ -547,7 +551,8 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
             </tspan>
           </text>
         </g>
-        <g id="five">
+        <g id="five"           onClick={changeSection}
+>
           <path
             className={navSection > 4 ? "cls-1" : "cls-7"}
             d="M2.51,519.58c.03-3.21.13-6.42.09-9.63-.03-2.28.99-3.17,3.21-3.14,4.42.06,8.85.09,13.27-.02,2.29-.06,3.75.85,4.8,2.82,3.06,5.76,6.19,11.49,9.29,17.23-7.38.04-14.75.21-22.12.07-4.45-.08-7.36-2.82-8.53-7.33h0Z"

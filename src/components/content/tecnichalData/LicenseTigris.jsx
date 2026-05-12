@@ -119,3 +119,90 @@ const LicenseTigris =({ setPage, changeToSection })=> {
 }
 
 export default LicenseTigris;
+
+// import { useState } from "react";
+// import { useData } from "../../../context/DataContext";
+// import "../../../style/TecnichalData.css";
+
+// export default function LicenseTigris() {
+//   const [isFlipped, setIsFlipped] = useState(false);
+
+//   // ── שליפת נתונים מה-JSON ──────────────────────────────
+//   const pageData      = useData();                   // מחזיר את כל ה-JSON של השפה הנוכחית
+//   const licenseData   = pageData.LicenseTigris;     // { title, titleID, specs[] }
+
+//   const title   = licenseData.title;                // "נתונים טכניים"
+//   const titleID = licenseData.titleID;              // "רישון נהיגה - טיגריס"
+//   const specs   = licenseData.specs;                // [{ label, value }, ...]
+
+//   // ── render ─────────────────────────────────────────────
+//   return (
+//     <div className="lt-page">
+
+//       {/* ───── Page title (from navbar key "Tecnical") ───── */}
+//       <h1 className="lt-page-title">{title}</h1>
+
+//       {/* ───── 3-D flip scene ───── */}
+//       <div
+//         className="lt-scene"
+//         onClick={() => setIsFlipped((prev) => !prev)}
+//         role="button"
+//         aria-pressed={isFlipped}
+//         aria-label={isFlipped ? "הצג חזית הכרטיס" : "הצג נתוני רישיון"}
+//       >
+//         <div className={`lt-card${isFlipped ? " lt-card--flipped" : ""}`}>
+
+//           {/* ══ FRONT ══════════════════════════════════════ */}
+//           <div className="lt-face lt-face--front">
+//             <div className="lt-face__header">{titleID}</div>
+
+//             <div className="lt-face__body">
+//               {/* אייקון רכב — החלף ב-<img> כשיש asset */}
+//               <div className="lt-vehicle-icon" aria-hidden="true">
+//                 <svg viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg">
+//                   <rect x="20"  y="28" width="165" height="38" rx="8"  fill="#2a5298" />
+//                   <rect x="110" y="14" width="60"  height="26" rx="5"  fill="#1a3c6e" />
+//                   <rect x="118" y="19" width="44"  height="16" rx="3"  fill="#a8c4e0" opacity="0.7" />
+//                   <rect x="174" y="36" width="12"  height="22" rx="4"  fill="#0f2548" />
+//                   <circle cx="55"  cy="68" r="14" fill="#0f2548" />
+//                   <circle cx="55"  cy="68" r="7"  fill="#8899bb" />
+//                   <circle cx="155" cy="68" r="14" fill="#0f2548" />
+//                   <circle cx="155" cy="68" r="7"  fill="#8899bb" />
+//                   <rect x="20" y="42" width="165" height="4" rx="2" fill="#c8a830" opacity="0.6" />
+//                   <polygon points="90,34 97,44 83,44" fill="#c8a830" opacity="0.9" />
+//                 </svg>
+//               </div>
+
+//               <div className="lt-flip-hint" aria-hidden="true">
+//                 <span className="lt-flip-hint__icon">↺</span>
+//                 <span className="lt-flip-hint__text">לחץ לצפייה בנתונים</span>
+//               </div>
+//             </div>
+//           </div>
+
+//           {/* ══ BACK ═══════════════════════════════════════ */}
+//           <div className="lt-face lt-face--back">
+//             <div className="lt-face__header">
+//               {titleID}
+//               <span className="lt-pulse-dot" aria-hidden="true" />
+//             </div>
+
+//             <ul className="lt-specs" role="list">
+//               {specs.map(({ label, value }) => (
+//                 <li key={label} className="lt-specs__row" role="listitem">
+//                   <span className="lt-specs__label">{label}</span>
+//                   <span className="lt-specs__value">{value}</span>
+//                 </li>
+//               ))}
+//             </ul>
+//           </div>
+
+//         </div>
+//       </div>
+
+//       {/* ───── Card title below scene ───── */}
+//       <p className="lt-card-caption">{title}</p>
+
+//     </div>
+//   );
+// }

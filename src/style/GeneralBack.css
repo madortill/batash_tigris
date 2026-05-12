@@ -45,7 +45,7 @@
 
 .flip-card {
   flex: 0 0 auto; /* מונע מהכרטיסיות להימתח */
-  width: clamp(10rem, 12vw, 14rem);
+  width: clamp(11rem, 13vw, 14rem);
   aspect-ratio: 1 / 1;
 }
 
@@ -144,7 +144,7 @@
 .tigris-jeep-img {
   position: absolute;
   right: 18%;
-  top: 42%;
+  top: 30%;
 
   width: clamp(20rem, 30vw, 35rem);
   z-index: 3;
@@ -256,4 +256,27 @@
 .tooltip-container:hover .tooltip-text {
   visibility: visible;
   opacity: 1;
+}
+
+
+@media (max-width: 1450px) {
+  
+.tigris-cards-grid {
+  position: absolute;
+  left: 50%;
+  top: 50%; /* מוריד את הגריד קצת יותר למטה למרכז */
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  width: 70%; /* מגביל רוחב כדי שייווצרו שורות */
+  max-width: 800px;
+}
+.flip-card {
+  width: clamp(12rem, 12vw, 14rem);
+  font-size: 2rem;
+}
+
+
 }

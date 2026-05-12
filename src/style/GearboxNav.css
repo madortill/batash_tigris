@@ -1,3 +1,12 @@
+.GearboxNav {
+   position: relative;
+  width: 100vw;
+  height: 100vh;
+  min-height: 500px;
+  direction: rtl;
+}
+
+
 .the-type-writer {
     position: relative;
     height: fit-content;
@@ -119,4 +128,385 @@
 }
 .box-container:hover #box-label {
   fill: #D39E33; /* שינוי צבע הטקסט בזמן הפתיחה */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ///////////////////////////// */
+
+.transfer-box {
+  width: min(64vw, 48rem);
+  aspect-ratio: 1.52 / 1;
+  background: #f7d77a;
+  border-radius: 0.45rem;
+  position: relative;
+  margin: 0 auto;
+  direction: rtl;
+  overflow: hidden;
+}
+
+.transfer-instruction {
+  position: absolute;
+  top: 5%;
+  right: 50%;
+  transform: translateX(50%);
+  margin: 0;
+  font-size: clamp(0.8rem, 0.95vw, 1rem);
+  color: #1b1b1b;
+}
+
+.transfer-card {
+  position: absolute;
+  inset: 13% 8% 8% 8%;
+}
+
+.transfer-text-box {
+  position: absolute;
+  top: 0;
+  right: 10%;
+  width: 55%;
+  min-height: clamp(3rem, 7vh, 4.3rem);
+  background: #ffe9a8;
+  border-radius: 0.35rem;
+  padding: 0.7rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  font-size: clamp(0.75rem, 0.92vw, 1rem);
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.transfer-diagram {
+  position: absolute;
+  right: 14%;
+  bottom: 5%;
+  width: 50%;
+  height: 62%;
+}
+
+.axle {
+  position: absolute;
+  right: 30%;
+  width: 42%;
+  height: clamp(0.22rem, 0.45vw, 0.4rem);
+  background: #8f815f;
+  border-radius: 999px;
+}
+
+.front-axle {
+  top: 25%;
+}
+
+.rear-axle {
+  bottom: 24%;
+}
+
+.shaft {
+  position: absolute;
+  right: 49.5%;
+  top: 25%;
+  width: clamp(0.22rem, 0.45vw, 0.4rem);
+  height: 51%;
+  background: #8f815f;
+  border-radius: 999px;
+}
+
+.wheel {
+  position: absolute;
+  width: clamp(2rem, 3.2vw, 3.4rem);
+  aspect-ratio: 0.55 / 1;
+  border-radius: 45%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #1f1f1f 0 8%,
+      #4b4b4b 8% 14%,
+      #151515 14% 22%
+    );
+  border: clamp(0.15rem, 0.28vw, 0.28rem) solid #282828;
+  box-shadow:
+    inset 0 0 0.35rem rgba(255, 255, 255, 0.2),
+    inset 0 0 0.8rem rgba(0, 0, 0, 0.65);
+  transform-origin: center;
+}
+
+.wheel::before,
+.wheel::after {
+  content: "";
+  position: absolute;
+  inset: 8% 18%;
+  border-radius: 50%;
+  border: 0.16rem solid rgba(255, 255, 255, 0.18);
+}
+
+.wheel::after {
+  inset: 24% 31%;
+  background: #353535;
+  border-color: #111;
+}
+
+.wheel-rim {
+  position: absolute;
+  inset: 34% 39%;
+  border-radius: 50%;
+  background: #777;
+  z-index: 2;
+}
+
+.front-right-wheel {
+  top: 3%;
+  right: 18%;
+}
+
+.front-left-wheel {
+  top: 3%;
+  left: 18%;
+}
+
+.rear-right-wheel {
+  bottom: 2%;
+  right: 18%;
+}
+
+.rear-left-wheel {
+  bottom: 2%;
+  left: 18%;
+}
+
+.wheel-spin {
+  animation: wheelDrive 0.35s linear infinite;
+}
+
+@keyframes wheelDrive {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.gear-selector {
+  position: absolute;
+  right: -30%;
+  bottom: 2%;
+  width: clamp(4rem, 7vw, 6.6rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, #1b1b1b 0 25%, #4c4c4c 26% 36%, #111 37% 46%, #3c3c3c 47% 62%, #171717 63%);
+  box-shadow:
+    inset 0 0 0.8rem rgba(255, 255, 255, 0.2),
+    0 0.35rem 0.7rem rgba(0, 0, 0, 0.28);
+}
+
+.transfer-buttons {
+  position: absolute;
+  left: 0;
+  top: 18%;
+  width: 24%;
+
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.75rem, 1.8vh, 1.35rem);
+}
+
+.transfer-mode-btn {
+  position: relative;
+  height: clamp(2.35rem, 4.3vh, 3.1rem);
+  border: none;
+  border-radius: 999px;
+  background: #f4bd45;
+  color: #111;
+  font-size: clamp(1rem, 1.45vw, 1.5rem);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0.22rem 0 #c98b17;
+  transition: 0.2s ease;
+}
+
+.transfer-mode-btn:hover,
+.transfer-mode-btn.selected {
+  background: #ed9b00;
+  transform: translateY(-0.12rem);
+}
+
+.mode-check {
+  position: absolute;
+  top: -0.7rem;
+  left: -0.25rem;
+
+  width: clamp(1.15rem, 1.7vw, 1.6rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+
+  background: #42b866;
+  color: white;
+  font-size: clamp(0.8rem, 1.1vw, 1rem);
+  font-weight: bold;
+
+  display: grid;
+  place-items: center;
+}
+
+.stop-sign-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* החשכה של הרקע */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+ background: rgba(255, 255, 255, 0.4); 
+    /* אפקט הטשטוש הקריטי */
+    backdrop-filter: blur(8px); 
+    -webkit-backdrop-filter: blur(8px); /* תמיכה בדפדפני ספארי */
+    
+
+    z-index: 100;
+}
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.stop-sign-content {
+    position: relative;
+    /* הרוחב יהיה 90% מהמסך בנייד, ולא יעבור את ה-550 פיקסלים במסך גדול */
+    width: clamp(280px, 90vw, 550px); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+    animation: popIn 0.4s ease-out;
+}
+
+.stop-sign-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.stop-sign-text-layer {
+    position: absolute;
+    /* משתמשים באחוזים כדי שהטקסט יישאר תמיד בתוך האדום */
+    width: 75%; 
+    height: 70%;
+    color: white;
+    text-align: center;
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* מרכז את התוכן אנכית בתוך התמרור */
+    align-items: center;
+    /* גודל גופן משתנה לפי רוחב המסך */
+    font-size: clamp(0.7rem, 2.5vw, 1.1rem);
+}
+
+.stop-title {
+    font-size: 1.2em; /* יחסי ל-font-size של ה-layer */
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    width: 90%;
+}
+
+.stop-steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
+    width: 100%;
+}
+
+.stop-step-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.6em;
+    cursor: pointer;
+}
+
+.custom-checkbox {
+    /* גודל הצ'קבוקס גדל וקטן עם הטקסט */
+    width: 1.2em;
+    height: 1.2em;
+    border: 1.5px solid white;
+    flex-shrink: 0; /* מונע מהצ'קבוקס להתכווץ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.stop-extra-text {
+    font-size: 0.85em;
+    margin-top: 1em;
+    color: #ffeb3b;
+    width: 90%;
+}
+
+.close-popup-btn {
+    position: absolute;
+    top: 5%;
+    right: 5%;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.stop-sign-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 1350px) {
+  .transfer-box {
+    width: 68vw;
+  }
+
+  .transfer-diagram {
+    right: 13%;
+    width: 52%;
+  }
+
+  .transfer-buttons {
+    width: 25%;
+  }
+}
+
+@media (max-height: 770px) {
+  .transfer-box {
+    width: min(62vw, 43rem);
+  }
+
+  .transfer-card {
+    inset: 13% 8% 7% 8%;
+  }
+
+  .gear-selector {
+    width: clamp(3.6rem, 6vw, 5.5rem);
+  }
 }
