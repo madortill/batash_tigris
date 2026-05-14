@@ -67,19 +67,16 @@
 
 }
 
-.div-box{
+.div-box {
     display: flex;
     flex-flow: row;
     justify-content: space-between;
     position: relative;
     top: 20rem;
-    right: 30%;
-    width: fit-content;
-}
-.box-container {
-  width: 300px;
-  margin: 100px auto;
-  cursor: pointer;
+    right: 20%;
+    width: 30%;
+    height: 20rem;
+
 }
 
 .main-svg {
@@ -126,7 +123,7 @@
 #box-label {
   transition: all 0.5s ease;
 }
-.box-container:hover #box-label {
+.box-container:hover {
   fill: #D39E33; /* שינוי צבע הטקסט בזמן הפתיחה */
 }
 
@@ -138,10 +135,8 @@
 
 
 
-
-
-
-/* ///////////////////////////// */
+/*--------------------------------------------------------------------*/
+/* 
 
 .transfer-box {
   width: min(64vw, 48rem);
@@ -152,15 +147,17 @@
   margin: 0 auto;
   direction: rtl;
   overflow: hidden;
+  top: 20%;
+
 }
 
 .transfer-instruction {
-  position: absolute;
-  top: 5%;
+  position: relative;
+  top: 15%;
   right: 50%;
   transform: translateX(50%);
   margin: 0;
-  font-size: clamp(0.8rem, 0.95vw, 1rem);
+  font-size: clamp(0.9rem, 0.95vw, 1.3rem);
   color: #1b1b1b;
 }
 
@@ -173,7 +170,7 @@
   position: absolute;
   top: 0;
   right: 10%;
-  width: 55%;
+  width: 60%;
   min-height: clamp(3rem, 7vh, 4.3rem);
   background: #ffe9a8;
   border-radius: 0.35rem;
@@ -290,14 +287,55 @@
   animation: wheelDrive 0.35s linear infinite;
 }
 
-@keyframes wheelDrive {
+@keyframes wheel-spin-forward {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
+}
+*/
+/* 
+.wheel {
+  position: absolute;
+  width: 40px; 
+  height: 40px;
+  border-radius: 50%;
+  background: #1a1a1a;
+  border: 3px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.wheel-spin {
+  animation: wheel-spin-forward 0.5s linear infinite;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+.wheel-rim {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: 
+    linear-gradient(90deg, transparent 45%, #444 45%, #444 55%, transparent 55%),
+    linear-gradient(0deg, transparent 45%, #444 45%, #444 55%, transparent 55%);
+  border-radius: 50%;
+} */
+
+/* .wheel-rim::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  height: 25%;
+  background: #666;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.5);
 }
 
 .gear-selector {
@@ -323,6 +361,10 @@
   display: flex;
   flex-direction: column;
   gap: clamp(0.75rem, 1.8vh, 1.35rem);
+}
+
+.slow-spin {
+  animation-duration: 1.2s; 
 }
 
 .transfer-mode-btn {
@@ -362,6 +404,7 @@
   display: grid;
   place-items: center;
 }
+*/
 
 .stop-sign-overlay {
     position: fixed;
@@ -398,15 +441,10 @@
     animation: popIn 0.4s ease-out;
 }
 
-.stop-sign-bg {
-    width: 100%;
-    height: auto;
-    display: block;
-}
+
 
 .stop-sign-text-layer {
     position: absolute;
-    /* משתמשים באחוזים כדי שהטקסט יישאר תמיד בתוך האדום */
     width: 75%; 
     height: 70%;
     color: white;
@@ -414,14 +452,13 @@
     direction: rtl;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* מרכז את התוכן אנכית בתוך התמרור */
+    justify-content: center; 
     align-items: center;
-    /* גודל גופן משתנה לפי רוחב המסך */
-    font-size: clamp(0.7rem, 2.5vw, 1.1rem);
+    font-size: clamp(0.9rem, 2.9vw, 1.8rem);
 }
 
 .stop-title {
-    font-size: 1.2em; /* יחסי ל-font-size של ה-layer */
+    font-size: 1.2em; 
     font-weight: bold;
     margin-bottom: 0.5em;
     width: 90%;
@@ -430,7 +467,7 @@
 .stop-steps-list {
     display: flex;
     flex-direction: column;
-    gap: 0.8em;
+    gap: 1em;
     width: 100%;
 }
 
@@ -443,11 +480,10 @@
 }
 
 .custom-checkbox {
-    /* גודל הצ'קבוקס גדל וקטן עם הטקסט */
     width: 1.2em;
     height: 1.2em;
     border: 1.5px solid white;
-    flex-shrink: 0; /* מונע מהצ'קבוקס להתכווץ */
+    flex-shrink: 0; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -457,7 +493,7 @@
 .stop-extra-text {
     font-size: 0.85em;
     margin-top: 1em;
-    color: #ffeb3b;
+    color: #bdbdbd;
     width: 90%;
 }
 
@@ -480,6 +516,26 @@
     width: 100%;
     height: auto;
     display: block;
+}
+
+.stop-motion-btn {
+    position: absolute;
+    bottom: -40px; 
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 15px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    background: #f0f0f0;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.stop-motion-btn.active {
+    background: #ff4d4d;
+    color: white;
+    border-color: #d32f2f;
 }
 
 @media (max-width: 1350px) {
@@ -509,4 +565,363 @@
   .gear-selector {
     width: clamp(3.6rem, 6vw, 5.5rem);
   }
+}   
+
+  
+
+
+
+
+
+
+
+
+/*--------------------------------------/*
+/* ═══════════════════════════════════════════════
+   TransferCaseBox — CSS
+   Matches Figma screens, top-down car view
+═══════════════════════════════════════════════ */
+
+/* ── Semi title above the box ── */
+.tcb-semi-title {
+  text-align: center;
+  font-size: clamp(0.88rem, 0.95vw, 1.2rem);
+  color: #1b1b1b;
+  margin: 0 0 0.6rem;
+  position: relative;
+  top: 14%;
+}
+
+/* ── Yellow outer box ── */
+.tcb-box {
+  width: min(64vw, 48rem);
+  aspect-ratio: 1.52 / 1;
+  background: #f7d77a;
+  border-radius: 0.6rem;
+  position: relative;
+  margin: 0 auto;
+  direction: rtl;
+  overflow: hidden;
+  top: 20%;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(0.8rem, 1.5vw, 1.4rem) clamp(1rem, 2vw, 1.8rem);
+  box-sizing: border-box;
+}
+
+/* ── Info text inside box ── */
+.tcb-info-text {
+  text-align: center;
+  font-size: clamp(0.78rem, 2vw, 5rem);
+  font-weight: 600;
+  color: #2c2c2c;
+  margin: 0 0 clamp(0.4rem, 0.8vh, 0.8rem);
+  min-height: 1.4em;
+  transition: color 0.3s;
+}
+
+.tcb-info-text--mode {
+  color: #7a4d00;
+  font-size: clamp(0.82rem, 0.95vw, 1.1rem);
+}
+
+/* ── Inner card ── */
+.tcb-card {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 28% 1fr 22%;
+  gap: clamp(0.5rem, 1.2vw, 1.2rem);
+  align-items: center;
+  direction: rtl;
+}
+
+/* ═══ MODE BUTTONS (right column) ═══ */
+.tcb-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.9rem, 2vh, 3rem);
+  align-items: stretch;
+}
+
+.tcb-mode-btn {
+  position: relative;
+  height: clamp(3.9rem, 4.2vh, 3rem);
+  border: none;
+  border-radius: 999px;
+  background: #f4bd45;
+  color: #111;
+  font-size: clamp(1rem, 1.4vw, 1.45rem);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0.25rem 0 #c98b17;
+  transition: background 0.18s, transform 0.15s;
+  font-family: inherit;
+}
+
+.tcb-mode-btn:hover {
+  background: #edb020;
+  transform: translateY(-0.1rem);
+}
+
+.tcb-mode-btn--selected {
+  background: #ed9b00;
+  transform: translateY(-0.12rem);
+  box-shadow: 0 0.18rem 0 #a06500;
+}
+
+.tcb-check {
+  position: absolute;
+  top: -0.15rem;
+  right: -0.1rem;           /* RTL — right side */
+  width: clamp(1.1rem, 1.6vw, 1.5rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: #42b866;
+  color: #fff;
+  font-size: clamp(0.75rem, 1.5vw, 0.95rem);
+  font-weight: bold;
+  display: grid;
+  place-items: center;
+}
+
+/* ═══ CAR DIAGRAM (center column) ═══ */
+.tcb-diagram-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.tcb-car-svg {
+  height: clamp(70px, 35vw, 450px);
+  width: auto;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.25));
+}
+
+/* Top-down car moving: slight bob */
+.tcb-car-svg {
+  animation: tcb-car-idle 2s ease-in-out infinite;
+}
+
+@keyframes tcb-car-idle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* Wheel spin — forward rotation (top-down means spokes spin) */
+@keyframes tcb-wheel-turn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.tcb-wheel-spin {
+  animation: tcb-wheel-turn 0.4s linear infinite;
+}
+
+.tcb-wheel-slow {
+  animation-duration: 1.1s;
+}
+
+
+/* Road motion lines that animate past */
+.tcb-road-lines line {
+  animation: tcb-road-scroll 0.4s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes tcb-road-scroll {
+  from { stroke-dashoffset: 0; }
+  to { stroke-dashoffset: 24; }
+}
+
+/* Play/stop button */
+.tcb-play-btn {
+  padding: 0.25rem 0.9rem;
+  border-radius: 999px;
+  border: 1.5px solid #bbb;
+  background: #f5f0e8;
+  cursor: pointer;
+  font-size: 0.78rem;
+  transition: background 0.2s, border-color 0.2s;
+  margin-top: 0.2rem;
+}
+
+.tcb-play-btn--stop {
+  background: #ffe0e0;
+  border-color: #e05050;
+}
+
+/* ═══ DIAL / transferBtn (left column) ═══ */
+.tcb-dial-area {
+  position: relative;
+  top: 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tcb-dial-img {
+  width: clamp(6em, 6.1vw, 6rem);
+  height: auto;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+}
+
+/* dial rotation per mode */
+.tcb-dial-img           { transform: rotate(0deg); }   /* 2H default */
+.tcb-dial--4h           { transform: rotate(90deg); }
+.tcb-dial--4l           { transform: rotate(130deg); }
+
+/* ═══ OVERLAY & POPUP ═══ */
+.tcb-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+@keyframes tcb-pop-in {
+  from { transform: scale(0.75); opacity: 0; }
+  to   { transform: scale(1);    opacity: 1; }
+}
+
+.tcb-popup {
+  position: relative;
+  width: clamp(260px, 88vw, 530px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  filter: drop-shadow(0 12px 32px rgba(0,0,0,0.32));
+  animation: tcb-pop-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tcb-popup-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.tcb-popup-body {
+  position: absolute;
+  width: 72%;
+  height: 68%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  direction: rtl;
+  color: #fff;
+  font-size: clamp(0.68rem, 2.2vw, 1rem);
+}
+
+.tcb-popup-title {
+  font-size: 1.15em;
+  font-weight: 700;
+  margin-bottom: 0.6em;
+  width: 92%;
+  line-height: 1.3;
+}
+
+.tcb-popup-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65em;
+  width: 100%;
+}
+
+.tcb-step-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.55em;
+  cursor: pointer;
+}
+
+.tcb-checkbox {
+  width: 1.2em;
+  height: 1.2em;
+  border: 1.5px solid #fff;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.88em;
+  border-radius: 3px;
+  transition: background 0.15s;
+}
+
+.tcb-checkbox--checked {
+  background: #42b866;
+  border-color: #42b866;
+}
+
+.tcb-step-text {
+  text-align: right;
+}
+
+.tcb-popup-extra {
+  font-size: 0.82em;
+  color: #ffeb3b;
+  margin-top: 0.85em;
+  width: 92%;
+  line-height: 1.35;
+}
+
+.tcb-popup-close {
+  position: absolute;
+  top: 6%;
+  left: 6%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  color: #fff;
+  font-size: 1.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s;
+}
+
+.tcb-popup-close:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1350px) {
+  .tcb-box { width: 70vw; }
+}
+
+@media (max-height: 770px) {
+  .tcb-box {
+    width: min(62vw, 42rem);
+  }
+  .tcb-card {
+    grid-template-columns: 26% 1fr 20%;
+  }
+}
+
+.tcb-car-svg {
+    /* rotate: 90deg; */
+}
+
+
+.bg-tcb-dial-area {
+  background-image: url("../assets/images/transferBtn.svg");
+  background-repeat: no-repeat;
+  background-size: 100%  100%;
+  background-position: center;
+    background-size: contain; 
+    height: 9rem;
+
 }

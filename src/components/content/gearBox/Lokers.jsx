@@ -2,8 +2,9 @@ import  { useState } from "react";
 import "../../../style/GearboxNav.css";
 import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
+import locker from "../../../assets/images/locker.svg";
 
-const Gearbox = ({ })=> {
+const Lockers = ({ })=> {
     
   const [canContinue, setCanContinue] =useState(false);
 
@@ -11,13 +12,14 @@ const Gearbox = ({ })=> {
   const nextBtn= data.general[1].text;
   const { data } = useData();
 
+  const pageData = data.Lokers;
 
 
   const previousPage = () => {
-    changeToPage(1);
+    changeToPage(2);
   };
   const nextPage = () => {
-    changeToPage(3);
+    changeToPage(4);
   };
 
 
@@ -32,7 +34,8 @@ return(
             />
             <p className="backBtnText">{backBtnText}</p>
           </div>
-          
+               <p className="technicalData-title effect-underline">{pageData.title}</p>
+
 
     <button
               className={`nextBtn tigris-next-btn ${
@@ -47,4 +50,4 @@ return(
 )
 
 }
-export default Gearbox;
+export default Lockers;

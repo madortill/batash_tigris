@@ -22,7 +22,7 @@ function FlipCard({ img, backText, onSeen, className = "" }) {
     >
       <div className="flip-card-inner">
         <div className="flip-card-front">
-          <img src={img} alt="" className="flip-card-img" />
+          <img src={img} alt="card" className="flip-card-img" />
         </div>
 
         <div className="flip-card-back">

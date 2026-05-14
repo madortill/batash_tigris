@@ -121,6 +121,37 @@
 }
 
 
+.tigris-cards-grid {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  
+  /* מעבר ל-Grid אמיתי של 6 עמודות כדי לאפשר מרכז */
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); 
+  gap: 2rem;
+  width: 80%;
+  max-width: 800px;
+}
+
+.flip-card {
+  width: 100%; /* נמתח לפי תא הגריד */
+  max-width: 14rem;
+  aspect-ratio: 1 / 1;
+  justify-self: center; /* ממרכז את הכרטיס בתוך התא שלו */
+}
+
+/* שורה ראשונה: 3 כרטיסים, כל אחד תופס 2 עמודות */
+.tigris-cards-grid .flip-card:nth-child(1) { grid-column: span 2; }
+.tigris-cards-grid .flip-card:nth-child(2) { grid-column: span 2; }
+.tigris-cards-grid .flip-card:nth-child(3) { grid-column: span 2; }
+
+/* שורה שנייה: 2 כרטיסים ממוקמים במרכז (מדלגים על העמודה הראשונה) */
+.tigris-cards-grid .flip-card:nth-child(4) { grid-column: 2 / span 2; }
+.tigris-cards-grid .flip-card:nth-child(5) { grid-column: 4 / span 2; }
+
+
 /* tracks */
 .jeep-tracks-wrapper {
   position: absolute;

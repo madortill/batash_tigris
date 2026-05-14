@@ -1,10 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../../context/DataContext";
-import Gearbox from "./Gearbox.jsx" 
+import Selectbox from "./Selectbox.jsx" 
 import { useState } from "react";
-import backBtn from "../../../assets/images/backBtn.svg";
 import "../../../style/GearboxNav.css"
 import TransferCaseBox from "./TransferCaseBox.jsx";
+import Gearbox from "./Gearbox.jsx";
+import Gearbox from "./Lokers.jsx";
 
 
 const GearboxNav= ({ changeToSection, startingPage }) => {
@@ -37,11 +38,11 @@ const GearboxNav= ({ changeToSection, startingPage }) => {
 
   return (
     <div className='GearboxNav'>
-     {page === 0 && <Gearbox changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
+     {page === 0 && <Selectbox changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
      {page === 1 && <TransferCaseBox changeToPage={handleChangePage} startPage={startPage} />}
-     {/* {page == 2 && <FrontSeren changeToPage={handleChangePage}/>}
-     {page == 3 && <SwitchBoard changeToPage={handleChangePage}/>}
-     {page == 4 && <Handbrake changeToPage={handleChangePage} startPage={startPage}/>}
+     {page == 2 && <Gearbox changeToPage={handleChangePage}/>}
+     {page == 3 && <Lokers changeToPage={handleChangePage}/>}
+     {/*{page == 4 && <Handbrake changeToPage={handleChangePage} startPage={startPage}/>}
      {page == 5 && <CarSystem changeToPage={handleChangePage}/>}
      {page == 6 && <HighlixDoors changeToPage={handleChangePage} changeToSection={handleChangeSection}/>} */}
     </div>
