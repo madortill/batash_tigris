@@ -25,9 +25,9 @@ function Start() {
 
   return (
     <>
-      {page === 0 && <IntroPage onSendData={handleChangePage}/>}
-      {page === 2 && <StartPage onSendData={handleChangePage}/>}
+      {page === 0 && <StartPage onSendData={handleChangePage}/>}
       {page === 1 && <InfoPage onSendData={handleChangePage}/>}
+      {page === 2 && <IntroPage onSendData={handleChangePage}/>}
       {/* {page === 2 && <WelcomePage onSendData={handleChangePage}/>} */}
     </>
   )

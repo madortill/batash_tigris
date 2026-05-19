@@ -65,6 +65,16 @@ body {
 }
 
 @font-face {
+  font-family: RubikDirt-Regular;
+  src: url('../assets/fonts/Rubik/RubikDirt-Regular.ttf');
+}
+
+@font-face {
+  font-family: RubikDirt-Regular;
+  src: url('..\public\RubikDirt-Regular.ttf');
+}
+
+@font-face {
   font-family: rubik-black;
   src: url('../assets/fonts/Rubik/Rubik-Black.ttf');
 }

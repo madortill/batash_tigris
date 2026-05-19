@@ -119,7 +119,7 @@
 .letsStartBtn {
     height: 9rem;
     position: relative;
-    top: 39rem;
+    top: 35rem;
     right: 20rem;
     cursor: pointer;
     animation: pulse 1.8s ease infinite;

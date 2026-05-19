@@ -5,7 +5,7 @@ import { useState } from "react";
 import "../../../style/GearboxNav.css"
 import TransferCaseBox from "./TransferCaseBox.jsx";
 import Gearbox from "./Gearbox.jsx";
-import Gearbox from "./Lokers.jsx";
+import Lockers from "./Lockers.jsx";
 
 
 const GearboxNav= ({ changeToSection, startingPage }) => {
@@ -40,8 +40,8 @@ const GearboxNav= ({ changeToSection, startingPage }) => {
     <div className='GearboxNav'>
      {page === 0 && <Selectbox changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
      {page === 1 && <TransferCaseBox changeToPage={handleChangePage} startPage={startPage} />}
-     {page == 2 && <Gearbox changeToPage={handleChangePage}/>}
-     {page == 3 && <Lokers changeToPage={handleChangePage}/>}
+     {page == 2 && <Lockers changeToPage={handleChangePage}/>}
+     {page == 3 && <Gearbox changeToPage={handleChangePage}/>}
      {/*{page == 4 && <Handbrake changeToPage={handleChangePage} startPage={startPage}/>}
      {page == 5 && <CarSystem changeToPage={handleChangePage}/>}
      {page == 6 && <HighlixDoors changeToPage={handleChangePage} changeToSection={handleChangeSection}/>} */}

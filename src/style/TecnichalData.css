@@ -25,11 +25,11 @@
 
 .hover-table td {
     border: 1.5px solid #073799;
-    padding: 18px;
-    padding-left: 5rem;
-    padding-right: 5rem;
+    padding: 15px;
+    padding-left: 3rem;
+    padding-right: 3rem;
     transition: background-color 0.3s;
-     font-size: 1.5rem;
+     font-size: 1.3rem;
 }
 
 .hover-table td:hover {

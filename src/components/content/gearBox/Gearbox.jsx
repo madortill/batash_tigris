@@ -3,13 +3,13 @@ import "../../../style/GearboxNav.css";
 import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 
-const Gearbox = ({ })=> {
+const Gearbox = ({ changeToPage})=> {
     
   const [canContinue, setCanContinue] =useState(false);
-
+  
+  const { data } = useData();
   const backBtnText= data.general[0].text;
   const nextBtn= data.general[1].text;
-  const { data } = useData();
 
 
 

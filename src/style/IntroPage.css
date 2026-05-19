@@ -37,7 +37,7 @@
 
 .tigris-start {
   position: absolute;
-  width: clamp(4.5rem, 8vw, 8.5rem);
+  width: clamp(4.2rem, 6vw, 8.5rem);
   z-index: 2;
 
   offset-path: path("M 770 560 C 650 500, 640 410, 710 330 C 780 250, 835 315, 755 385 C 670 455, 535 435, 520 330 C 505 230, 575 160, 700 155 C 770 152, 790 115, 750 55");
