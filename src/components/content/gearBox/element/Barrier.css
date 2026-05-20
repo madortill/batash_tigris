@@ -1,0 +1,28 @@
+/* קונטיינר רספונסיבי */
+.barrier-container {
+  width: 100%;
+  max-width: 100%; /* יתפוס 100% מהאלמנט שעוטף אותו בעמוד הראשי */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* הגדרות ה-SVG */
+.barrier-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible; /* חשוב מאוד! מונע מהמחסום להיחתך כשהוא עולה למעלה */
+}
+
+/* זרוע המחסום */
+.barrier-arm {
+  /* קביעת נקודת הסיבוב בדיוק במרכז העיגול האפור */
+  transform-origin: 39.9px 59.8px;
+  /* יצירת אנימציה חלקה עם אפקט בלימה קל בסוף (Ease-Out) */
+  transition: transform 0.7s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* המצב שמופעל רק כאשר isOpen שווה ל-true */
+.barrier-arm.open {
+  transform: rotate(-85deg); /* סיבוב המחסום כלפי מעלה */
+}

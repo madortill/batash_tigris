@@ -4,6 +4,10 @@ import "../../../style/GearboxExtra.css";
 import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 import locker from "../../../assets/images/locker.svg";
+import wheelFull from "../../../assets/images/wheelAndLockers.svg";
+import wheelLeft from "../../../assets/images/halfLeft.svg";
+import wheelRight from "../../../assets/images/halfRight.svg";
+import galGalgal from "../../../assets/images/galGalgal.png";
 
 const Lockers = ({ changeToPage }) => {
   const { data } = useData();
@@ -35,8 +39,13 @@ const autoText = pageData.lockers?.[0]?.text;
 const manualTitle = pageData.lockers?.[1]?.title;
 const manualText = pageData.lockers?.[1]?.text;
 
+const [showLockerPopup, setShowLockerPopup] = useState(false);
+const [lockerPopupOpen, setLockerPopupOpen] = useState(false);
+const [lockerPopupOpenCheck, setLockerPopupOpenCheck] = useState(false);
 // 5. שליפת ה-popUp (הוא נמצא באינדקס ה-4 במערך Gearbox)
   const popUp = pageData.popUp;
+const popUpNext = pageData.gotIt;
+const galText = pageData.galText;
 
 
   const previousPage = () => {
@@ -59,14 +68,21 @@ const manualText = pageData.lockers?.[1]?.text;
     return [...prev, type];
   });
 };
-  const handleLockerClick = () => {
-    setLockerClicked(true);
+ const handleLockerClick = () => {
+  setShowLockerPopup(true);
+  setLockerPopupOpen(false);
 
-    // כאן בהמשך תכניסי את האנימציה של הלוקר
-    // למשל setIsLockerAnimating(true)
-  };
+  setTimeout(() => {
+    setLockerPopupOpen(true);
+  }, 450);
+};
 
   const canContinue = clickedLockers.includes("auto") && clickedLockers.includes("manual");
+
+const handleclosepopup=()=>{
+  setShowLockerPopup(false);
+  setLockerPopupOpenCheck(true);
+} 
 
   return (
     <>
@@ -143,6 +159,60 @@ const manualText = pageData.lockers?.[1]?.text;
       >
         {nextBtn}
       </button>
+
+      
+{showLockerPopup && (
+  <div className="locker-popup-overlay">
+    <div
+      className={`locker-popup-scene ${
+        lockerPopupOpen ? "locker-popup-scene--open" : ""
+      }`}
+    >
+
+
+      <div className="locker-split-animation">
+        <img
+          src={wheelFull}
+          alt=""
+          className="locker-wheel-full"
+        />
+
+        <img
+          src={wheelLeft}
+          alt=""
+          className="locker-wheel-part locker-wheel-part--left"
+        />
+
+        <img
+          src={wheelRight}
+          alt=""
+          className="locker-wheel-part locker-wheel-part--right"
+        />
+      </div>
+
+      <div className="locker-popup-card">
+        <p>{popUp}</p>
+
+        <button
+          type="button"
+          className="nextBtn tigris-next-btn"
+          onClick={handleclosepopup}
+        >
+          {popUpNext}
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+      {lockerPopupOpenCheck && <>
+                <div className="gal-locker-div">
+                  <div className="textBox">
+                    <p className="bubbleText">{galText}</p>
+                </div>
+              <img className="gal-locker-img" src={galGalgal} alt="galGalgal" />
+            </div>
+            </>
+          }
     </>
   );
 };

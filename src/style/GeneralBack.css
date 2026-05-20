@@ -8,7 +8,7 @@
 
 .tigris-general-title {
   position: absolute;
-  top: clamp(3.5rem, 7vh, 5.5rem);
+  top: clamp(3.9rem, 9vh, 5.9rem);
   right: 50%;
   transform: translateX(50%);
   margin: 0;

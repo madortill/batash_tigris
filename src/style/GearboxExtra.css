@@ -53,7 +53,7 @@
 
 /* כשהכרטיס פתוח */
 .locker-card--open {
-  min-height: clamp(250px, 20vw, 300px);
+  min-height: clamp(280px, 25vw, 320px);
   box-shadow: 0 7px 12px rgba(0, 0, 0, 0.12);
   font-size: 1.4rem;
 }
@@ -105,10 +105,9 @@
 .locker-card-body > p {
   overflow: hidden;
   margin: 0;
-  font-size: clamp(0.68rem, 1vw, 0.82rem);
-  line-height: 1.9;
+  font-size: clamp(0.68rem, 1.1vw, 1.3rem);
+  line-height: 1.7;
   font-weight: 600;
-  font-size: 1.2;
 }
 
 /* כרטיס אוטומטי */
@@ -119,10 +118,10 @@
 /* לוקר בצד שמאל של הידני */
 .locker-image-btn {
   position: absolute;
-  left: -42px;
-  bottom: -26px;
-  width: clamp(70px, 15vw, 100px);
-  height: clamp(70px, 15vw, 100px);
+  left: -110px;
+  bottom: -106px;
+  width: clamp(100px, 20vw, 200px);
+  height: clamp(100px, 20vw, 200px);
   padding: 0;
   border: none;
   border-radius: 50%;
@@ -171,4 +170,215 @@
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.35));
+}
+
+
+/* -------------------------------------------------------------------- */
+.locker-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  direction: rtl;
+  background: rgba(245, 236, 198, 0.72);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.locker-popup-scene {
+  position: relative;
+  width: min(88vw, 620px);
+  height: min(52vw, 340px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.locker-popup-close {
+  position: absolute;
+  top: 28%;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 20;
+  border: none;
+  background: transparent;
+  color: #c7aa62;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.locker-split-animation {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* הגלגל השלם בהתחלה */
+.locker-wheel-full {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(45vw, 300px);
+  height: min(45vw, 300px);
+  object-fit: contain;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.3));
+  transition:
+    opacity 0.18s ease 0.25s,
+    transform 0.25s ease;
+}
+
+/* כשהפופאפ נפתח - הגלגל השלם נעלם מהר */
+.locker-popup-scene--open .locker-wheel-full {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.96);
+}
+
+/* החצאים */
+.locker-wheel-part {
+  position: absolute;
+  top: 50%;
+  width: min(40vw,300px);
+  height: min(40vw, 300px);
+  object-fit: contain;
+  opacity: 0;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.28));
+  transition:
+    transform 0.8s cubic-bezier(0.18, 0.9, 0.2, 1),
+    opacity 0.2s ease 0.25s;
+}
+
+/* נקודת התחלה - קרובים למרכז */
+.locker-wheel-part--left {
+  left: 50%;
+  transform: translate(-92%, -50%) scale(1);
+}
+
+.locker-wheel-part--right {
+  right: 50%;
+  transform: translate(92%, -50%) scale(1);
+}
+
+/* כשהפופאפ נפתח - החצאים מופיעים */
+.locker-popup-scene--open .locker-wheel-part {
+  opacity: 1;
+}
+
+/* תנועה לצדדים */
+.locker-popup-scene--open .locker-wheel-part--left {
+  transform: translate(-178%, -50%) rotate(-0.2deg) scale(1);
+}
+
+.locker-popup-scene--open .locker-wheel-part--right {
+  transform: translate(178%, -50%) rotate(0.2deg) scale(1);
+}
+
+/* הכרטיס באמצע */
+.locker-popup-card {
+  position: relative;
+  z-index: 10;
+  width: min(100vw, 700px);
+  min-height: 265px;
+  padding: 1.25rem 1.6rem 1rem;
+  border-radius: 8px;
+  background: #fff9d8;
+  border: 2px solid #f4c553;
+  box-shadow:
+    0 0 0 1px rgba(222, 170, 45, 0.28),
+    0 8px 16px rgba(0, 0, 0, 0.16);
+
+  opacity: 0;
+  transform: scale(0.84) translateY(12px);
+  transition:
+    opacity 0.35s ease 0.55s,
+    transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 0.55s;
+}
+
+.locker-popup-scene--open .locker-popup-card {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+.locker-popup-card p {
+  margin: 0 0 0.9rem;
+  position: relative;
+  top: 20%;
+  color: #111;
+  font-size: clamp(0.88rem, 1.3vw, 0.95rem);
+  line-height: 1.45;
+  font-weight: 600;
+  text-align: center;
+}
+
+.locker-popup-understood {
+  display: block;
+  margin: 0 auto;
+  min-width: 74px;
+  height: 34px;
+  padding: 0 1rem;
+  border: none;
+  border-radius: 6px;
+  background: #e7a21a;
+  color: white;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(130, 80, 0, 0.25);
+}
+
+
+.textBox {
+    position: relative;
+    right: 0rem;
+    width: clamp(20vw, 22vw, 45vw);
+    height: 12vh;
+    background-color: #4769a7;
+    border-radius: 30px;
+    top: clamp(0rem, 0vh, 18rem);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.1vw;
+    box-sizing: border-box;
+    z-index: 1;
+}
+.textBox::after {
+    content: "";
+    position: absolute;
+    bottom: -3.8rem; 
+    left: 7%; 
+    width: 4rem;
+    height: 4rem;
+    background-color: #4769A7;
+    clip-path: path('M 0 0 C 10 10 15 15 15 30 C 15 35 10 40 10 40 C 30 35 40 20 40 0 Z');
+    transform: scaleX(-1) rotate(15deg) scale(1.6);
+    z-index: -1;
+    aspect-ratio: 1 / 1;
+}
+.bubbleText {
+    color: #fff5c3;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.gal-locker-div {
+    width: 15rem;
+    height: 20rem;
+    position: absolute;
+    bottom: 3rem;
+    left: 5rem;
+}
+.gal-locker-img {
+ height: 10rem;
+ width: 10rem;
+ position: relative;
 }
