@@ -1,0 +1,335 @@
+/*  אנימציה של סד"פ בנסיעה  זה  ה-css  */
+
+.actions-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  direction: rtl;
+  overflow: hidden;
+  background: #fff1ad;
+}
+
+.actions-title {
+  margin: 1.1rem auto 0;
+  text-align: center;
+  color: #0645ad;
+  font-size: clamp(1.4rem, 3vw, 2.3rem);
+  font-weight: 900;
+}
+
+.actions-scene {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: clamp(2.8rem, 8vh, 4.8rem);
+  height: clamp(150px, 30vh, 250px);
+    overflow: visible;
+
+}
+
+/* כביש */
+.actions-road {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(34px, 7vh, 55px);
+  background: #353535;
+  border-top: 4px solid #777;
+  border-bottom: 4px solid #222;
+  overflow: hidden;
+}
+
+.actions-road-line {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 200%;
+  height: 3px;
+  transform: translateY(-50%);
+  background:
+    repeating-linear-gradient(
+      to left,
+      transparent 0,
+      transparent 26px,
+      #e6d8b0 26px,
+      #e6d8b0 54px,
+      transparent 54px,
+      transparent 82px
+    );
+}
+
+.actions-scene--driving .actions-road-line {
+  /* animation: actions-road-move 0.5s linear infinite; */
+}
+
+@keyframes actions-road-move {
+  from {
+    transform: translateY(-50%) translateX(0);
+  }
+
+  to {
+    transform: translateY(-50%) translateX(82px);
+  }
+}
+
+/* vehicle */
+.actions-vehicle {
+    position: absolute;
+  bottom: clamp(22px, 5.5vh, 38px);
+  right: clamp(7rem, 18vw, 12rem);
+  width: clamp(85px, 39vw, 300px);
+  height: auto;
+  z-index: 4;
+}
+
+.actions-vehicle--driving {
+  animation: actions-car-drive 3.2s ease-in-out forwards;
+}
+
+.actions-vehicle--arrived {
+  right: auto;
+  left: clamp(5.2rem, 16vw, 11rem);
+}
+
+@keyframes actions-car-drive {
+  from {
+    right: clamp(7rem, 18vw, 12rem);
+    transform: translateY(0);
+  }
+
+  25% {
+    transform: translateY(-1px);
+  }
+
+  50% {
+    transform: translateY(1px);
+  }
+
+  75% {
+    transform: translateY(-1px);
+  }
+
+  to {
+    right: calc(100% - clamp(16rem, 38vw, 28rem));
+    transform: translateY(0);
+  }
+}
+
+/* sign */
+.actions-sign-btn {
+  position: absolute;
+  bottom: clamp(30px, 20vh, 85px);
+  right: clamp(4.8rem, 15vw, 10rem);
+  width: clamp(54px, 20vw, 150px);
+  height: clamp(100px, 35vh, 220px);
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  z-index: 5;
+  transform-origin: bottom center;
+  right: 28rem;
+  animation: actions-sign-attention 1.4s ease-in-out infinite;
+}
+
+.actions-sign-btn--done {
+  animation: none;
+}
+.press-me {
+  position:relative;
+  top:35%;
+  right:35%;
+  color: #ffffffff;
+  z-index:10;
+  width:30%;
+  text-align:center;
+  font-size:0.7rem;
+  font-weight:400;
+  font-family:rubik;
+}
+
+.actions-sign-img {
+      position: relative;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.25));
+}
+
+@keyframes actions-sign-attention {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+
+  50% {
+    transform: rotate(-0.1deg) scale(1.02);
+  }
+}
+
+/* barrier */
+.actions-barrier {
+    position: absolute;
+  bottom: clamp(26px, 2.6vh, 58px);
+  left: clamp(1rem, 4vw, 2.4rem);
+  width: clamp(98px, 25vw, 150px);
+  z-index: 5;
+  height: auto;
+    pointer-events: none;
+
+  overflow: visible; /* חשוב מאוד! מונע מהמחסום להיחתך כשהוא עולה למעלה */
+}
+
+/* popup */
+.actions-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  direction: rtl;
+  background: rgba(75, 72, 55, 0.42);
+  backdrop-filter: blur(1.5px);
+  -webkit-backdrop-filter: blur(1.5px);
+  animation: actions-overlay-in 0.25s ease forwards;
+}
+
+@keyframes actions-overlay-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.actions-popup {
+  width: min(82vw, 430px);
+  min-height: 240px;
+  padding: 1.15rem 1.4rem 1.1rem;
+  border-inline: 6px solid #d99b35;
+  background: #4b4a45;
+  color: #fff;
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.25),
+    0 0 0 2px rgba(255, 255, 255, 0.08);
+  transform: scale(0.82) translateY(18px);
+  opacity: 0;
+  animation: actions-popup-pop 0.38s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+@keyframes actions-popup-pop {
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.actions-popup-title {
+  margin: 0 0 0.9rem;
+  text-align: center;
+  font-size: clamp(0.95rem, 1.8vw, 1.25rem);
+  font-weight: 900;
+  text-decoration: underline;
+  text-underline-offset: 6px; 
+}
+
+.actions-popup-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  align-items: stretch;
+}
+
+.actions-popup-row {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.18rem 0;
+  border: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  text-align: right;
+}
+
+.actions-popup-step {
+  flex: 1;
+  font-size: clamp(0.72rem, 1.15vw, 0.92rem);
+  line-height: 1.25;
+  font-weight: 600;
+      z-index:1;
+
+}
+
+.actions-checkbox {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: #fff;
+  color: #d99b35;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+.actions-checkbox--checked {
+  background: #fff5d6;
+}
+
+.actions-popup-btn {
+ color: #fff6c1ff;
+ background-color: #E69907;
+ font-family: "assistant-extraBold";
+ font-size: 1.2rem;
+ border-radius: 8px;
+ height: 1.8rem;
+ width: 5rem;
+ box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+ cursor: pointer;
+ transition: transform 0.8s ease;
+ position: absolute;
+ left:40%;
+ transform:translateX(-50%);
+
+  margin: 0.9rem auto 0;
+  min-width: 86px;
+  border: none;
+  color: #fff;
+  animation: actions-btn-in 0.25s ease forwards;
+}
+
+@keyframes actions-btn-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.actions-scene--driving .actions-road-line {
+  /* animation: actions-road-move 0.5s linear infinite; */
+}
+.actions-road-line-pop-up {
+    position: relative;
+    right:20%;
+    z-index:0;
+    top: 6rem;
+    opacity:0.3;
+    width: 60%;
+    height: 5px;
+    transform:rotate(90deg);
+    background: repeating-linear-gradient(to left, transparent 0, transparent 26px, #e6d8b0 26px, #e6d8b0 60px, transparent 54px, transparent 50px);
+}

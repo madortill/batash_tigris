@@ -3,7 +3,7 @@ import "../../../style/Navbar.css";
 import { useState } from "react";
 import { useData } from "../../../context/DataContext";
 
-function TiresNavbar({ contentStart, changeToSection, navSection }) {
+function TiresNavbar({ contentStart, changeToSection, navSection, currentSection}) {
   const { data } = useData();
   const knowCar = data.TiresNavbar[0].KnowCar;
   const tecnichalData = data.TiresNavbar[0].Tecnical;
@@ -13,6 +13,23 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
   const changeSection = () => {
     changeToSection(1);
   };
+  const goToSection = (targetSection) => {
+    const isAllowed = targetSection <= navSection;
+
+    if (!isAllowed) return;
+
+    changeToSection(targetSection, true);
+  };
+const navItemClass = (targetSection) => {
+    const isAllowed = targetSection <= navSection;
+    const isActive = currentSection === targetSection;
+
+    return `
+      navbar-section
+      ${isActive ? "navbar-section--active" : ""}
+      ${!isAllowed ? "navbar-section--disabled" : ""}
+    `;
+  };
   return (
     <svg
       id="Layer_2"
@@ -21,7 +38,8 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
       className={contentStart ? "big-navbar" : "small-navbar"}
     >
       <g id="Layer_1-2" data-name="Layer_1">
-        <g>
+        <g className={navItemClass(1)}
+  onClick={() => goToSection(1)}>
           <g>
             <path
               className="cls-1"
@@ -171,7 +189,9 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
             />
           </g>
         </g>
-        <g id="two"  onClick={changeSection}
+        <g id="two"  className={navItemClass(2)}
+  onClick={() => goToSection(2)}
+        // onClick={changeSection}
 >
           <path
             className={navSection > 1 ? "cls-1" : "cls-7"}
@@ -367,7 +387,9 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
           </text>
         </g>
         <g id="three"
-          onClick={changeSection}
+          // onClick={changeSection}
+          className={navItemClass(3)}
+  onClick={() => goToSection(3)}
         >
           <path
             className={navSection > 2 ? "cls-1" : "cls-7"}
@@ -459,7 +481,10 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
             d="M17.22,315.96l.56,4.4,4.21.67s-.43,1.16-.63,1.52c-.59,1.09-.13,1.16-1.76,1.36-1.53.18-4.05-1.18-4.05-1.18l-1.66-.77,3.32-6Z"
           />
         </g>
-        <g id="four" onClick={changeSection}>
+        <g id="four"
+        //  onClick={changeSection}
+        className={navItemClass(4)}
+  onClick={() => goToSection(4)} >
 
           <path
             className={navSection > 3 ? "cls-1" : "cls-7"}
@@ -551,7 +576,10 @@ function TiresNavbar({ contentStart, changeToSection, navSection }) {
             </tspan>
           </text>
         </g>
-        <g id="five"           onClick={changeSection}
+        <g id="five"          
+        //  onClick={changeSection}
+        className={navItemClass(1)}
+  onClick={() => goToSection(1)}
 >
           <path
             className={navSection > 4 ? "cls-1" : "cls-7"}

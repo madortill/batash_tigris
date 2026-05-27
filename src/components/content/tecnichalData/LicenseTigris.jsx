@@ -5,50 +5,123 @@ import "../../../style/TecnichalData.css"
 import tigrisJeep from "../../../assets/images/tigrisJeep.svg";
 import backBtn from "../../../assets/images/backBtn.svg";
 import VehicleCard from "./VehicleCard";
- 
-
-const LicenseTigris =({ setPage, changeToSection })=> {
-
+const LICENSE_TIGRIS_COMPLETED_KEY = "licenseTigrisCompleted";
+const LicenseTigris = ({ setPage, changeToSection }) => {
   const { data } = useData();
   const pageData = data.LicenseTigris;
 
-  const [canContinue, setCanContinue] =useState(false);
-  const backBtnText= data.general[0].text;
-  const nextBtn= data.general[1].text;
-  
-  
+  const [canContinue, setCanContinue] = useState(() => {
+    return localStorage.getItem(LICENSE_TIGRIS_COMPLETED_KEY) === "true";
+  });
+
+  const backBtnText = data.general[0].text;
+  const nextBtn = data.general[1].text;
+
+  useEffect(() => {
+    const alreadyCompleted =
+      localStorage.getItem(LICENSE_TIGRIS_COMPLETED_KEY) === "true";
+
+    if (alreadyCompleted) {
+      setCanContinue(true);
+    }
+  }, []);
+
   const previousPage = () => {
-    setPage(0); 
+    setPage(0);
   };
+
   const nextPage = () => {
-    changeToSection(3); 
+    changeToSection(3);
   };
-  
+
+  const handleCardFlipped = () => {
+    localStorage.setItem(LICENSE_TIGRIS_COMPLETED_KEY, "true");
+    setCanContinue(true);
+  };
+
   return (
     <div className="tigris-general-page">
-     <p className="technicalData-title effect-underline">{pageData.title}</p>
+      <p className="technicalData-title effect-underline">{pageData.title}</p>
 
       <div className="backBtn">
-              <img
-                src={backBtn}
-                alt="backBtn"
-                className="backBtnImg"
-                onClick={previousPage}
-                />
-              <p className="backBtnText">{backBtnText}</p>
-            </div>
-            <VehicleCard pageData={pageData} onFlipped={() => setCanContinue(true)} />
-             <button
-              className={`nextBtn ${
-                !canContinue ? "nextBtnDisable" : ""
-              }`}
-              disabled={!canContinue}
-              onClick={nextPage}
-              >
-              {nextBtn}
-            </button>
+        <img
+          src={backBtn}
+          alt="backBtn"
+          className="backBtnImg"
+          onClick={previousPage}
+        />
+        <p className="backBtnText">{backBtnText}</p>
+      </div>
+
+      <VehicleCard pageData={pageData} onFlipped={handleCardFlipped} />
+
+      <button
+        className={`nextBtn ${!canContinue ? "nextBtnDisable" : ""}`}
+        disabled={!canContinue}
+        onClick={nextPage}
+      >
+        {nextBtn}
+      </button>
     </div>
   );
+};
+
+// const LicenseTigris =({ setPage, changeToSection, isCompleted, onComplete })=> {
+
+//   const { data } = useData();
+//   const pageData = data.LicenseTigris;
+
+//   const [canContinue, setCanContinue] = useState(() => {
+//     return localStorage.getItem(LICENSE_TIGRIS_COMPLETED_KEY) === "true";
+//   });
+  
+//   const backBtnText= data.general[0].text;
+//   const nextBtn= data.general[1].text;
+
+//   const handleCardFlipped = () => {
+//   setCanContinue(true);
+//   onComplete?.();
+// };
+//   useEffect(() => {
+//     const alreadyCompleted =
+//       localStorage.getItem(LICENSE_TIGRIS_COMPLETED_KEY) === "true";
+
+//     if (alreadyCompleted) {
+//       setCanContinue(true);
+//     }
+//   }, []);
+//   const previousPage = () => {
+//     setPage(0); 
+//   };
+//   const nextPage = () => {
+//     changeToSection(3); 
+//   };
+  
+//   return (
+//     <div className="tigris-general-page">
+//      <p className="technicalData-title effect-underline">{pageData.title}</p>
+
+//       <div className="backBtn">
+//               <img
+//                 src={backBtn}
+//                 alt="backBtn"
+//                 className="backBtnImg"
+//                 onClick={previousPage}
+//                 />
+//               <p className="backBtnText">{backBtnText}</p>
+//             </div>
+//             <VehicleCard pageData={pageData} onFlipped={handleCardFlipped} />
+//              <button
+//               className={`nextBtn ${
+//                 !canContinue ? "nextBtnDisable" : ""
+//               }`}
+//               disabled={!canContinue}
+//               onClick={nextPage}
+//               >
+//               {nextBtn}
+//             </button>
+//     </div>
+//   );
   // return (
   //   <div className="vc-wrapper">
       
@@ -116,7 +189,7 @@ const LicenseTigris =({ setPage, changeToSection })=> {
   //     </button>
   //   </div>
   // );
-}
+
 
 export default LicenseTigris;
 

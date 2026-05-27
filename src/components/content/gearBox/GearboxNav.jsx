@@ -6,12 +6,14 @@ import "../../../style/GearboxNav.css"
 import TransferCaseBox from "./TransferCaseBox.jsx";
 import Gearbox from "./Gearbox.jsx";
 import Lockers from "./Lockers.jsx";
-
+import BDriveA from "./BDriveA.jsx";
+import GearboxTransfer from "./GearboxTransfer.jsx";
 
 const GearboxNav= ({ changeToSection, startingPage }) => {
   const [page, setPage] = useState(startingPage);
   const [startPage, setStartPage] = useState(0);
-  
+  const navigate = useNavigate();
+
   const { data } = useData();
   const pagesMap = {
     0: 0,
@@ -22,18 +24,34 @@ const GearboxNav= ({ changeToSection, startingPage }) => {
     5: 0,
     6: 0
   };
-  const handleChangePage = (targetPage, returnToLast = false) => {
-    setPage(targetPage);
-    if (returnToLast) {
-      setStartPage(pagesMap[targetPage]);
-    } else {
-      setStartPage(0);
-    }
-  };
+ const handleChangePage = (targetPage, returnToLast = false) => {
+  const pageExists =
+    typeof targetPage === "number" &&
+    pagesMap?.[targetPage] !== undefined &&
+    pagesMap?.[targetPage] !== null;
 
-  const handleChangeSection = (section, returnToLast = false) => {
-    if (changeToSection) changeToSection(section, returnToLast);
-  };
+  if (!pageExists) {
+    navigate("/end");
+    return;
+  }
+
+  setPage(targetPage);
+
+  if (returnToLast) {
+    setStartPage(pagesMap[targetPage]);
+  } else {
+    setStartPage(0);
+  }
+};
+
+const handleChangeSection = (section, returnToLast = false) => {
+  if (!changeToSection) {
+    navigate("/end");
+    return;
+  }
+
+  changeToSection(section, returnToLast);
+};
   console.log("Rendering GearboxNav. Current page:", page, "Type of page:", typeof page);
 
   return (
@@ -41,9 +59,10 @@ const GearboxNav= ({ changeToSection, startingPage }) => {
      {page === 0 && <Selectbox changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
      {page === 1 && <TransferCaseBox changeToPage={handleChangePage} startPage={startPage} />}
      {page == 2 && <Lockers changeToPage={handleChangePage}/>}
-     {page == 3 && <Gearbox changeToPage={handleChangePage}/>}
-     {/*{page == 4 && <Handbrake changeToPage={handleChangePage} startPage={startPage}/>}
-     {page == 5 && <CarSystem changeToPage={handleChangePage}/>}
+     {page == 3 && <BDriveA changeToPage={handleChangePage}/>}
+     {page == 4 && <Gearbox changeToPage={handleChangePage}/>}
+     {page == 5 && <GearboxTransfer changeToPage={handleChangePage} startPage={startPage} changeToSection={handleChangeSection}/>}
+     {/*{page == 5 && <CarSystem changeToPage={handleChangePage}/>}
      {page == 6 && <HighlixDoors changeToPage={handleChangePage} changeToSection={handleChangeSection}/>} */}
     </div>
   )

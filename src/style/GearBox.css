@@ -1,0 +1,393 @@
+
+
+/* הרקע הכהה שמכסה את כל המסך */
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8); /* רקע שחור עם שקיפות */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  cursor: zoom-out; /* משנה את הסמן לזכוכית מגדלת של מינוס ברקע */
+}
+
+/* התמונה המוגדלת במרכז */
+.zoom-content {
+  width: min(80vw, 800px);
+  height: min(70vh, 600px);
+  object-fit: contain;
+  cursor: default; /* מחזיר סמן רגיל מעל התמונה עצמה */
+  animation: zoomInEffect 0.3s ease forwards;
+}
+
+/* האנימציה שמגדילה את התמונה בצורה חלקה */
+@keyframes zoomInEffect {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.plus-image {
+    position:relative;
+    right:1%; 
+    width: 3rem;
+    top:90%;
+}
+.plus-image:hover {
+  transform: scale(1.08); 
+    transition: transform 0.2s ease;
+     cursor: zoom-in; 
+     z-index:2;
+
+
+}
+.image-container {
+  position: relative; 
+  display: inline-flex; /* שומר על מיקום מדויק לפי התמונה בלבד */
+    top: 21%;
+
+}
+
+/* התמונה הקטנה באתר */
+.thumb-image {
+  width: 40rem;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+  border-radius: 5px;
+}
+
+.thumb-image:hover {
+  transform: scale(1.01);
+}
+
+/* העיגול הלחיץ והמהבהב - משמש כטבעת החיצונית הפועמת */
+.hotspot-circle {
+  position: absolute;
+  /* שינוי אחוזים אלו ישנה את המיקום על גבי התמונה */
+  top: 18%; 
+  left: 37%; 
+  
+  width: 30px;
+  height: 32px;
+  background-color: rgba(255, 71, 87, 0.4); /* צבע אדום שקוף חצי מהבהב */
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  
+  /* ממרכז את העיגול בדיוק על נקודת האחוזים */
+  transform: translate(-50%, -50%); 
+  
+  /* הפעלת האנימציה של ההבהוב והפעימה */
+  animation: pulse-animation 2s infinite ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* הנקודה המרכזית הקבועה בתוך העיגול הפועם */
+.hotspot-core {
+  width: 16px;
+  height: 16px;
+  background-color: #ff475663; /* אדום מלא */
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+/* אפקט הגדלה קטן ברחיפת עכבר */
+.hotspot-circle:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+/* אנימציית ההבהוב והפעימה */
+@keyframes pulse-animation {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 106, 118, 0.7);
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 0 15px rgba(255, 106, 118, 0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+  }
+}
+.gear-gal {
+    width: clamp(10vw, 12vw, 44vw) ;
+}
+/* ══════════════════════════════════════════
+   Gearbox.css  –  תיבת הילוכים
+   ══════════════════════════════════════════ */
+ 
+/* ─── WRAPPER כללי לשני המסכים ─── */
+.gb-wrapper {
+  inset: 0;
+  overflow: hidden;
+}
+ 
+/* ══════════════════════════════
+   מסך ראשון
+══════════════════════════════ */
+.gb-screen-one {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+ 
+.gb-lever-clickzone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+}
+ 
+.gb-lever-img {
+  width: clamp(160px, 24vw, 300px);
+  filter: drop-shadow(0 6px 16px rgba(0,0,0,0.3));
+  transition: transform 0.2s ease;
+}
+.gb-lever-img:hover {
+  transform: scale(1.03);
+}
+ 
+@keyframes gb-pulse {
+  0%, 100% { filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25)) brightness(1); }
+  50%       { filter: drop-shadow(0 4px 20px rgba(45,107,191,0.55)) brightness(1.1); }
+}
+.gb-lever-pulse {
+  animation: gb-pulse 2.2s ease-in-out infinite;
+}
+ 
+.gb-click-hint {
+  font-size: clamp(0.85rem, 1.4vw, 1.05rem);
+  color: #555;
+  font-weight: 600;
+  text-align: center;
+  direction: rtl;
+}
+.gb-semi-title {
+    position: absolute;
+    top:10rem;
+}
+ 
+/* ══════════════════════════════
+   מסך שני
+══════════════════════════════ */
+.gb-screen-two {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(0.5rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2.5rem);
+  gap: 0.4rem;
+  direction: rtl;
+}
+ 
+.gb-subtitle {
+  font-size: clamp(0.8rem, 1.3vw, 1rem);
+  color: #444;
+  direction: rtl;
+  margin: 0 0 0.3rem 0;
+  align-self: center;
+}
+ 
+/* אזור שלושת עמודות: כפתורים | SVG | בועה */
+.gb-main-area {
+  display: flex;
+  flex-direction: row;          /* RTL: כפתורים מימין, SVG אמצע, בועה משמאל */
+  align-items: center;
+  justify-content:center;
+  gap: clamp(1rem, 2.5vw, 3rem);
+  width: 100%;
+  flex: 1;
+  direction: rtl;
+}
+ 
+/* ─── עמודת כפתורי מצבים ─── */
+.gb-state-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+ 
+.gb-state-btn {
+  padding: 0.35rem 0.9rem;
+  border-radius: 6px;
+  border: 1.5px solid #c0b880;
+  background: #e8e0a0;
+  color: #333;
+  font-size: clamp(0.72rem, 1.1vw, 0.88rem);
+  font-weight: 700;
+  cursor: pointer;
+  direction: rtl;
+  text-align: center;
+  min-width: 100px;
+  transition: background 0.15s, border-color 0.15s, opacity 0.2s, transform 0.18s, filter 0.2s;
+}
+ 
+/* לא נלחץ – מטושטש ומהבהב */
+@keyframes gb-blink {
+  0%, 100% { opacity: 0.4; }
+  50%       { opacity: 0.75; }
+}
+.gb-state-btn--unvisited {
+  filter: blur(0.7px);
+  animation: gb-blink 1.9s ease-in-out infinite;
+}
+ 
+/* נלחץ בעבר */
+.gb-state-btn--visited {
+  background: #d4ca82;
+  border-color: #9a9060;
+  filter: none;
+  animation: none;
+  opacity: 0.9;
+}
+ 
+/* פעיל */
+.gb-state-btn--active {
+  background: #2d6bbf;
+  border-color: #1a4a8a;
+  color: #fff;
+  filter: none;
+  animation: none;
+  transform: scale(1.06);
+  box-shadow: 0 2px 10px rgba(45,107,191,0.4);
+}
+ 
+/* ─── SVG ידית ─── */
+.gb-svg-wrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+.gb-lever-svg {
+  width: clamp(80px, 10vw, 130px);
+  overflow: visible;
+}
+ 
+/* ─── בועת טקסט ─── */
+.gb-bubble-area {
+  flex: 1;
+  max-width: 340px;
+  min-height: 100px;
+  display: flex;
+  align-items: flex-start;
+  direction: rtl;
+}
+ 
+.gb-bubble {
+  background: #fffde8;
+  border: 2px solid #c8bc70;
+  border-radius: 14px;
+  padding: 0.85rem 1.1rem;
+  position: relative;
+  box-shadow: 0 3px 14px rgba(0,0,0,0.1);
+  direction: rtl;
+  animation: gb-fadein 0.25s ease;
+  width: 100%;
+}
+ 
+/* חץ הבועה כלפי ה-SVG (לכיוון ימין — כי הבועה נמצאת משמאל ל-SVG ב-RTL) */
+.gb-bubble::after {
+  content: "";
+  position: absolute;
+  left: 100%;
+  top: 24px;
+  border: 10px solid transparent;
+  border-left-color: #c8bc70;
+}
+.gb-bubble::before {
+  content: "";
+  position: absolute;
+  left: calc(100% - 2px);
+  top: 26px;
+  border: 8px solid transparent;
+  border-left-color: #fffde8;
+  z-index: 1;
+}
+ 
+@keyframes gb-fadein {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0);     }
+}
+ 
+.gb-bubble-label {
+  font-size: clamp(0.85rem, 1.3vw, 1rem);
+  font-weight: 800;
+  color: #1a4a8a;
+  margin: 0 0 0.35rem 0;
+}
+ 
+.gb-bubble-text {
+  font-size: clamp(0.7rem, 1.05vw, 0.85rem);
+  color: #333;
+  line-height: 1.6;
+  margin: 0 0 0.25rem 0;
+}
+ 
+.gb-bubble-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  background: #fff8e1;
+  border: 1.5px solid #f0c040;
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  margin-top: 0.4rem;
+}
+.gb-bubble-warning-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+  line-height: 1.4;
+}
+.gb-bubble-warning-text {
+  font-size: clamp(0.65rem, 0.95vw, 0.78rem);
+  color: #7a5500;
+  line-height: 1.5;
+  margin: 0;
+}
+ 
+.gb-bubble-extra-title {
+  font-size: clamp(0.7rem, 1vw, 0.82rem);
+  font-weight: 700;
+  color: #b85c00;
+  margin: 0.35rem 0 0.15rem 0;
+}
+.gb-bubble-extra {
+  font-size: clamp(0.65rem, 0.95vw, 0.78rem);
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+ 
+.gb-bubble-placeholder {
+  color: #aaa;
+  font-size: 0.82rem;
+  font-style: italic;
+  direction: rtl;
+  padding: 0.4rem;
+  align-self: center;
+}
+ 

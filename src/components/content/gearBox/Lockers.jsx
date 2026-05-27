@@ -195,7 +195,7 @@ const handleclosepopup=()=>{
 
         <button
           type="button"
-          className="nextBtn tigris-next-btn"
+          className="nextBtn tigris-next-btn locker-btn"
           onClick={handleclosepopup}
         >
           {popUpNext}

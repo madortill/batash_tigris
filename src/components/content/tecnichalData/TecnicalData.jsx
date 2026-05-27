@@ -5,7 +5,7 @@ import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 import galGalgal from "../../../assets/images/galGalgal.png";
 
-const TechnicalData=({ onSendData, startPage })=> {
+const TechnicalData=({ onSendData, startPage,changeToSection })=> {
   const { data } = useData();
   const nextBtn = data.general[1].text;
   const backBtnText = data.general[0].text;
@@ -62,14 +62,14 @@ const TechnicalData=({ onSendData, startPage })=> {
           ))}
         </tbody>
       </table>
-      <div className="galTechnical galBubble">
+      {/* <div className="galTechnical galBubble">
         <img
           src={data.TechnicalData[1].img}
           className="galTechnicalBubble"
           alt="galTechnicalBubble"
         />
         <img className="galTechnicalImg" src={galGalgal} alt="galGalgal" />
-      </div>
+      </div> */}
       <button className="nextBtn" onClick={nextPage}>
         {nextBtn}
       </button>

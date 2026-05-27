@@ -14,7 +14,7 @@ import clock from "../../../assets/images/time.svg";
 
 import "../../../style/GeneralBack.css";
 
-const GeneralBack = ({changeToSection, startingPage}) => {
+const GeneralBack = ({changeToSection, startingPage, isCompleted, onComplete}) => {
 
   const navigate = useNavigate();
   const { data } = useData();
@@ -67,7 +67,9 @@ const GeneralBack = ({changeToSection, startingPage}) => {
               <p className="backBtnText">{backBtnText}</p>
             </div>
 
-      <FlipCardsGate cards={cards}>
+      <FlipCardsGate  cards={cards}
+        initialCompleted={isCompleted}
+        onComplete={onComplete}>
         {({ canContinue, handleSeen }) => (
           <>
             <div className="tigris-cards-grid">

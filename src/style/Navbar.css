@@ -111,3 +111,21 @@
         height: 20rem;
     }
 }
+.navbar-section {
+  cursor: pointer;
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.navbar-section:hover {
+  filter: brightness(1.08);
+}
+
+/* .navbar-section--disabled {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
+} */
+
+.navbar-section--active {
+  filter: brightness(1.18);
+}

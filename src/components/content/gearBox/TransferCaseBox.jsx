@@ -99,6 +99,7 @@ const TransferCaseBox = ({ changeToPage, startPage }) => {
   const [clickedModes, setClickedModes] = useState([]);
   const [isMoving, setIsMoving] = useState(false);
   const [modeText, setModeText] = useState(null);
+const [showWarningText, setShowWarningText] = useState(false);
 
   if (!data?.Gearbox) return null;
 
@@ -117,6 +118,8 @@ const TransferCaseBox = ({ changeToPage, startPage }) => {
 
   const toolTip=pageData[1]?.text3;
   const warning=pageData[1]?.text2;
+
+  const close=pageData[1]?.closePopUp;
   
 
   const previousPage = () => changeToPage(0);
@@ -244,7 +247,9 @@ const TransferCaseBox = ({ changeToPage, startPage }) => {
             <img src={bigWarning} alt="warning" className="tcb-popup-bg" />
             <button
               className="tcb-popup-close"
-              onClick={() => setShowPopUp(false)}
+              onClick={() =><> setShowPopUp(false)
+                    setShowWarningText(true);
+              </>}
             >
               ×
             </button>
@@ -267,14 +272,28 @@ const TransferCaseBox = ({ changeToPage, startPage }) => {
                   </div>
                 ))}
               </div>
+              {allStepsChecked && (
+                    <button
+                      className="tcb-popup-done-btn"
+                      onClick={() => {
+                        setShowPopUp(false);
+                        setShowWarningText(true);
+                      }}
+                    >
+                      {popUpSteps?.closePopUp || "עברתי"}
+                    </button>
+                  )}
               <p className="tcb-popup-extra">{popUpHeader?.textExtra}</p>
             </div>
           </div>
         </div>
       )}
-      {
-        showPopUp && (<img src={warningSmall} className="small-warning"></img>)
-      }
+      {showWarningText && (
+  <div className="tcb-warning-row">
+    <img src={warningSmall} className="small-warning" alt="warning" />
+    <p className="tcb-warning-text">{warning}</p>
+  </div>
+)};
     </>
   );
 };

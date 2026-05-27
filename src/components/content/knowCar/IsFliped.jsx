@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import FlipCard from "./FlipCard";
+import {useEffect} from "react"
 
-function IsFliped({ cards, children }) {
+function IsFliped({ cards, children , initialCompleted = false, onComplete }) {
   const [seenCards, setSeenCards] = useState([]);
 
   const handleSeen = (index) => {
@@ -11,12 +12,15 @@ function IsFliped({ cards, children }) {
     });
   };
 
-  const canContinue = seenCards.length === cards.length;
+const canContinue = initialCompleted || seenCards.length === cards.length;
 
-  return children({
-    canContinue,
-    handleSeen,
-  });
-}
+useEffect(() => {
+    if (!initialCompleted && seenCards.length === cards.length) {
+      onComplete?.();
+    }
+  }, [seenCards, cards.length, initialCompleted, onComplete]);
+
+  return children({ canContinue, handleSeen });
+};
 
 export default IsFliped;

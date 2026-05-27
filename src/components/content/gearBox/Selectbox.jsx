@@ -198,7 +198,7 @@ const Selectbox = ({ changeToPage, changeToSection }) => {
             <path d="M32.0626 96.3879H309.503C321.894 96.3879 331.981 106.474 331.981 118.865V297.613C331.981 310.004 321.894 320.091 309.503 320.091H32.0626C19.6718 320.091 9.58545 310.004 9.58545 297.613V118.865C9.58545 106.474 19.6718 96.3879 32.0626 96.3879Z" fill="#D39E33" stroke="#141414" strokeWidth="8"/> 
             
             {/* סרט הדבקה לבן - מוסר ב-Hover */} 
-            <path className="tape" d="M135 94H207V110H135V94Z" fill="#EAEAEA" stroke="#141414" strokeWidth="2"/> 
+            {/* <path className="tape" d="M135 94H207V110H135V94Z" fill="#EAEAEA" stroke="#141414" strokeWidth="2"/>  */}
             
             {/* פרטים קטנים (ידית ומדבקה) */} 
             <rect x="120" y="140" width="100" height="25" rx="12.5" fill="#26211E" stroke="#141414" strokeWidth="4"/> 
