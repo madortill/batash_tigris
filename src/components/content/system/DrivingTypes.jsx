@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import "../../../style/Gearbox.css";
+import "../../../style/SystemNav.css";
 import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 
