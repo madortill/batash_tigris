@@ -1,11 +1,10 @@
 import { useState } from "react";
-import "../../../style/Gearbox.css";
+import "../../../style/GearBox.css";
 import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 import galGalgal from "../../../assets/images/galGalgal.png";
 import GearLeverImg from "../../../assets/images/GearLever.svg";
 
-/* ─── מיקום Y של ראש הידית לכל מצב (בתוך viewBox=0 0 120 320) ─── */
 const LEVER_POSITIONS = {
   parking: 60,
   reverse: 104,
@@ -17,7 +16,6 @@ const LEVER_POSITIONS = {
 const STATE_KEYS   = ["parking", "reverse", "nutral", "drive", "manual"];
 const STATE_LETTERS = ["P", "R", "N", "D", "M"];
 
-/* שדה השם בתוך כל אובייקט מצב */
 const LABEL_KEY = {
   parking: "parking",
   reverse: "reverse",
