@@ -1,5 +1,5 @@
 import  { useState } from "react";
-import "../../../style/Gearbox.css";
+import "../../../style/GearBox.css";
 import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 import tigrisInside from "../../../assets/images/tigrisInside.svg";

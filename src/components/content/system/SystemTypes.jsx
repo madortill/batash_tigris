@@ -15,7 +15,6 @@ const SYSTEM_COMPLETED_KEY = "systemTypesCompletedCards";
 const SystemTypes = ({ changeToPage, isCompleted = false, onComplete }) => {
   const { data } = useData();
 
-  // if (!data?.System?.[1]) return null;
 
   const pageData = data.System[1];
 
