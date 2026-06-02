@@ -92,13 +92,13 @@
 }
 
 .welcome-nextBtn {
-  margin-top: clamp(2rem, 4vh, 4rem);
-  width: clamp(9rem, 12vw, 12rem);
-  height: 3.2rem;
-  font-size: clamp(1.25rem, 1.6vw, 1.7rem);
-  cursor: pointer;
-  position: relative;
-  z-index: 4;
+  margin-top: clamp(2rem, 4vh, 4rem) !important;
+  width: clamp(9rem, 12vw, 12rem) !important;
+  height: 3.2rem !important;
+  font-size: clamp(1.25rem, 1.6vw, 1.7rem) !important;
+  cursor: pointer !important;
+  position: relative !important;
+  z-index: 4 !important;
 }
 
 @media (max-width: 1350px) {

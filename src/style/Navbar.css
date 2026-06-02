@@ -117,7 +117,8 @@
 }
 
 .navbar-section:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.01);
+  transform:scale(1.001);
 }
 
 /* .navbar-section--disabled {

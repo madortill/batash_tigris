@@ -1,0 +1,358 @@
+/* .door-wrapper {
+  position: relative;
+  width: 200px;
+  height: 300px;
+  perspective: 1000px;
+  margin: 50px auto;
+}
+
+.door {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f39c12;
+  border: 2px solid #d35400;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left; 
+  z-index: 2;
+}
+
+.door.open-door {
+  transform: rotateY(-110deg);
+}
+
+.doorway {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.grow {
+  transform: scale(1.1);
+}
+
+.wording-text-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+} */
+/* ─────────────────────────────────────────
+   DoorsPage.css
+───────────────────────────────────────── */
+
+/* ── כותרת ── */
+.dp-title {
+  font-size: clamp(18px, 5vw, 24px);
+  font-weight: 800;
+  color: #1a3a6a;
+  text-align: center;
+  direction: rtl;
+  margin: 10px 0 2px;
+  padding: 0 12px;
+}
+
+.dp-subtitle {
+  font-size: clamp(13px, 3.5vw, 15px);
+  color: #444;
+  text-align: center;
+  direction: rtl;
+  margin: 0 0 16px;
+}
+
+/* ── אזור תוכן (ריבוע בהיר) ── */
+.dp-content-area {
+    position: relative;
+    top:10rem;
+  width: 88%;
+  max-width: 400px;
+  margin: 0 auto 14px;
+  background: #ece8cc;
+  border-radius: 12px;
+  border: 1.5px solid #c8b87a;
+  padding: 14px 14px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── שורת גאל גלגל + בועה ── */
+.dp-hint-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  align-self: flex-start;   /* RTL: מתחיל מהימין הוויזואלי */
+  direction: rtl;
+  width: 100%;
+}
+
+.dp-mascot {
+  width: clamp(44px, 12vw, 56px);
+  height: clamp(44px, 12vw, 56px);
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.dp-hint-bubble {
+  background: #1a6bac;
+  color: #fff;
+  font-size: clamp(11px, 3vw, 13px);
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  direction: rtl;
+  white-space: nowrap;
+}
+
+/* ── אזור הדלת ── */
+.dp-door-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── תיבת אזהרה ── */
+.dp-warning-box {
+  width: 88%;
+  max-width: 400px;
+  margin: 0 auto 80px;
+  background: #fff8e6;
+  border: 1.5px solid #e8b800;
+  border-radius: 8px;
+  padding: 10px 16px;
+  direction: rtl;
+  position: relative;
+}
+
+.dp-warning-box p {
+  font-size: clamp(12px, 3vw, 13px);
+  color: #5a4000;
+  line-height: 1.6;
+  margin: 0;
+  direction: rtl;
+}
+/* ===== DOOR PANEL ===== */
+/* ─────────────────────────────────────────
+   Door.css
+───────────────────────────────────────── */
+
+.door-scene {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+/* ── Wrapper (perspective) ── */
+.door-wrapper {
+  position: relative;
+  width: clamp(180px, 55vw, 260px);
+  height: clamp(230px, 70vw, 330px);
+  perspective: 1000px;
+  margin: 0 auto;
+}
+
+/* ── Doorway (behind the door) ── */
+.doorway {
+  position: absolute;
+  inset: 0;
+  background-color: #e8dfc0;
+  border: 2px solid #c8a84b;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  transition: transform 0.5s ease;
+  overflow: hidden;
+}
+
+.doorway.grow {
+  transform: scale(1.08);
+}
+
+.doorway-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.45s ease;
+}
+
+.door-inner-image {
+  width: 88%;
+  height: 88%;
+  object-fit: contain;
+}
+
+/* ── Annotation (חץ + טקסט) ── */
+.annotation {
+  position: absolute;
+  top: 18%;
+  right: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.annotation-text {
+  font-size: clamp(9px, 2.5vw, 11px);
+  font-weight: 700;
+  color: #1a3a6a;
+  background: rgba(255, 255, 255, 0.82);
+  padding: 2px 7px;
+  border-radius: 4px;
+  direction: rtl;
+  white-space: pre-line;
+  line-height: 1.4;
+  text-align: right;
+}
+
+.annotation-arrow {
+  width: 36px;
+  height: 1.5px;
+  background: #1a3a6a;
+  align-self: flex-start;
+  position: relative;
+  margin-right: 8px;
+}
+
+.annotation-arrow::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  top: -4px;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-right: 6px solid #1a3a6a;
+}
+
+/* ── Door panel ── */
+.door {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, #c8a84b 0%, #b08530 55%, #8a6420 100%);
+  border: 2px solid #7a5410;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: left center;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.door.open-door {
+  transform: rotateY(-110deg);
+  cursor: default;
+}
+
+.door-panel {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.07);
+}
+
+.door-panel-top {
+  top: 8%;
+  height: 33%;
+}
+
+.door-panel-bottom {
+  bottom: 8%;
+  height: 38%;
+}
+
+.hinge {
+  position: absolute;
+  left: 7px;
+  width: 11px;
+  height: 26px;
+  background: #5a4010;
+  border-radius: 3px;
+  border: 1px solid #3a2808;
+}
+
+.hinge-top    { top: 14%; }
+.hinge-bottom { bottom: 14%; }
+
+.door-handle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 44px;
+  background: #5a4010;
+  border-radius: 6px;
+  border: 1px solid #3a2808;
+}
+
+.door-handle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 18px;
+  background: #8a6420;
+  border-radius: 3px;
+}
+
+/* ── Hint row (before opening) ── */
+.door-hint-row {
+  display: flex;
+  justify-content: flex-start;
+  width: clamp(180px, 55vw, 260px);
+}
+
+.door-hint-bubble {
+  background: #1a6bac;
+  color: #fff;
+  font-size: clamp(11px, 3vw, 13px);
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 20px;
+  direction: rtl;
+  white-space: nowrap;
+}
+
+/* ── Label below door ── */
+.door-label {
+  font-size: clamp(12px, 3.5vw, 14px);
+  font-weight: 700;
+  color: #3a2808;
+  direction: rtl;
+  margin: 2px 0 0;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1);    }
+}

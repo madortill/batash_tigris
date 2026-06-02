@@ -311,3 +311,53 @@
 
 
 }
+.backBtnImg {
+    height: 4.5rem;
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.backBtnImg:hover {
+    transform: scale(1.13);
+}
+.backBtn {
+    position: absolute;
+    top: 2rem;
+    right: 2.5rem;
+    font-family: "assistant-bold";
+    color: #073799;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    font-size: 0.9rem;
+    transition: transform 0.8s ease;
+}
+
+.nextBtn {
+    border: 0rem;
+    color: #FFF2B4;
+    background-color: #E69907;
+    font-family: "assistant-extraBold";
+    font-size: 1.5rem;
+    border-radius: 8px;
+    height: 3.5rem;
+    width: 6.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.8s ease;
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+}
+
+.nextBtn:hover {
+    transform: scale(1.25);
+}
+
+.nextBtnDisable {
+    background-color: #BFBFBF;
+    color: #EEEEEE;
+    cursor: default;
+}

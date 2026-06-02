@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../../context/DataContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../../style/SystemNav.css"
 import DrivingTypes from "./DrivingTypes.jsx";
 import SystemTypes from "./SystemTypes.jsx";
+import DoorPage from "./DoorsPage.jsx";
 
-const GearboxNav= ({ changeToSection, startingPage }) => {
-  const [page, setPage] = useState(startingPage);
+const SystemNav= ({ changeToSection, startingPage }) => {
+  const [page, setPage] = useState(() => startingPage ?? 0);
   const [startPage, setStartPage] = useState(0);
   const navigate = useNavigate();
 
@@ -16,10 +17,17 @@ const GearboxNav= ({ changeToSection, startingPage }) => {
     1: 2,
     2: 0,
     3: 0,
-    4: 1,
-    5: 0,
-    6: 0
   };
+
+
+useEffect(() => {
+  if (typeof startingPage === "number") {
+    setPage(startingPage);
+  } else {
+    setPage(0);
+  }
+}, [startingPage]);
+
  const handleChangePage = (targetPage, returnToLast = false) => {
   const pageExists =
     typeof targetPage === "number" &&
@@ -48,20 +56,32 @@ const handleChangeSection = (section, returnToLast = false) => {
 
   changeToSection(section, returnToLast);
 };
-  console.log("Rendering GearboxNav. Current page:", page, "Type of page:", typeof page);
+  console.log("Rendering SystemNav. Current page:", page, "Type of page:", typeof page);
 
   return (
-    <div className='GearboxNav'>
+    <div className='SystemNav'>
      {page === 0 && <DrivingTypes changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
      {page === 1 && <SystemTypes changeToPage={handleChangePage} startPage={startPage} />}
-     {/*{page == 2 && <Lockers changeToPage={handleChangePage}/>}
-     {page == 3 && <BDriveA changeToPage={handleChangePage}/>}
+     {page == 2 && <DoorPage changeToPage={handleChangePage} changeToSection={handleChangeSection}/>}
+     {/*{page == 3 && <BDriveA changeToPage={handleChangePage}/>}
      {page == 4 && <Gearbox changeToPage={handleChangePage}/>}
      {page == 5 && <GearboxTransfer changeToPage={handleChangePage} startPage={startPage}/>}
-     {page == 5 && <CarSystem changeToPage={handleChangePage}/>}
      {page == 6 && <HighlixDoors changeToPage={handleChangePage} changeToSection={handleChangeSection}/>} */}
+     {page !== 0 && page !== 1 && page !== 2 && (
+      <div style={{ color: "red", textAlign: "center", marginTop: "100px", fontSize: "20px" }}>
+        <h3>שגיאת ניווט!</h3>
+        <p>ניסית לגשת לעמוד מספר: <strong>{String(page)}</strong></p>
+        <p>עמוד זה אינו קיים או שנמצא כרגע בהערה בקוד.</p>
+        <button 
+          onClick={() => handleChangePage(0)}
+          style={{ padding: "10px 20px", marginTop: "10px", cursor: "pointer" }}
+        >
+          חזור לעמוד הראשי (0)
+        </button>
+      </div>
+    )}
     </div>
   )
 }
 
-export default GearboxNav; 
+export default SystemNav; 

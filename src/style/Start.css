@@ -283,19 +283,6 @@
     transform: scale(1.25);
 }
 
-.nextBtnInfo {
-    font-size: 1.5rem;
-    height: 3rem;
-    width: 6rem;
-    cursor: default;
-    position: relative;
-    bottom: 0rem;
-    left: 0rem;
-}
-
-.nextBtnInfo:hover {
-    transform: scale(1);
-}
 
 .nextBtnDisable {
     background-color: #BFBFBF;
@@ -304,6 +291,20 @@
 }
 
 .nextBtnDisable:hover {
+    transform: scale(1);
+}
+.nextBtnInfo {
+    font-size: 1.5rem !important;
+    height: 3rem !important;
+    width: 6rem !important;
+    cursor: default !important;
+    position: relative !important;
+    bottom: 0rem !important;
+    left: 0rem !important;
+}
+
+
+.nextBtnInfo:hover {
     transform: scale(1);
 }
 
