@@ -1,5 +1,5 @@
 import { useState } from "react";
-import warningLamp from "../../../assets/images/warning-sign-eb.svg";
+import warningLamp from "../../../assets/images/warning-sign-EB.svg";
 import Tabs from "./Tabs.jsx"
 
 const EBPopup = ({ data, ui = {}, onClose }) => {
