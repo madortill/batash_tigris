@@ -16,8 +16,7 @@ const UsesNav= ({ changeToSection, startingPage }) => {
     0: 0,
     1: 2,
     2: 0,
-    3: 0,\
-    
+    3: 0,
   };
 
 
@@ -72,7 +71,7 @@ const handleChangeSection = (section, returnToLast = false) => {
       <div style={{ color: "red", textAlign: "center", marginTop: "100px", fontSize: "20px" }}>
         <h3>שגיאת ניווט!</h3>
         <p>ניסית לגשת לעמוד מספר: <strong>{String(page)}</strong></p>
-        <p>עמוד זה אינו קיים או שנמצא כרגע בהערה בקוד.</p>
+        <p>עמוד זה אינו קייםוד.</p>
         <button 
           onClick={() => handleChangePage(0)}
           style={{ padding: "10px 20px", marginTop: "10px", cursor: "pointer" }}
