@@ -80,11 +80,10 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
           <p className="driving-types-intro">{introText}</p>
         </header>
 
-        {/*<div className="driving-types-layout">
+        <div className="driving-types-layout">
           <aside className="driving-selector-panel">
             <h2 className="driving-panel-title">בורר מצבי נהיגה</h2>
             <p className="driving-panel-subtitle">
-              לחצו על מצב נהיגה כדי לחשוף את ההסבר שלו
             </p>
 
             <div className="driving-modes-list">
@@ -114,7 +113,6 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
               <div className="driving-empty-state">
                 <h3>בחרו מצב נהיגה</h3>
                 <p>
-                  בחרו אחד מהמצבים
                 </p>
               </div>
             ) : (
@@ -137,10 +135,10 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
 
           <aside className="driving-image-panel">
             <div className="driving-image-placeholder">
-              <span>מקום לתמונה</span>
+              <span>לתמונה</span>
             </div>
           </aside>
-        </div>*/}
+        </div>
       </div> 
 
       <button

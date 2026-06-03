@@ -1,0 +1,47 @@
+.end-road {
+    position: absolute;
+    bottom: 0rem;
+    right: 0rem;
+    width: 100vw;
+}
+
+.galEnd {
+    position: relative;
+    bottom: 2rem;
+}
+
+.galEndImg {
+    height: 14rem;
+}
+
+.end-warning {
+    position: relative;
+    top: 4rem;
+    left: 26rem;
+    width: 18rem;
+}
+
+.nextBtnEnd {
+    height: 3rem;
+    width: 8rem;
+    font-size: 2rem;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    font-size: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+    .end-warning {
+        left: 18rem;
+    }
+}
+@media (max-width: 1600px) {
+    .galEnd {
+        bottom: 0rem;
+    }
+}
+@media (max-width: 1400px) {
+    .galEnd {
+        top: 4rem;
+    }
+}

@@ -117,6 +117,7 @@ useEffect(() => {
             />
           )}      
               {section == 5 && <Uses changeToSection={handleChangeSection}/>}
+              {section == 6 && <End changeToSection={handleChangeSection}/>}
       
       {section !== 0 && (
         <NavBar

@@ -1,0 +1,521 @@
+/* ============================= */
+/* JeepInside - isolated styling */
+/* Responsive version            */
+/* ============================= */
+
+.uses-page {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  direction: rtl;
+  padding: clamp(12px, 2vw, 24px) clamp(12px, 3vw, 40px) clamp(70px, 9vh, 110px);
+  box-sizing: border-box;
+}
+
+/* Header */
+.uses-header {
+  text-align: center;
+  position: relative;
+  z-index: 4;
+  margin: 0 auto;
+  max-width: min(920px, 92vw);
+}
+
+.uses-title {
+  position: relative;
+  top: clamp(2.2rem, 7vh, 5.9rem);
+  right: auto;
+  transform: none;
+  margin: 0 auto;
+  color: #003f9e;
+  font-family: "rubik-black";
+  font-size: clamp(1.65rem, 2.2vw + 0.75rem, 3rem);
+  font-weight: 900;
+  line-height: 1.15;
+  text-align: center;
+  white-space: normal;
+}
+
+.uses-subtitle {
+  position: relative;
+  top: clamp(2.4rem, 7.5vh, 5.9rem);
+  margin: 8px auto 0;
+  max-width: min(680px, 90vw);
+  font-size: clamp(0.85rem, 0.6vw + 0.7rem, 1.08rem);
+  color: #111;
+  line-height: 1.45;
+}
+
+/* ============================= */
+/* Main jeep screen */
+/* ============================= */
+
+.uses-jeep-area {
+  position: relative;
+  top: clamp(3.2rem, 7vh, 5rem);
+  width: min(980px, 88vw);
+  height: clamp(380px, 44vw, 560px);
+  margin: 0 auto;
+}
+
+.uses-jeep-wrap {
+  position: absolute;
+  top: clamp(0px, 1vw, 12px);
+  left: 50%;
+  width: min(760px, 72vw);
+  transform: translateX(-50%);
+  z-index: 3;
+  animation: move 2s cubic-bezier(0.2, 0.8, 0.4, 1) forwards;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(-115%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.uses-jeep-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Road marks behind the jeep */
+.uses-road-marks {
+  position: absolute;
+  z-index: 1;
+  width: clamp(220px, 28vw, 380px);
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.uses-road-marks-one {
+  left: clamp(-140px, -8vw, -60px);
+  top: clamp(10px, 3vw, 40px);
+}
+
+.uses-road-marks-two {
+  left: clamp(-140px, -8vw, -60px);
+  top: clamp(170px, 18vw, 240px);
+}
+
+/* Zoom / plus button */
+.uses-plus-btn {
+  position: absolute;
+  bottom: clamp(26px, 5vw, 52px);
+  left: min(calc(50% + 360px), calc(100% - 58px));
+  z-index: 6;
+  width: clamp(38px, 4vw, 54px);
+  height: clamp(38px, 4vw, 54px);
+  border: none;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.uses-plus-btn:hover {
+  transform: scale(1.08);
+}
+
+.uses-plus-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ============================= */
+/* Red hotspots */
+/* ============================= */
+
+.uses-hotspot {
+  position: absolute;
+  z-index: 8;
+  width: clamp(28px, 3vw, 36px);
+  height: clamp(28px, 3vw, 36px);
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+}
+
+.uses-hotspot-dot {
+  position: absolute;
+  inset: 27%;
+  border-radius: 50%;
+  background: #ff24248e;
+  box-shadow: 0 0 16px rgba(255, 36, 36, 0.95);
+}
+
+.uses-hotspot-glow {
+  position: absolute;
+  inset: 6%;
+  border-radius: 50%;
+  background: rgba(255, 36, 36, 0.25);
+  animation: usesPulse 1.4s infinite ease-out;
+}
+
+.uses-hotspot:hover .uses-hotspot-dot {
+  transform: scale(1.2);
+}
+
+@keyframes usesPulse {
+  0% {
+    transform: scale(0.75);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.uses-hotspot-inside {
+  top: 50%;
+  left: 8%;
+}
+
+.uses-hotspot-middle {
+  top: 52%;
+  left: 35%;
+}
+
+.uses-hotspot-front {
+  top: 49%;
+  left: 79%;
+}
+
+/* ============================= */
+/* Popup component */
+/* ============================= */
+
+.uses-popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 3vw, 28px);
+  box-sizing: border-box;
+}
+
+.uses-popup-card {
+  width: min(430px, 88vw);
+  min-height: 255px;
+  background: #fff3c4;
+  border: 2px solid #eda500;
+  border-radius: 8px;
+  box-shadow: 0 0 18px rgba(237, 165, 0, 0.55);
+  padding: clamp(18px, 3vw, 26px) clamp(16px, 3vw, 28px) 18px;
+  text-align: center;
+  box-sizing: border-box;
+  animation: usesPopupIn 0.25s ease;
+}
+
+@keyframes usesPopupIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.uses-popup-img {
+  display: block;
+  width: min(285px, 82%);
+  max-height: 180px;
+  object-fit: contain;
+  margin: 0 auto 8px;
+}
+
+.uses-popup-title {
+  margin: 4px 0 12px;
+  font-size: clamp(0.95rem, 0.35vw + 0.85rem, 1.05rem);
+  font-weight: 900;
+  color: #111;
+  line-height: 1.35;
+}
+
+.uses-popup-text {
+  margin: 0 auto 12px;
+  max-width: 320px;
+  font-size: clamp(0.85rem, 0.35vw + 0.78rem, 0.95rem);
+  line-height: 1.5;
+  color: #222;
+}
+
+.uses-popup-btn {
+  font-weight: 900;
+    border: 0rem;
+    color: #FFF2B4;
+    background-color: #E69907;
+    font-family: "assistant-extraBold";
+    font-size: 1.1rem;
+    border-radius: 8px;
+    height: 2.5rem;
+    width: 4.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.8s ease;
+}
+
+.uses-popup-btn:hover {
+  transform: translateY(-1px);
+  background: #dd9300;
+}
+
+/* ============================= */
+/* Zoom overlay */
+/* ============================= */
+
+.uses-zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 3vw, 28px);
+  box-sizing: border-box;
+}
+
+.uses-zoom-img {
+  max-width: 92vw;
+  max-height: 88vh;
+  object-fit: contain;
+}
+
+/* ============================= */
+/* Switches screen */
+/* ============================= */
+
+.uses-switches-title {
+  margin: 4px 0 0;
+  color: #111;
+  font-size: clamp(1rem, 1vw + 0.85rem, 1.35rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.uses-switches-text {
+  margin: 8px auto 0;
+  max-width: min(620px, 90vw);
+  line-height: 1.6;
+  font-size: clamp(0.85rem, 0.55vw + 0.75rem, 1rem);
+  color: #111;
+}
+
+.uses-switches-content {
+  width: min(940px, 88vw);
+  min-height: clamp(390px, 42vw, 500px);
+  margin: clamp(28px, 5vw, 44px) auto 0;
+  text-align: center;
+  position: relative;
+}
+
+.uses-switches-image {
+  display: block;
+  width: min(380px, 42vw);
+  max-height: 310px;
+  object-fit: contain;
+  margin: 0 auto 24px;
+}
+
+.uses-switches-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(18px, 3vw, 34px);
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.uses-switch-item {
+  width: clamp(112px, 11vw, 140px);
+  text-align: center;
+}
+
+.uses-switch-icon {
+  width: clamp(54px, 5vw, 64px);
+  height: clamp(82px, 7vw, 94px);
+  border-radius: 14px;
+  background: #252525;
+  margin: 0 auto 8px;
+  box-shadow:
+    inset 0 0 0 3px #111,
+    0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.uses-switch-item p {
+  margin: 0;
+  font-size: clamp(0.82rem, 0.45vw + 0.76rem, 0.92rem);
+  line-height: 1.35;
+  color: #111;
+  font-weight: 600;
+}
+
+.uses-switches-extra {
+  margin: 28px auto 0;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.uses-return-car-btn {
+  margin-top: 14px;
+  border: none;
+  border-radius: 5px;
+  background: #ef9f00;
+  color: white;
+  font-weight: 900;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.uses-return-car-btn:hover {
+  transform: translateY(-1px);
+  background: #dd9300;
+}
+
+/* ============================= */
+/* Responsive - large desktops */
+/* ============================= */
+
+@media (min-width: 1440px) {
+  .uses-page {
+    padding-inline: 48px;
+  }
+
+  .uses-jeep-area {
+    width: min(1040px, 78vw);
+    height: 590px;
+  }
+
+  .uses-jeep-wrap {
+    width: 790px;
+  }
+
+  .uses-plus-btn {
+    left: calc(50% + 390px);
+  }
+}
+
+/* ============================= */
+/* Responsive - standard laptops */
+/* ============================= */
+
+@media (max-width: 1200px) {
+  .uses-jeep-area {
+    width: 88vw;
+    height: clamp(390px, 43vw, 520px);
+  }
+
+  .uses-jeep-wrap {
+    width: min(700px, 72vw);
+  }
+
+  .uses-plus-btn {
+    left: min(calc(50% + 34vw), calc(100% - 54px));
+  }
+}
+
+/* ============================= */
+/* Responsive - small laptops */
+/* ============================= */
+
+@media (max-width: 1024px) {
+  .uses-title {
+    top: clamp(2rem, 5.5vh, 4.2rem);
+  }
+
+  .uses-subtitle {
+    top: clamp(2.2rem, 6vh, 4.4rem);
+  }
+
+  .uses-jeep-area {
+    top: clamp(2.8rem, 6vh, 4.2rem);
+    width: 92vw;
+    height: 470px;
+  }
+
+  .uses-jeep-wrap {
+    width: min(680px, 78vw);
+  }
+
+  .uses-plus-btn {
+    bottom: 34px;
+    left: min(calc(50% + 35vw), calc(100% - 52px));
+  }
+
+  .uses-road-marks-one {
+    top: 36px;
+  }
+
+  .uses-road-marks-two {
+    top: 210px;
+  }
+}
+
+/* ============================= */
+/* Responsive - tablet */
+/* ============================= */
+
+@media (max-width: 900px) {
+  .uses-page {
+    padding: 14px 16px 88px;
+  }
+
+  .uses-jeep-area {
+    width: 94vw;
+    height: 450px;
+  }
+
+  .uses-jeep-wrap {
+    width: 82vw;
+  }
+
+  .uses-plus-btn {
+    left: min(calc(50% + 37vw), calc(100% - 48px));
+    width: 44px;
+    height: 44px;
+  }
+
+  .uses-road-marks {
+    width: 300px;
+  }
+
+  .uses-road-marks-one {
+    left: -90px;
+    top: 250px;
+  }
+
+  .uses-road-marks-two {
+    left: -90px;
+    top: 325px;
+  }
+
+  .uses-switches-image {
+    width: min(330px, 70vw);
+  }
+
+  .uses-switches-content {
+    width: 90vw;
+  }
+}

@@ -14,7 +14,7 @@
   margin: 0;
   color: #003f9e;
   font-family: "rubik-black";
-  font-size: clamp(2rem, 2.5vw, 3rem);
+  font-size: clamp(2rem, 2.8vw, 3rem);
   text-align: center;
   white-space: nowrap;
 }

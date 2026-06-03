@@ -561,8 +561,9 @@
 }
 
 .sys-eb-card--tabs {
-  width: min(50vw, 430px);
-  min-height: 300px;
+  width: min(50vw, 600px);
+  min-height: 400px;
+  padding-top:50px;
 }
 
 .sys-eb-title {

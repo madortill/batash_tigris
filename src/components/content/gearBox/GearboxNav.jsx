@@ -57,11 +57,12 @@ const handleChangeSection = (section, returnToLast = false) => {
   return (
     <div className='GearboxNav'>
      {page === 0 && <Selectbox changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
-     {page === 1 && <TransferCaseBox changeToPage={handleChangePage} startPage={startPage} />}
-     {page == 2 && <Lockers changeToPage={handleChangePage}/>}
-     {page == 3 && <BDriveA changeToPage={handleChangePage}/>}
-     {page == 4 && <Gearbox changeToPage={handleChangePage}/>}
-     {page == 5 && <GearboxTransfer changeToPage={handleChangePage} startPage={startPage} changeToSection={handleChangeSection}/>}
+     {page == 1 && <Gearbox changeToPage={handleChangePage}/>}
+     {page == 2 && <GearboxTransfer changeToPage={handleChangePage}/>}
+     {page === 3 && <Selectbox changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
+     {page === 4 && <TransferCaseBox changeToPage={handleChangePage} startPage={startPage} />}
+     {page == 5 && <Lockers changeToPage={handleChangePage}/>}
+     {page == 6 && <BDriveA changeToPage={handleChangePage} startPage={startPage} changeToSection={handleChangeSection}/>}
      {/*{page == 5 && <CarSystem changeToPage={handleChangePage}/>}
      {page == 6 && <HighlixDoors changeToPage={handleChangePage} changeToSection={handleChangeSection}/>} */}
     </div>

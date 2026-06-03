@@ -27,10 +27,10 @@ const Gearbox = ({ changeToPage})=> {
 
 
   const previousPage = () => {
-    changeToPage(3);
+    changeToPage(0);
   };
   const nextPage = () => {
-    changeToPage(5);
+    changeToPage(1);
   };
 
 
@@ -66,7 +66,7 @@ return(
         src={tigrisInside}
         alt="כפתור/תמונה"
         className="thumb-image"
-        onClick={() => setIsOpen(true)}
+        // onClick={() => setIsOpen(true)}
       />
    <div 
           className="hotspot-circle" 
@@ -76,7 +76,6 @@ return(
           <div className="hotspot-core"></div>
         </div>
 
-      {/* חלון הזום המוגדל (מופיע רק כשלוחצים) */}
       {isOpen && (
         <div className="zoom-overlay" onClick={() => setIsOpen(false)}>
           <img

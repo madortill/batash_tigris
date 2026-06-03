@@ -197,9 +197,7 @@ const Selectbox = ({ changeToPage, changeToSection }) => {
             {/* גוף הקופסה הראשי מקדימה */} 
             <path d="M32.0626 96.3879H309.503C321.894 96.3879 331.981 106.474 331.981 118.865V297.613C331.981 310.004 321.894 320.091 309.503 320.091H32.0626C19.6718 320.091 9.58545 310.004 9.58545 297.613V118.865C9.58545 106.474 19.6718 96.3879 32.0626 96.3879Z" fill="#D39E33" stroke="#141414" strokeWidth="8"/> 
             
-            {/* סרט הדבקה לבן - מוסר ב-Hover */} 
-            {/* <path className="tape" d="M135 94H207V110H135V94Z" fill="#EAEAEA" stroke="#141414" strokeWidth="2"/>  */}
-            
+         
             {/* פרטים קטנים (ידית ומדבקה) */} 
             <rect x="120" y="140" width="100" height="25" rx="12.5" fill="#26211E" stroke="#141414" strokeWidth="4"/> 
             <rect x="246" y="256" width="57" height="40" rx="8" fill="#A4704C" stroke="#111111" strokeWidth="4"/> 
@@ -210,18 +208,33 @@ const Selectbox = ({ changeToPage, changeToSection }) => {
             </text> 
           </svg> 
         </div> 
-
-        {/* קופסה ימנית - פתוחה קבוע כמבוקש בעיצוב */}
+        <div className="boxContainer closedBox" onClick={nextPage}> 
+          <svg viewBox="0 0 342 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="mainSvg"> 
+            {/* גוף הקופסה האחורי (רקע) */} 
+            <path d="M14 100.596H327.979V315.849H14V100.596Z" fill="#686868ff"/> 
+            
+            {/* גוף הקופסה הראשי מקדימה */} 
+            <path d="M32.0626 96.3879H309.503C321.894 96.3879 331.981 106.474 331.981 118.865V297.613C331.981 310.004 321.894 320.091 309.503 320.091H32.0626C19.6718 320.091 9.58545 310.004 9.58545 297.613V118.865C9.58545 106.474 19.6718 96.3879 32.0626 96.3879Z" fill="#d39e33b0" stroke="#141414" strokeWidth="8"/> 
+            
+            {/* פרטים קטנים (ידית ומדבקה) */} 
+            <rect x="120" y="140" width="100" height="25" rx="12.5" fill="#26211E" stroke="#141414" strokeWidth="4"/> 
+            <rect x="246" y="256" width="57" height="40" rx="8" fill="#a4714c79" stroke="#111111" strokeWidth="4"/> 
+            <text x="275" y="287" textAnchor="middle" fontFamily="Arial" fontSize="28" fontWeight="bold" fill="black">צ</text> 
+            
+            <text className="boxLabel" x="50%" y="365" textAnchor="middle" fontFamily="Arial" fontSize="32" fontWeight="bold" fill="black"> 
+              {textbox2} 
+            </text> 
+          </svg> 
+        </div> 
+{/* 
         <div className="boxContainer openBox" onClick={nextPage}>
           <svg viewBox="0 0 342 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="mainSvg"> 
             <path d="M14 100.596H327.979V315.849H14V100.596Z" fill="#D39E33"/> 
             
-            {/* כנף שמאל מעוצבת למעלה והצידה */}
             <g className="staticLid"> 
               <path d="M9.58545 96.3879L-40 10L65 10L115 96.3879H9.58545Z" fill="#D39E33" stroke="#141414" strokeWidth="6"/> 
             </g> 
             
-            {/* כנף ימין מעוצבת למעלה והצידה */}
             <g className="staticLid"> 
               <path d="M331.981 96.3879L381.565 10L276.565 10L226.565 96.3879H331.981Z" fill="#D39E33" stroke="#141414" strokeWidth="6"/> 
             </g> 
@@ -236,7 +249,7 @@ const Selectbox = ({ changeToPage, changeToSection }) => {
               {textbox2} 
             </text> 
           </svg> 
-        </div>
+        </div>  */}
 
       </div> 
 

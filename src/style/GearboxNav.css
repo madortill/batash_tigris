@@ -7,18 +7,6 @@
 }
 
 
-.the-type-writer {
-    position: relative;
-    height: fit-content;
-    flex-direction: column;
-    display: flex;
-    left: 50%;
-    transform: translate(-50%);
-    direction: rtl;
-    margin-top: -3rem;
-    margin-right: 2rem;
-}
-
 /*effect-box*/
 .effect-box:after,
 .effect-box:before {
@@ -963,15 +951,38 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 0.98em;
+  font-size: 1.1em;
   border-radius: 3px;
-  transition: background 0.15s;
+    background: #fff;
+
+  color: #d99b35;
+  border-radius: 4px;
+  transition: background 0.20s;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.08);
+
 }
 
 .tcb-checkbox--checked {
-  background: #42b866;
-  border-color: #42b866;
+  background: #fff5d6;
+  border-color: #d99b35 ;
+ }
+.actions-checkbox {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 4px;
+  background: #fff;
+  color: #d99b35;
+  font-weight: 900;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.08);
 }
+
+
+
+
 
 .tcb-step-text {
   text-align: right;

@@ -579,7 +579,7 @@ const navItemClass = (targetSection) => {
         <g id="five"          
         //  onClick={changeSection}
         className={navItemClass(1)}
-  onClick={() => goToSection(1)}
+  onClick={() => goToSection(5)}
 >
           <path
             className={navSection > 4 ? "cls-1" : "cls-7"}

@@ -2,7 +2,7 @@
 .tabContainer {
     display: flex;
     flex-direction: column;
-    width: clamp(280px, 60vw, 860px);
+    width: clamp(280px, 35vw, 860px);
     /* height: clamp(200px, 33vh, 700px); */
     height: auto;
     border-radius: 30px;

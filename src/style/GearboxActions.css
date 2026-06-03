@@ -265,7 +265,7 @@
   font-size: clamp(0.72rem, 1.15vw, 0.92rem);
   line-height: 1.25;
   font-weight: 600;
-      z-index:1;
+  z-index:1;
 
 }
 

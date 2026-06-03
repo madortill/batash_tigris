@@ -1,5 +1,6 @@
 
 import JeepInside from "./JeepInside"
+import ChangingTire from "./JeepInside"
 import { useData } from "../../../context/DataContext";
 import { useState, useEffect } from "react";
 import "../../../style/UsesNav.css"
@@ -61,8 +62,8 @@ const handleChangeSection = (section, returnToLast = false) => {
   return (
     <div className='UsesNav'>
      {page === 0 && <JeepInside changeToPage={handleChangePage} changeToSection={handleChangeSection} />}
-     {/*{page === 1 && <SystemTypes changeToPage={handleChangePage} startPage={startPage} />}
-     {page == 2 && <DoorPage changeToPage={handleChangePage} changeToSection={handleChangeSection}/>}
+     {page === 1 && <ChangingTire changeToPage={handleChangePage} startPage={startPage} />}
+     {/*{page == 2 && <DoorPage changeToPage={handleChangePage} changeToSection={handleChangeSection}/>}
      {/*{page == 3 && <BDriveA changeToPage={handleChangePage}/>}
      {page == 4 && <Gearbox changeToPage={handleChangePage}/>}
      {page == 5 && <GearboxTransfer changeToPage={handleChangePage} startPage={startPage}/>}

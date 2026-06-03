@@ -34,10 +34,10 @@
 }
 
 .plus-image {
-    position:relative;
-    right:1%; 
+        position: absolute;
+    right: -6%;
     width: 3rem;
-    top:90%;
+    top: 94%;
 }
 .plus-image:hover {
   transform: scale(1.08); 
@@ -60,7 +60,6 @@
   max-width: 100%;
   height: auto;
   display: block;
-  cursor: zoom-in;
   transition: transform 0.2s ease;
   border-radius: 5px;
 }
@@ -74,7 +73,7 @@
   position: absolute;
   /* שינוי אחוזים אלו ישנה את המיקום על גבי התמונה */
   top: 18%; 
-  left: 37%; 
+  left: 40%; 
   
   width: 30px;
   height: 32px;
@@ -97,8 +96,8 @@
 .hotspot-core {
   width: 16px;
   height: 16px;
-  background-color: #ff475663; /* אדום מלא */
-  border: 2px solid #ffffff;
+  background-color: #ff475649; /* אדום מלא */
+  border: 2px solid #ffffff46;
   border-radius: 50%;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
 }
@@ -191,203 +190,85 @@
    מסך שני
 ══════════════════════════════ */
 .gb-screen-two {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: clamp(0.5rem, 2vw, 1.5rem) clamp(1rem, 3vw, 2.5rem);
-  gap: 0.4rem;
-  direction: rtl;
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  padding: clamp(0.4rem,1.5vw,1rem) clamp(0.8rem,2.5vw,1.8rem);
+  direction: rtl; gap: 0.3rem;
 }
- 
-.gb-subtitle {
-  font-size: clamp(0.8rem, 1.3vw, 1rem);
-  color: #444;
-  direction: rtl;
-  margin: 0 0 0.3rem 0;
-  align-self: center;
-}
- 
-/* אזור שלושת עמודות: כפתורים | SVG | בועה */
 .gb-main-area {
   display: flex;
-  flex-direction: row;          /* RTL: כפתורים מימין, SVG אמצע, בועה משמאל */
+  flex-direction: row;
   align-items: center;
-  justify-content:center;
-  gap: clamp(1rem, 2.5vw, 3rem);
+  justify-content: center;   /* ← מרכז אופקי */
+  gap: clamp(12px, 3vw, 40px);
   width: 100%;
   flex: 1;
   direction: rtl;
 }
- 
-/* ─── עמודת כפתורי מצבים ─── */
-.gb-state-buttons {
+
+/* ── טקסט שמאל ── */
+.gb-texts-col { flex: 1; display: flex; flex-direction: column; gap: 0; direction: rtl; }
+.gb-text-row  { min-height: 60px; display: flex; align-items: center; direction: rtl; }
+.gb-text-empty{ min-height: 60px; width: 100%; }
+.gb-text-content { direction: rtl; }
+.gb-text-line { font-size: clamp(0.68rem,2.5vw,1.1rem); color: #222; line-height: 1.6; margin: 0; }
+.gb-text-label{ font-weight: 800; color: #1a4a8a; }
+.gb-text-body { font-weight: 400; }
+.gb-warn-line { display: flex; align-items: flex-start; gap: 5px; margin-top: 3px; cursor: pointer; direction: rtl; }
+.gb-warn-icon { font-size: 0.9rem; flex-shrink: 0; }
+.gb-warn-txt  { font-size: clamp(0.62rem,0.9vw,0.75rem); color: #7a5500; line-height: 1.5; margin: 0; }
+.gb-warn-hint { font-size: clamp(0.62rem,0.9vw,0.75rem); color: #b8860b; font-weight: 700; margin: 0; }
+.gb-extra     { font-size: clamp(0.62rem,0.9vw,0.75rem); color: #555; line-height: 1.5; margin: 2px 0 0; }
+
+/* ── ידית + כפתורים ימין ── */
+.gb-lever-section {
+   flex-shrink: 0; display: flex;
+    flex-direction: row; 
+    align-items: flex-start; 
+    gap: 0px; 
+  }
+.gb-state-buttons { display: flex; flex-direction: column; gap: 0; }
+.gb-btn-wrap      { height: 60px; display: flex; align-items: center; }
+.gb-state-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 6px 11px; border-radius: 7px;
+  border: 1.5px solid #b8a430; background: #e8d970;
+  color: #333; font-size: clamp(0.7rem,1.05vw,0.84rem); font-weight: 700;
+  cursor: pointer; direction: rtl;
+  min-width: clamp(88px,11vw,130px); gap: 8px;
+  transition: background 0.15s, border-color 0.15s, filter 0.2s;
+}
+.gb-btn-name   { flex: 1; text-align: right; }
+.gb-btn-letter { font-weight: 900; color: #7a6800; }
+@keyframes gb-blink { 0%,100%{opacity:0.42} 50%{opacity:0.8} }
+.gb-state-btn--unvisited { filter: blur(0.5px); animation: gb-blink 2s ease-in-out infinite; }
+.gb-state-btn--visited   { background: #d4c960; border-color: #9a8e30; filter: none; animation: none; opacity: 0.88; }
+.gb-state-btn--active    { background: #c47b1a; border-color: #8a5200; color: #fff; filter: none; animation: none; }
+.gb-state-btn--active .gb-btn-letter { color: #ffe9c0; }
+
+.gb-lever-img-static { width: clamp(55px,20vw,200px); height: auto; margin-right: 4px; }
+@keyframes glow-pulse {
+  0%,  100% { opacity: 0.35; }
+  50%        { opacity: 0.85; }
+}
+.glow-anim    { animation: glow-pulse 1.8s ease-in-out infinite; }
+.glow-visited { opacity: 0.6; }
+.glow-active  { opacity: 0.95; animation: none; }
+.gb-texts-col {
+  flex: 1;
+  max-width: 420px;          /* ← מונע התפשטות */
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  flex-shrink: 0;
-}
- 
-.gb-state-btn {
-  padding: 0.35rem 0.9rem;
-  border-radius: 6px;
-  border: 1.5px solid #c0b880;
-  background: #e8e0a0;
-  color: #333;
-  font-size: clamp(0.72rem, 1.1vw, 0.88rem);
-  font-weight: 700;
-  cursor: pointer;
-  direction: rtl;
-  text-align: center;
-  min-width: 100px;
-  transition: background 0.15s, border-color 0.15s, opacity 0.2s, transform 0.18s, filter 0.2s;
-}
- 
-/* לא נלחץ – מטושטש ומהבהב */
-@keyframes gb-blink {
-  0%, 100% { opacity: 0.4; }
-  50%       { opacity: 0.75; }
-}
-.gb-state-btn--unvisited {
-  filter: blur(0.7px);
-  animation: gb-blink 1.9s ease-in-out infinite;
-}
- 
-/* נלחץ בעבר */
-.gb-state-btn--visited {
-  background: #d4ca82;
-  border-color: #9a9060;
-  filter: none;
-  animation: none;
-  opacity: 0.9;
-}
- 
-/* פעיל */
-.gb-state-btn--active {
-  background: #2d6bbf;
-  border-color: #1a4a8a;
-  color: #fff;
-  filter: none;
-  animation: none;
-  transform: scale(1.06);
-  box-shadow: 0 2px 10px rgba(45,107,191,0.4);
-}
- 
-/* ─── SVG ידית ─── */
-.gb-svg-wrapper {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
- 
-.gb-lever-svg {
-  width: clamp(80px, 10vw, 130px);
-  overflow: visible;
-}
- 
-/* ─── בועת טקסט ─── */
-.gb-bubble-area {
-  flex: 1;
-  max-width: 340px;
-  min-height: 100px;
-  display: flex;
-  align-items: flex-start;
+  gap: 0;
   direction: rtl;
 }
- 
-.gb-bubble {
-  background: #fffde8;
-  border: 2px solid #c8bc70;
-  border-radius: 14px;
-  padding: 0.85rem 1.1rem;
-  position: relative;
-  box-shadow: 0 3px 14px rgba(0,0,0,0.1);
-  direction: rtl;
-  animation: gb-fadein 0.25s ease;
-  width: 100%;
+
+/* hover על כפתורים */
+.gb-state-btn:hover:not(.gb-state-btn--active) {
+  background: #d4b830;
+  border-color: #8a6e00;
 }
- 
-/* חץ הבועה כלפי ה-SVG (לכיוון ימין — כי הבועה נמצאת משמאל ל-SVG ב-RTL) */
-.gb-bubble::after {
-  content: "";
-  position: absolute;
-  left: 100%;
-  top: 24px;
-  border: 10px solid transparent;
-  border-left-color: #c8bc70;
+.gb-subtitle{
+  position:relative;
+  top:8rem;
 }
-.gb-bubble::before {
-  content: "";
-  position: absolute;
-  left: calc(100% - 2px);
-  top: 26px;
-  border: 8px solid transparent;
-  border-left-color: #fffde8;
-  z-index: 1;
-}
- 
-@keyframes gb-fadein {
-  from { opacity: 0; transform: translateX(-8px); }
-  to   { opacity: 1; transform: translateX(0);     }
-}
- 
-.gb-bubble-label {
-  font-size: clamp(0.85rem, 1.3vw, 1rem);
-  font-weight: 800;
-  color: #1a4a8a;
-  margin: 0 0 0.35rem 0;
-}
- 
-.gb-bubble-text {
-  font-size: clamp(0.7rem, 1.05vw, 0.85rem);
-  color: #333;
-  line-height: 1.6;
-  margin: 0 0 0.25rem 0;
-}
- 
-.gb-bubble-warning {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.4rem;
-  background: #fff8e1;
-  border: 1.5px solid #f0c040;
-  border-radius: 8px;
-  padding: 0.4rem 0.6rem;
-  margin-top: 0.4rem;
-}
-.gb-bubble-warning-icon {
-  font-size: 1rem;
-  flex-shrink: 0;
-  line-height: 1.4;
-}
-.gb-bubble-warning-text {
-  font-size: clamp(0.65rem, 0.95vw, 0.78rem);
-  color: #7a5500;
-  line-height: 1.5;
-  margin: 0;
-}
- 
-.gb-bubble-extra-title {
-  font-size: clamp(0.7rem, 1vw, 0.82rem);
-  font-weight: 700;
-  color: #b85c00;
-  margin: 0.35rem 0 0.15rem 0;
-}
-.gb-bubble-extra {
-  font-size: clamp(0.65rem, 0.95vw, 0.78rem);
-  color: #555;
-  line-height: 1.5;
-  margin: 0;
-}
- 
-.gb-bubble-placeholder {
-  color: #aaa;
-  font-size: 0.82rem;
-  font-style: italic;
-  direction: rtl;
-  padding: 0.4rem;
-  align-self: center;
-}
- 
