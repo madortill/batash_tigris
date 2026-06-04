@@ -1,0 +1,126 @@
+.divBoxWrapper {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  position: relative;
+  top: 12rem;
+  width: 100%;
+  height: 22rem;
+}
+
+.boxContainer {
+  width: 260px;
+  cursor: pointer;
+  transition: transform 0.25s ease;
+}
+
+.mainSvg {
+  overflow: visible;
+  width: 100%;
+  height: auto;
+}
+
+.boxBack,
+.boxBody,
+.lidFill {
+  fill: #D39E33;
+}
+
+.boxSticker {
+  fill: #A4704C;
+}
+
+/* מצב בסיס - הקופסה סגורה */
+.lid {
+  opacity: 1;
+  transform-box: fill-box;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.closedBox .lidLeft,
+.closedBox .lidRight {
+  transform: rotate(0deg) translate(0, 0);
+}
+
+/* Hover רק לקופסאות פעילות */
+.activeGearboxBox:hover,
+.activeTransferBox:hover {
+  transform: translateY(-3px);
+}
+
+.activeGearboxBox:hover .lidLeft,
+.activeTransferBox:hover .lidLeft {
+  transform: rotate(-115deg) translate(-25px, -15px);
+  transform-origin: bottom left;
+}
+
+.activeGearboxBox:hover .lidRight,
+.activeTransferBox:hover .lidRight {
+  transform: rotate(115deg) translate(25px, -15px);
+  transform-origin: bottom right;
+}
+
+/* בפעם השנייה - תיבת הילוכים פתוחה קבוע */
+.openBox {
+  cursor: default;
+}
+
+.openBox .lidLeft {
+  transform: rotate(-115deg) translate(-25px, -15px);
+  transform-origin: bottom left;
+}
+
+.openBox .lidRight {
+  transform: rotate(115deg) translate(25px, -15px);
+  transform-origin: bottom right;
+}
+
+/* תנועה עדינה רק לתיבה הפתוחה */
+.openBox:hover .lidLeft {
+  transform: rotate(-118deg) translate(-27px, -16px);
+}
+
+.openBox:hover .lidRight {
+  transform: rotate(118deg) translate(27px, -16px);
+}
+
+/* בפעם הראשונה - תיבת העברה מוחשכת ולא מגיבה */
+.disabledTransferBox {
+  cursor: default;
+  pointer-events: none;
+}
+
+.disabledTransferBox .boxBack,
+.disabledTransferBox .boxBody,
+.disabledTransferBox .lidFill {
+  fill: #A79A6A;
+}
+
+.disabledTransferBox .boxSticker {
+  fill: #9A8B5F;
+}
+
+.disabledTransferBox .boxLabel {
+  fill: #333333;
+}
+
+.disabledTransferBox:hover {
+  transform: none;
+}
+
+.disabledTransferBox:hover .lidLeft,
+.disabledTransferBox:hover .lidRight {
+  transform: rotate(0deg) translate(0, 0);
+}
+
+/* טקסט */
+.boxLabel {
+  transition: fill 0.25s ease;
+}
+
+.activeGearboxBox:hover .boxLabel,
+.activeTransferBox:hover .boxLabel {
+  fill: #A4704C;
+}

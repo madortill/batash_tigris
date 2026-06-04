@@ -56,18 +56,22 @@ const handleChangeSection = (section, returnToLast = false) => {
 
   return (
     <div className='GearboxNav'>
-     {page === 0 && <Selectbox
-  changeToPage={changeToPage}
-  changeToSection={changeToSection}
-  step="first"
-/>}
+     {page === 0 && (
+  <Selectbox
+    changeToPage={handleChangePage}
+    changeToSection={handleChangeSection}
+    step="first"
+  />
+)}
      {page == 1 && <Gearbox changeToPage={handleChangePage}/>}
      {page == 2 && <GearboxTransfer changeToPage={handleChangePage}/>}
-     {page === 3 && <Selectbox
-  changeToPage={changeToPage}
-  changeToSection={changeToSection}
-  step="second"
-/>}
+          {page === 3 && (
+        <Selectbox
+          changeToPage={handleChangePage}
+          changeToSection={handleChangeSection}
+          step="second"
+        />
+      )}
      {page === 4 && <TransferCaseBox changeToPage={handleChangePage} startPage={startPage} />}
      {page == 5 && <Lockers changeToPage={handleChangePage}/>}
      {page == 6 && <BDriveA changeToPage={handleChangePage} startPage={startPage} changeToSection={handleChangeSection}/>}
