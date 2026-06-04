@@ -64,10 +64,6 @@
   border-radius: 5px;
 }
 
-.thumb-image:hover {
-  transform: scale(1.01);
-}
-
 /* העיגול הלחיץ והמהבהב - משמש כטבעת החיצונית הפועמת */
 .hotspot-circle {
   position: absolute;

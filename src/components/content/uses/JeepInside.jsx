@@ -17,6 +17,11 @@ import popupImageTwo2 from "../../../assets/images/openHole.png";
 
 import switchesImage from "../../../assets/images/Switchsystem.svg";
 
+import swichLigth from "../../../assets/images/swichLigth.png";
+import swichSideMirror from "../../../assets/images/sideMirror.png";
+import switchFan from "../../../assets/images/switchFan.png";
+import swichLigthInside from "../../../assets/images/swichLigthInside.png";
+
 const JeepInside = ({ changeToSection }) => {
   const { data } = useData();
   const navigate = useNavigate();
@@ -32,6 +37,7 @@ const JeepInside = ({ changeToSection }) => {
   const [screen, setScreen] = useState("jeep");
 
   const [visitedHotspots, setVisitedHotspots] = useState([]);
+  const [isSwitchesOpen, setIsSwitchesOpen] = useState(false);
   const canContinue = visitedHotspots.length === 3;
 
 
@@ -48,14 +54,16 @@ const JeepInside = ({ changeToSection }) => {
       action: "popup",
     },
     {
-      id: "middle",
-      className: "uses-hotspot-middle",
-      title: hotspots?.[1]?.title,
-      buttonText: hotspots?.[1]?.buttonText,
-      image: popupImageTwo,
-      action: "popup",
-    },
-    {
+        id: "middle",
+        className: "uses-hotspot-middle",
+        title: hotspots?.[1]?.title,
+        buttonText: hotspots?.[1]?.buttonText,
+        openText: hotspots?.[1]?.openText,
+        image: popupImageTwo,
+        openImage: popupImageTwo2,
+        action: "popup",
+        },
+            {
       id: "front",
       className: "uses-hotspot-front",
       title: hotspots?.[2]?.title,
@@ -63,16 +71,22 @@ const JeepInside = ({ changeToSection }) => {
       action: "switches",
     },
   ];
-
+const switchImages = [
+  swichLigth,
+  swichSideMirror,
+  switchFan,
+  swichLigthInside,
+];
    const handleHotspotClick = (hotspot) => {
     if (!visitedHotspots.includes(hotspot.id)) {
       setVisitedHotspots((prev) => [...prev, hotspot.id]);
     }
 
     if (hotspot.action === "switches") {
-      setScreen("switches");
-      return;
-    }
+  setIsSwitchesOpen(false);
+  setScreen("switches");
+  return;
+}
 
     setActivePopup(hotspot);
   };
@@ -85,32 +99,51 @@ const JeepInside = ({ changeToSection }) => {
           <p className="uses-switches-text">{pageData.text}</p>
         </header>
 
-        <section className="uses-switches-content">
-          <img
-            src={switchesImage}
-            alt={pageData.titleBtns}
-            className="uses-switches-image"
-          />
+        <section
+  className={`uses-switches-content ${
+    isSwitchesOpen ? "uses-switches-content-open" : ""
+  }`}
+>
+  <button
+    type="button"
+    className="uses-switches-main-btn"
+    onClick={() => setIsSwitchesOpen(true)}
+    aria-label="פתיחת מערכת המתגים"
+  >
+    <img
+      src={switchesImage}
+      alt={pageData.titleBtns}
+      className="uses-switches-image"
+    />
+  </button>
 
-          <div className="uses-switches-buttons">
-            {pageData?.btns?.map((btnText, index) => (
-              <div key={index} className="uses-switch-item">
-                <div className="uses-switch-icon" />
-                <p>{btnText}</p>
-              </div>
-            ))}
-          </div>
+  {isSwitchesOpen && (
+    <>
+      <div className="uses-switches-buttons">
+        {pageData?.btns?.map((btnText, index) => (
+        <div key={index} className="uses-switch-item">
+            <img
+            src={switchImages[index]}
+            alt={btnText}
+            className="uses-switch-icon-img"
+            />
+            <p>{btnText}</p>
+        </div>
+        ))}
+      </div>
 
-          <p className="uses-switches-extra">{pageData.extraText}</p>
+      <p className="uses-switches-extra">{pageData.extraText}</p>
 
-          <button
-            type="button"
-            className="uses-return-car-btn"
-            onClick={() => setScreen("jeep")}
-          >
-            {pageData.backToCar}
-          </button>
-        </section>
+      <button
+        type="button"
+        className="uses-return-car-btn"
+        onClick={() => setScreen("jeep")}
+      >
+        {pageData.backToCar}
+      </button>
+    </>
+  )}
+</section>
 
         <div className="backBtn" onClick={previousPage}>
           <img src={backBtn} alt="backBtn" className="backBtnImg" />
@@ -157,18 +190,24 @@ const JeepInside = ({ changeToSection }) => {
             className="uses-jeep-img"
           />
 
-          {hotspotItems.map((hotspot) => (
-            <button
-              key={hotspot.id}
-              type="button"
-              className={`uses-hotspot ${hotspot.className}`}
-              onClick={() => handleHotspotClick(hotspot)}
-              aria-label={hotspot.title}
-            >
-              <span className="uses-hotspot-glow" />
-              <span className="uses-hotspot-dot" />
-            </button>
-          ))}
+          {hotspotItems.map((hotspot) => {
+            const isVisited = visitedHotspots.includes(hotspot.id);
+
+            return (
+                <button
+                key={hotspot.id}
+                type="button"
+                className={`uses-hotspot ${hotspot.className} ${
+                    isVisited ? "uses-hotspot-visited" : ""
+                }`}
+                onClick={() => handleHotspotClick(hotspot)}
+                aria-label={hotspot.title}
+                >
+                <span className="uses-hotspot-glow" />
+                <span className="uses-hotspot-dot" />
+                </button>
+            );
+            })}
         </div>
       </section>
 

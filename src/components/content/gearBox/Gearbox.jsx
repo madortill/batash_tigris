@@ -30,7 +30,7 @@ const Gearbox = ({ changeToPage})=> {
     changeToPage(0);
   };
   const nextPage = () => {
-    changeToPage(1);
+    changeToPage(2);
   };
 
 

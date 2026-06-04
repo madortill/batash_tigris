@@ -8,8 +8,8 @@
 //     const [canContinue, setCanContinue] =useState(false);
 //       const { data } = useData();
 //     const pageData = data.Gearbox;
-//   const nextBtn = data.general[1].text;
-//   const backBtnText = data.general[0].text;
+  const nextBtn = data.general[1].text;
+  const backBtnText = data.general[0].text;
 
 //   const title = pageData[0].title;
 //   const text = pageData[0].text;
@@ -143,9 +143,33 @@ import React, { useState } from "react";
 import { useData } from "../../../context/DataContext"; 
 import "../../../style/GearboxNav.css"; 
 import backBtn from "../../../assets/images/backBtn.svg"; 
+  const nextBtn = data.general[1].text;
+  const backBtnText = data.general[0].text;
 
-const Selectbox = ({ changeToPage, changeToSection }) => { 
-  const [canContinue, setCanContinue] = useState(false); 
+
+const Selectbox = ({ changeToPage, changeToSection, step = "first" }) => {
+  const [canContinue, setCanContinue] = useState(false);
+
+  const isFirstStep = step === "first";
+  const isSecondStep = step === "second";
+
+  const handleGearboxClick = () => {
+    setCanContinue(true);
+  };
+
+  const handleTransferBoxClick = () => {
+    if (isSecondStep) {
+      setCanContinue(true);
+    }
+  };
+
+  const nextPage = () => {
+    if (canContinue) {
+      changeToPage(1);
+    }
+  };
+
+// const Selectbox = ({ changeToPage, changeToSection }) => { 
   const { data } = useData(); 
   
   const pageData = data.Gearbox; 
@@ -174,31 +198,83 @@ const Selectbox = ({ changeToPage, changeToSection }) => {
       </div> 
       
       <p className="text-gearbox">{text}</p> 
-      
-      {/* אזור הקופסאות הראשי */}
-      <div className="divBoxWrapper"> 
-        
-        {/* קופסה שמאלית - נפתחת ב-Hover */} 
-        <div className="boxContainer closedBox" onClick={nextPage}> 
+      <div className="divBoxWrapper">
+
+  {/* תיבת הילוכים */}
+  <div
+    className={`boxContainer gearboxBox ${
+      isSecondStep ? "openBox activeBox" : "closedBox activeBox"
+    }`}
+    onClick={handleGearboxClick}
+  >
+    <svg viewBox="0 0 342 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="mainSvg">
+      <path d="M14 100.596H327.979V315.849H14V100.596Z" fill="#D39E33"/>
+
+      <g className="lid lidLeft">
+        <path d="M14.5615 100.596L67.1975 24.0135H170.766V100.596H14.5615Z" fill="#D39E33" stroke="#141414" strokeWidth="4"/>
+      </g>
+
+      <g className="lid lidRight">
+        <path d="M326.369 100.596L274.335 24.0135H170.766V100.596H326.369Z" fill="#D39E33" stroke="#141414" strokeWidth="4"/>
+      </g>
+
+      <path d="M32.0626 96.3879H309.503C321.894 96.3879 331.981 106.474 331.981 118.865V297.613C331.981 310.004 321.894 320.091 309.503 320.091H32.0626C19.6718 320.091 9.58545 310.004 9.58545 297.613V118.865C9.58545 106.474 19.6718 96.3879 32.0626 96.3879Z" fill="#D39E33" stroke="#141414" strokeWidth="8"/>
+
+      <rect x="120" y="140" width="100" height="25" rx="12.5" fill="#26211E" stroke="#141414" strokeWidth="4"/>
+      <rect x="246" y="256" width="57" height="40" rx="8" fill="#A4704C" stroke="#111111" strokeWidth="4"/>
+      <text x="275" y="287" textAnchor="middle" fontFamily="Arial" fontSize="28" fontWeight="bold" fill="black">צ</text>
+
+      <text className="boxLabel" x="50%" y="365" textAnchor="middle" fontFamily="Arial" fontSize="32" fontWeight="bold" fill="black">
+        {textbox1}
+      </text>
+    </svg>
+  </div>
+
+  {/* תיבת העברה */}
+  <div
+    className={`boxContainer transferBox closedBox ${
+      isFirstStep ? "disabledBox" : "activeBox"
+    }`}
+    onClick={handleTransferBoxClick}
+  >
+    <svg viewBox="0 0 342 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="mainSvg">
+      <path d="M14 100.596H327.979V315.849H14V100.596Z" fill="#D39E33"/>
+
+      <g className="lid lidLeft">
+        <path d="M14.5615 100.596L67.1975 24.0135H170.766V100.596H14.5615Z" fill="#D39E33" stroke="#141414" strokeWidth="4"/>
+      </g>
+
+      <g className="lid lidRight">
+        <path d="M326.369 100.596L274.335 24.0135H170.766V100.596H326.369Z" fill="#D39E33" stroke="#141414" strokeWidth="4"/>
+      </g>
+
+      <path d="M32.0626 96.3879H309.503C321.894 96.3879 331.981 106.474 331.981 118.865V297.613C331.981 310.004 321.894 320.091 309.503 320.091H32.0626C19.6718 320.091 9.58545 310.004 9.58545 297.613V118.865C9.58545 106.474 19.6718 96.3879 32.0626 96.3879Z" fill="#D39E33" stroke="#141414" strokeWidth="8"/>
+
+      <rect x="120" y="140" width="100" height="25" rx="12.5" fill="#26211E" stroke="#141414" strokeWidth="4"/>
+      <rect x="246" y="256" width="57" height="40" rx="8" fill="#A4704C" stroke="#111111" strokeWidth="4"/>
+      <text x="275" y="287" textAnchor="middle" fontFamily="Arial" fontSize="28" fontWeight="bold" fill="black">צ</text>
+
+      <text className="boxLabel" x="50%" y="365" textAnchor="middle" fontFamily="Arial" fontSize="32" fontWeight="bold" fill="black">
+        {textbox2}
+      </text>
+    </svg>
+  </div>
+
+</div>
+      {/* <div className="divBoxWrapper"> 
+                <div className="boxContainer closedBox" onClick={nextPage}> 
           <svg viewBox="0 0 342 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="mainSvg"> 
-            {/* גוף הקופסה האחורי (רקע) */} 
             <path d="M14 100.596H327.979V315.849H14V100.596Z" fill="#D39E33"/> 
-            
-            {/* כנף שמאל נפתחת באנימציה */} 
-            <g className="lid lidLeft"> 
+                        <g className="lid lidLeft"> 
               <path d="M14.5615 100.596L67.1975 24.0135H170.766V100.596H14.5615Z" fill="#D39E33" stroke="#141414" strokeWidth="4"/> 
             </g> 
             
-            {/* כנף ימין נפתחת באנימציה */} 
             <g className="lid lidRight"> 
               <path d="M326.369 100.596L274.335 24.0135H170.766V100.596H326.369Z" fill="#D39E33" stroke="#141414" strokeWidth="4"/> 
             </g> 
             
-            {/* גוף הקופסה הראשי מקדימה */} 
             <path d="M32.0626 96.3879H309.503C321.894 96.3879 331.981 106.474 331.981 118.865V297.613C331.981 310.004 321.894 320.091 309.503 320.091H32.0626C19.6718 320.091 9.58545 310.004 9.58545 297.613V118.865C9.58545 106.474 19.6718 96.3879 32.0626 96.3879Z" fill="#D39E33" stroke="#141414" strokeWidth="8"/> 
             
-         
-            {/* פרטים קטנים (ידית ומדבקה) */} 
             <rect x="120" y="140" width="100" height="25" rx="12.5" fill="#26211E" stroke="#141414" strokeWidth="4"/> 
             <rect x="246" y="256" width="57" height="40" rx="8" fill="#A4704C" stroke="#111111" strokeWidth="4"/> 
             <text x="275" y="287" textAnchor="middle" fontFamily="Arial" fontSize="28" fontWeight="bold" fill="black">צ</text> 
@@ -210,13 +286,10 @@ const Selectbox = ({ changeToPage, changeToSection }) => {
         </div> 
         <div className="boxContainer closedBox" onClick={nextPage}> 
           <svg viewBox="0 0 342 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="mainSvg"> 
-            {/* גוף הקופסה האחורי (רקע) */} 
             <path d="M14 100.596H327.979V315.849H14V100.596Z" fill="#686868ff"/> 
             
-            {/* גוף הקופסה הראשי מקדימה */} 
             <path d="M32.0626 96.3879H309.503C321.894 96.3879 331.981 106.474 331.981 118.865V297.613C331.981 310.004 321.894 320.091 309.503 320.091H32.0626C19.6718 320.091 9.58545 310.004 9.58545 297.613V118.865C9.58545 106.474 19.6718 96.3879 32.0626 96.3879Z" fill="#d39e33b0" stroke="#141414" strokeWidth="8"/> 
             
-            {/* פרטים קטנים (ידית ומדבקה) */} 
             <rect x="120" y="140" width="100" height="25" rx="12.5" fill="#26211E" stroke="#141414" strokeWidth="4"/> 
             <rect x="246" y="256" width="57" height="40" rx="8" fill="#a4714c79" stroke="#111111" strokeWidth="4"/> 
             <text x="275" y="287" textAnchor="middle" fontFamily="Arial" fontSize="28" fontWeight="bold" fill="black">צ</text> 
@@ -225,7 +298,7 @@ const Selectbox = ({ changeToPage, changeToSection }) => {
               {textbox2} 
             </text> 
           </svg> 
-        </div> 
+        </div>  */}
 {/* 
         <div className="boxContainer openBox" onClick={nextPage}>
           <svg viewBox="0 0 342 380" fill="none" xmlns="http://www.w3.org/2000/svg" className="mainSvg"> 

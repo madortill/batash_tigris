@@ -245,7 +245,8 @@
     {
       "id": "middle",
       "title": "מערכת נוספת ברכב",
-      "buttonText": "הבנתי"
+      "buttonText": "הבנתי",
+      "openText":"לחצו על הפתח לפתיחה חרך הירי!"
     },
     {
       "id": "front",

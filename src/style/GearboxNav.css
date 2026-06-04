@@ -45,75 +45,6 @@
 	transform: scale(1);
 }
 
-/* 
-
-.text-gearbox {
-    position: relative;
-    top: 8rem;
-    font-size: 1.5rem;
-    color: black;
-
-}
-
-.div-box {
-    display: flex;
-    flex-flow: row;
-    justify-content: space-between;
-    position: relative;
-    top: 20rem;
-    right: 20%;
-    width: 30%;
-    height: 20rem;
-
-}
-
-.main-svg {
-  overflow: visible;
-}
-
-.lid {
-  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  transform-box: fill-box;
-  transform-origin: bottom;
-}
-
-.box-container:hover #lid-left {
-  transform: rotate(-120deg) skewX(20deg) scaleY(0.8);
-}
-
-.box-container:hover #lid-right {
-  transform: rotate(120deg) skewX(-20deg) scaleY(0.8);
-}
-
-.floating-item {
-  opacity: 0;
-  transform: translateY(50px);
-  transition: all 0.6s ease-out;
-  transition-delay: 0.2s; 
-}
-
-.box-container:hover .floating-item {
-  opacity: 1;
-  transform: translateY(-80px); 
-  animation: float-soft 2s infinite ease-in-out 0.8s; 
-}
-
-@keyframes float-soft {
-  0%, 100% { transform: translateY(-80px); }
-  50% { transform: translateY(-95px); }
-}
-
-#box-label {
-  transition: all 0.5s ease;
-}
-.box-container:hover {
-  fill: #D39E33; 
-}
-
-
-
-
- */
 .effect-box:after, .effect-box:before { 
     content: ''; 
     position: absolute; 
@@ -126,23 +57,7 @@
     transition: opacity 0.35s, transform 0.35s; 
 } 
 
-.effect-box:before { 
-    border-left: 1px solid; 
-    border-right: 1px solid; 
-    transform: scale(1,0); 
-} 
-
-.effect-box:after { 
-    border-bottom: 1px solid; 
-    border-top: 1px solid; 
-    transform: scale(0,1); 
-} 
-
-.effect-box:hover:after, .effect-box:hover:before { 
-    opacity: 1; 
-    transform: scale(1); 
-} 
-
+/* 
 .text-gearbox { 
     position: relative; 
     top: 8rem; 
@@ -152,7 +67,6 @@
     width: 100%;
 } 
 
-/* הקונטיינר העוטף החדש שמסדר אותן במרכז המסך זו לצד זו */
 .divBoxWrapper { 
     display: flex; 
     flex-flow: row; 
@@ -166,8 +80,7 @@
 
 .boxContainer { 
     cursor: pointer; 
-    width: 260px; /* הגדרת גודל אחיד ומדויק לקופסאות */
-} 
+    width: 260px; 
 
 .mainSvg { 
     overflow: visible; 
@@ -175,11 +88,10 @@
     height: auto;
 } 
 
-/* --- קופסה שמאלית (אנימציית פתיחה ב-Hover) --- */
 .lid { 
     transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.2s; 
     transform-box: fill-box; 
-    opacity: 0; /* מוסתר כשהקופסה סגורה לחלוטין */
+    opacity: 0; 
 } 
 
 .tape {
@@ -202,15 +114,13 @@
 } 
 
 .closedBox:hover .tape {
-    opacity: 0; /* סרט ההדבקה נעלם עם הפתיחה */
+    opacity: 0; 
 }
 
-/* --- קופסה ימנית (מצב פתוח קבוע) --- */
 .staticLid {
     transform-box: fill-box;
 }
 
-/* אפקט תנודה קל ואינטראקטיבי לקופסה הפתוחה ב-Hover */
 .openBox:hover .staticLid:nth-of-type(1) {
     transform: rotate(-10deg);
     transform-origin: bottom left;
@@ -223,7 +133,6 @@
     transition: transform 0.3s ease;
 }
 
-/* עיצוב הטקסט מתחת לקופסאות */
 .boxLabel { 
     transition: fill 0.3s ease; 
 } 
@@ -231,279 +140,100 @@
 .boxContainer:hover .boxLabel { 
     fill: #A4704C; 
 }
-
-
-
-/*--------------------------------------------------------------------*/
-/* 
-
-.transfer-box {
-  width: min(64vw, 48rem);
-  aspect-ratio: 1.52 / 1;
-  background: #f7d77a;
-  border-radius: 0.45rem;
-  position: relative;
-  margin: 0 auto;
-  direction: rtl;
-  overflow: hidden;
-  top: 20%;
-
-}
-
-.transfer-instruction {
-  position: relative;
-  top: 15%;
-  right: 50%;
-  transform: translateX(50%);
-  margin: 0;
-  font-size: clamp(0.9rem, 0.95vw, 1.3rem);
-  color: #1b1b1b;
-}
-
-.transfer-card {
-  position: absolute;
-  inset: 13% 8% 8% 8%;
-}
-
-.transfer-text-box {
-  position: absolute;
-  top: 0;
-  right: 10%;
-  width: 60%;
-  min-height: clamp(3rem, 7vh, 4.3rem);
-  background: #ffe9a8;
-  border-radius: 0.35rem;
-  padding: 0.7rem 1rem;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  font-size: clamp(0.75rem, 0.92vw, 1rem);
-  line-height: 1.35;
-  font-weight: 500;
-}
-
-.transfer-diagram {
-  position: absolute;
-  right: 14%;
-  bottom: 5%;
-  width: 50%;
-  height: 62%;
-}
-
-.axle {
-  position: absolute;
-  right: 30%;
-  width: 42%;
-  height: clamp(0.22rem, 0.45vw, 0.4rem);
-  background: #8f815f;
-  border-radius: 999px;
-}
-
-.front-axle {
-  top: 25%;
-}
-
-.rear-axle {
-  bottom: 24%;
-}
-
-.shaft {
-  position: absolute;
-  right: 49.5%;
-  top: 25%;
-  width: clamp(0.22rem, 0.45vw, 0.4rem);
-  height: 51%;
-  background: #8f815f;
-  border-radius: 999px;
-}
-
-.wheel {
-  position: absolute;
-  width: clamp(2rem, 3.2vw, 3.4rem);
-  aspect-ratio: 0.55 / 1;
-  border-radius: 45%;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      #1f1f1f 0 8%,
-      #4b4b4b 8% 14%,
-      #151515 14% 22%
-    );
-  border: clamp(0.15rem, 0.28vw, 0.28rem) solid #282828;
-  box-shadow:
-    inset 0 0 0.35rem rgba(255, 255, 255, 0.2),
-    inset 0 0 0.8rem rgba(0, 0, 0, 0.65);
-  transform-origin: center;
-}
-
-.wheel::before,
-.wheel::after {
-  content: "";
-  position: absolute;
-  inset: 8% 18%;
-  border-radius: 50%;
-  border: 0.16rem solid rgba(255, 255, 255, 0.18);
-}
-
-.wheel::after {
-  inset: 24% 31%;
-  background: #353535;
-  border-color: #111;
-}
-
-.wheel-rim {
-  position: absolute;
-  inset: 34% 39%;
-  border-radius: 50%;
-  background: #777;
-  z-index: 2;
-}
-
-.front-right-wheel {
-  top: 3%;
-  right: 18%;
-}
-
-.front-left-wheel {
-  top: 3%;
-  left: 18%;
-}
-
-.rear-right-wheel {
-  bottom: 2%;
-  right: 18%;
-}
-
-.rear-left-wheel {
-  bottom: 2%;
-  left: 18%;
-}
-
-.wheel-spin {
-  animation: wheelDrive 0.35s linear infinite;
-}
-
-@keyframes wheel-spin-forward {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-*/
-/* 
-.wheel {
-  position: absolute;
-  width: 40px; 
-  height: 40px;
-  border-radius: 50%;
-  background: #1a1a1a;
-  border: 3px solid #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.3s ease;
-}
-
-.wheel-spin {
-  animation: wheel-spin-forward 0.5s linear infinite;
-  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.1);
-}
-
-.wheel-rim {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background: 
-    linear-gradient(90deg, transparent 45%, #444 45%, #444 55%, transparent 55%),
-    linear-gradient(0deg, transparent 45%, #444 45%, #444 55%, transparent 55%);
-  border-radius: 50%;
-} */
-
-/* .wheel-rim::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 25%;
-  height: 25%;
-  background: #666;
-  border-radius: 50%;
-  box-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-
-.gear-selector {
-  position: absolute;
-  right: -30%;
-  bottom: 2%;
-  width: clamp(4rem, 7vw, 6.6rem);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle, #1b1b1b 0 25%, #4c4c4c 26% 36%, #111 37% 46%, #3c3c3c 47% 62%, #171717 63%);
-  box-shadow:
-    inset 0 0 0.8rem rgba(255, 255, 255, 0.2),
-    0 0.35rem 0.7rem rgba(0, 0, 0, 0.28);
-}
-
-.transfer-buttons {
-  position: absolute;
-  left: 0;
-  top: 18%;
-  width: 24%;
-
-  display: flex;
-  flex-direction: column;
-  gap: clamp(0.75rem, 1.8vh, 1.35rem);
-}
-
-.slow-spin {
-  animation-duration: 1.2s; 
-}
-
-.transfer-mode-btn {
-  position: relative;
-  height: clamp(2.35rem, 4.3vh, 3.1rem);
-  border: none;
-  border-radius: 999px;
-  background: #f4bd45;
-  color: #111;
-  font-size: clamp(1rem, 1.45vw, 1.5rem);
-  font-weight: 600;
+ */
+.boxContainer {
   cursor: pointer;
-  box-shadow: 0 0.22rem 0 #c98b17;
-  transition: 0.2s ease;
+  width: 260px;
+  transition:
+    transform 0.35s ease,
+    filter 0.35s ease,
+    opacity 0.35s ease;
 }
 
-.transfer-mode-btn:hover,
-.transfer-mode-btn.selected {
-  background: #ed9b00;
-  transform: translateY(-0.12rem);
+.boxContainer:hover {
+  transform: translateY(-8px) scale(1.03);
 }
 
-.mode-check {
-  position: absolute;
-  top: -0.7rem;
-  left: -0.25rem;
-
-  width: clamp(1.15rem, 1.7vw, 1.6rem);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-
-  background: #42b866;
-  color: white;
-  font-size: clamp(0.8rem, 1.1vw, 1rem);
-  font-weight: bold;
-
-  display: grid;
-  place-items: center;
+.mainSvg {
+  overflow: visible;
+  width: 100%;
+  height: auto;
 }
-*/
+
+/* כנפיים - מצב בסיס */
+.lid {
+  opacity: 0;
+  transform-box: fill-box;
+  transition:
+    transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.25s ease;
+}
+
+/* פתיחה ב-hover */
+.closedBox:hover .lid {
+  opacity: 1;
+}
+
+.closedBox:hover .lidLeft {
+  transform: rotate(-115deg) translate(-25px, -15px);
+  transform-origin: bottom left;
+}
+
+.closedBox:hover .lidRight {
+  transform: rotate(115deg) translate(25px, -15px);
+  transform-origin: bottom right;
+}
+
+/* תיבה פתוחה קבוע - לפעם השנייה */
+.openBox .lid {
+  opacity: 1;
+}
+
+.openBox .lidLeft {
+  transform: rotate(-115deg) translate(-25px, -15px);
+  transform-origin: bottom left;
+}
+
+.openBox .lidRight {
+  transform: rotate(115deg) translate(25px, -15px);
+  transform-origin: bottom right;
+}
+
+/* אנימציה קטנה ונעימה לתיבה שכבר פתוחה */
+.openBox:hover .lidLeft {
+  transform: rotate(-122deg) translate(-29px, -18px);
+}
+
+.openBox:hover .lidRight {
+  transform: rotate(122deg) translate(29px, -18px);
+}
+
+/* תיבה פעילה */
+.activeBox {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* תיבה לא מאופשרת - בפעם הראשונה */
+.disabledBox {
+  pointer-events: none;
+  opacity: 0.55;
+  filter: grayscale(0.25);
+  cursor: default;
+}
+
+.disabledBox:hover {
+  transform: none;
+}
+
+/* טקסט מתחת לקופסה */
+.boxLabel {
+  transition: fill 0.3s ease;
+}
+
+.activeBox:hover .boxLabel {
+  fill: #A4704C;
+}
 
 .stop-sign-overlay {
     position: fixed;
@@ -511,7 +241,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.6); /* החשכה של הרקע */
+    background: rgba(0, 0, 0, 0.6); 
     display: flex;
     justify-content: center;
     align-items: center;
