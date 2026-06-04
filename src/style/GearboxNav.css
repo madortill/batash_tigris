@@ -985,3 +985,126 @@ box-shadow: 0px 0px 73px 19px rgba(71,71,71,0.46);
   font-size: clamp(0.85rem, 1.1vw, 1.1rem);
   color: #5a4a00;
 }
+
+
+
+
+
+
+.divBoxWrapper {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  position: relative;
+  top: 12rem;
+  width: 100%;
+  height: 22rem;
+}
+
+.boxContainer {
+  width: 260px;
+  cursor: pointer;
+}
+
+.mainSvg {
+  overflow: visible;
+  width: 100%;
+  height: auto;
+}
+
+.boxBack,
+.boxBody {
+  fill: #D39E33;
+}
+
+.boxSticker {
+  fill: #A4704C;
+}
+
+/* כנפיים במצב סגור */
+.lid {
+  opacity: 1;
+  transform-box: fill-box;
+  transition: transform 0.55s ease;
+}
+
+.closedBox .lidLeft,
+.closedBox .lidRight {
+  transform: rotate(0deg) translate(0, 0);
+}
+
+/* פתיחה ב-hover רק לקופסה פעילה */
+.activeGearboxBox:hover .lidLeft,
+.activeTransferBox:hover .lidLeft {
+  transform: rotate(-115deg) translate(-25px, -15px);
+  transform-origin: bottom left;
+}
+
+.activeGearboxBox:hover .lidRight,
+.activeTransferBox:hover .lidRight {
+  transform: rotate(115deg) translate(25px, -15px);
+  transform-origin: bottom right;
+}
+
+/* תיבת הילוכים פתוחה קבוע בפעם השנייה */
+.openBox .lidLeft {
+  transform: rotate(-115deg) translate(-25px, -15px);
+  transform-origin: bottom left;
+}
+
+.openBox .lidRight {
+  transform: rotate(115deg) translate(25px, -15px);
+  transform-origin: bottom right;
+}
+
+/* אנימציה עדינה לקופסה הפתוחה */
+.openBox:hover .lidLeft {
+  transform: rotate(-120deg) translate(-28px, -17px);
+}
+
+.openBox:hover .lidRight {
+  transform: rotate(120deg) translate(28px, -17px);
+}
+
+/* תיבת העברה מושחרת בפעם הראשונה */
+.disabledTransferBox {
+  cursor: default;
+  pointer-events: none;
+}
+
+.disabledTransferBox .boxBack,
+.disabledTransferBox .boxBody {
+  fill: #A79A6A;
+}
+
+.disabledTransferBox .boxSticker {
+  fill: #9A8B5F;
+}
+
+.disabledTransferBox .boxLabel {
+  fill: #333;
+}
+
+/* חשוב: אין hover בכלל לקופסה מושחרת */
+.disabledTransferBox:hover .lidLeft,
+.disabledTransferBox:hover .lidRight {
+  transform: rotate(0deg) translate(0, 0);
+}
+
+/* אפקט עדין רק לקופסה לחיצה */
+.activeGearboxBox:hover,
+.activeTransferBox:hover {
+  transform: translateY(-3px);
+  transition: transform 0.25s ease;
+}
+
+.boxLabel {
+  transition: fill 0.25s ease;
+}
+
+.activeGearboxBox:hover .boxLabel,
+.activeTransferBox:hover .boxLabel {
+  fill: #A4704C;
+}
