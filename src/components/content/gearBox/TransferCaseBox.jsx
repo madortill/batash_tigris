@@ -122,8 +122,8 @@ const [showWarningText, setShowWarningText] = useState(false);
   const close=pageData[1]?.closePopUp;
   
 
-  const previousPage = () => changeToPage(0);
-  const nextPage = () => changeToPage(2);
+  const previousPage = () => changeToPage(3);
+  const nextPage = () => changeToPage(5);
 
   const handleCheckStep = (index) => {
     setCheckedSteps((prev) =>
@@ -151,23 +151,6 @@ const [showWarningText, setShowWarningText] = useState(false);
   const canContinue = clickedModes.length === 3 && allStepsChecked;
 
   const displayText = selectedMode ? modeText : defaultText;
-
-// const Wheel = ({ active, slow, className = "" }) => {
-//   return (
-//     <div
-//       className={`
-//         tcb-wheel3d
-//         ${active ? "tcb-wheel3d--moving" : ""}
-//         ${slow ? "tcb-wheel3d--slow" : ""}
-//         ${className}
-//       `}
-//     >
-//       <div className="tcb-wheel3d__surface" />
-//       <div className="tcb-wheel3d__depth" />
-//     </div>
-//   );
-// };
-
 
   return (
     <>

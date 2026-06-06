@@ -71,7 +71,7 @@ const ActionsPopup = ({ title, steps, buttonText, onClose }) => {
   );
 };
 
-const BDriveA = ({ changeToPage }) => {
+const BDriveA = ({ changeToPage, startPage, changeToSection }) => {
   const { data } = useData();
 
 const [activePopup, setActivePopup] = useState(null);
@@ -123,7 +123,7 @@ const [currentSign, setCurrentSign] = useState(stopSign);
   }, [activePopup, startPopup, endPopup, startSteps, endSteps]);
 
   const previousPage = () => {
-    changeToPage(2);
+    changeToPage(5);
   };
 
  const handleSignClick = () => {
@@ -153,7 +153,7 @@ const handlePopupClose = () => {
   }
 };
  const nextPage = () => {
-    changeToPage(4);
+    changeToSection(4);
   };
 
 const handleCarAnimationEnd = () => {

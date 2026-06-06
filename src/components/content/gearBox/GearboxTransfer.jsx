@@ -161,12 +161,12 @@ const GearboxTransfer = ({ changeToPage, startPage, changeToSection }) => {
 </div>
 
       <div className="backBtn">
-        <img src={backBtn} alt="backBtn" className="backBtnImg" onClick={() => changeToPage(1)} />
+        <img src={backBtn} alt="backBtn" className="backBtnImg" onClick={() => changeToPage(2)} />
         <p className="backBtnText">{backBtnText}</p>
       </div>
       <button
         className="nextBtn tigris-next-btn"
-        onClick={() => changeToPage(3)}
+        onClick={() => changeToPage(4)}
       >
         {nextBtn}
       </button>

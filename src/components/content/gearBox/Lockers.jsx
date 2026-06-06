@@ -49,11 +49,11 @@ const galText = pageData.galText;
 
 
   const previousPage = () => {
-    changeToPage(1);
+    changeToPage(4);
   };
 
   const nextPage = () => {
-    changeToPage(3);
+    changeToPage(6);
   };
 
   const handleOpenLocker = (type) => {
