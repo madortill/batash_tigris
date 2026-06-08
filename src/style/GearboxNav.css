@@ -57,16 +57,16 @@
     transition: opacity 0.35s, transform 0.35s; 
 } 
 
-/* 
 .text-gearbox { 
-    position: relative; 
-    top: 8rem; 
-    font-size: 1.8rem; 
-    color: black; 
-    text-align: center;
-    width: 100%;
-} 
-
+  position: relative; 
+  top: 8rem; 
+  font-size: 1.1rem; 
+  color: black; 
+  text-align: center;
+  width: 100%;
+  } 
+  
+  /* 
 .divBoxWrapper { 
     display: flex; 
     flex-flow: row; 
@@ -414,11 +414,12 @@
 /* ── Semi title above the box ── */
 .tcb-semi-title {
   text-align: center;
-  font-size: clamp(1rem, 1.5vw, 1.8rem);
+  font-size: clamp(1rem, 1.1vw, 1.4rem);
   color: #1b1b1b;
-  margin: 0 0 0.6rem;
+  margin-top: 10px;
+  gap: 10px;
   position: relative;
-  top: 14%;
+  top: 16%;
 }
 
 /* ── Yellow outer box ── */
@@ -449,7 +450,13 @@
 }
 
 .tcb-info-text--mode {
-  color: #7a4d00;
+  color: #4b3001;
+  position: relative;
+  right: 10%;
+  width: 70%;
+  background-color: #ffe6bb;
+  border-radius: 5px solid #fff;
+  padding: 10px;
   font-size: clamp(0.7rem, 1.2vw, 1.8rem);
 }
 

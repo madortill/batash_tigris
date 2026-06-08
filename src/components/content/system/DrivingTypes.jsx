@@ -108,16 +108,14 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
             </div>
           </aside>
 
-          <section className="driving-content-panel">
+          {/* <section className="driving-content-panel"> */}
             {!activeMode ? (
               <div className="driving-empty-state">
-                <h3>בחרו מצב נהיגה</h3>
                 <p>
                 </p>
               </div>
             ) : (
               <div key={activeMode.id} className="driving-mode-card">
-                <div className="driving-mode-badge">מצב נהיגה</div>
                 <h2 className="driving-mode-title">{activeMode.modeName}</h2>
                 <p className="driving-mode-description">
                   {activeMode.description}
@@ -131,13 +129,13 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
                 )}
               </div>
             )}
-          </section>
+          {/* </section> */}
 
-          <aside className="driving-image-panel">
+          {/* <aside className="driving-image-panel"> */}
             <div className="driving-image-placeholder">
               <span>לתמונה</span>
             </div>
-          </aside>
+          {/* </aside> */}
         </div>
       </div> 
 

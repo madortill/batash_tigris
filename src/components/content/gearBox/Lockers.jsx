@@ -1,5 +1,4 @@
 
-import { useState } from "react";
 import "../../../style/GearboxExtra.css";
 import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
@@ -8,26 +7,53 @@ import wheelFull from "../../../assets/images/wheelAndLockers.svg";
 import wheelLeft from "../../../assets/images/halfLeft.svg";
 import wheelRight from "../../../assets/images/halfRight.svg";
 import galGalgal from "../../../assets/images/galGalgal.png";
+import { useState, useEffect } from "react";
 
 const Lockers = ({ changeToPage }) => {
   const { data } = useData();
 
-const [openLockers, setOpenLockers] = useState([]);
-  // const [openLocker, setOpenLocker] = useState(null);
-  const [clickedLockers, setClickedLockers] = useState([]);
-  const [lockerClicked, setLockerClicked] = useState(false);
+  const STORAGE_KEY = "LockersPageState";
 
+  const savedState = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "{}");
 
-// 1. בדיקת קיום הנתונים בצורה בטוחה (לפי המפתח הנכון במערך)
-const gearboxArray = data?.Gearbox;
+  const [openLockers, setOpenLockers] = useState(savedState.openLockers ?? []);
+  const [clickedLockers, setClickedLockers] = useState(savedState.clickedLockers ?? []);
+  const [lockerClicked, setLockerClicked] = useState(savedState.lockerClicked ?? false);
 
-// 2. כפתורי ניווט כלליים
-const backBtnText = data.general?.[0]?.text || "חזור";
-const nextBtn = data.general?.[1]?.text || "הבא";
+  const [showLockerPopup, setShowLockerPopup] = useState(savedState.showLockerPopup ?? false);
+  const [lockerPopupOpen, setLockerPopupOpen] = useState(savedState.lockerPopupOpen ?? false);
+  const [lockerPopupOpenCheck, setLockerPopupOpenCheck] = useState(
+    savedState.lockerPopupOpenCheck ?? false
+  );
 
-// 3. שליפת האובייקט שמכיל את Lockers (הוא האינדקס ה-3 במערך Gearbox)
-const pageData = gearboxArray[3]?.Lockers;
-if (!pageData) return null; // הגנה למקרה שהמבנה ישתנה
+  useEffect(() => {
+    sessionStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({
+        openLockers,
+        clickedLockers,
+        lockerClicked,
+        showLockerPopup,
+        lockerPopupOpen,
+        lockerPopupOpenCheck,
+      })
+    );
+  }, [
+    openLockers,
+    clickedLockers,
+    lockerClicked,
+    showLockerPopup,
+    lockerPopupOpen,
+    lockerPopupOpenCheck,
+  ]);
+
+  const gearboxArray = data?.Gearbox;
+
+  const backBtnText = data?.general?.[0]?.text || "חזור";
+  const nextBtn = data?.general?.[1]?.text || "הבא";
+
+  const pageData = gearboxArray?.[3]?.Lockers;
+  if (!pageData) return null;
 
 const title = pageData.title;
 const semiTitle = pageData.semiTitle;
@@ -39,9 +65,7 @@ const autoText = pageData.lockers?.[0]?.text;
 const manualTitle = pageData.lockers?.[1]?.title;
 const manualText = pageData.lockers?.[1]?.text;
 
-const [showLockerPopup, setShowLockerPopup] = useState(false);
-const [lockerPopupOpen, setLockerPopupOpen] = useState(false);
-const [lockerPopupOpenCheck, setLockerPopupOpenCheck] = useState(false);
+
 // 5. שליפת ה-popUp (הוא נמצא באינדקס ה-4 במערך Gearbox)
   const popUp = pageData.popUp;
 const popUpNext = pageData.gotIt;
@@ -69,6 +93,7 @@ const galText = pageData.galText;
   });
 };
  const handleLockerClick = () => {
+    setLockerClicked(true);
   setShowLockerPopup(true);
   setLockerPopupOpen(false);
 

@@ -93,14 +93,47 @@ const TopDownCar = ({ mode, isMoving }) => {
 /* ─── Main component ─── */
 const TransferCaseBox = ({ changeToPage, startPage }) => {
   const { data } = useData();
-  const [showPopUp, setShowPopUp] = useState(false);
-  const [checkedSteps, setCheckedSteps] = useState([]);
-  const [selectedMode, setSelectedMode] = useState(null);
-  const [clickedModes, setClickedModes] = useState([]);
-  const [isMoving, setIsMoving] = useState(false);
-  const [modeText, setModeText] = useState(null);
-const [showWarningText, setShowWarningText] = useState(false);
+//   const [showPopUp, setShowPopUp] = useState(false);
+//   const [checkedSteps, setCheckedSteps] = useState([]);
+//   const [selectedMode, setSelectedMode] = useState(null);
+//   const [clickedModes, setClickedModes] = useState([]);
+//   const [isMoving, setIsMoving] = useState(false);
+//   const [modeText, setModeText] = useState(null);
+// const [showWarningText, setShowWarningText] = useState(false);
+const STORAGE_KEY = "TransferCaseBoxState";
 
+const savedState = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "{}");
+
+const [showPopUp, setShowPopUp] = useState(savedState.showPopUp ?? false);
+const [checkedSteps, setCheckedSteps] = useState(savedState.checkedSteps ?? []);
+const [selectedMode, setSelectedMode] = useState(savedState.selectedMode ?? null);
+const [clickedModes, setClickedModes] = useState(savedState.clickedModes ?? []);
+const [isMoving, setIsMoving] = useState(savedState.isMoving ?? false);
+const [modeText, setModeText] = useState(savedState.modeText ?? null);
+const [showWarningText, setShowWarningText] = useState(savedState.showWarningText ?? false);
+
+useEffect(() => {
+  sessionStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      showPopUp,
+      checkedSteps,
+      selectedMode,
+      clickedModes,
+      isMoving,
+      modeText,
+      showWarningText,
+    })
+  );
+}, [
+  showPopUp,
+  checkedSteps,
+  selectedMode,
+  clickedModes,
+  isMoving,
+  modeText,
+  showWarningText,
+]);
   if (!data?.Gearbox) return null;
 
   const pageData = data.Gearbox;
@@ -276,7 +309,7 @@ const [showWarningText, setShowWarningText] = useState(false);
     <img src={warningSmall} className="small-warning" alt="warning" />
     <p className="tcb-warning-text">{warning}</p>
   </div>
-)};
+)}
     </>
   );
 };

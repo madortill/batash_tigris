@@ -61,6 +61,8 @@
 /* ── כותרת ── */
 
 .dp-subtitle {
+  position: relative;
+  top: 20%;
   font-size: clamp(13px, 3.5vw, 15px);
   color: #444;
   text-align: center;
@@ -117,6 +119,7 @@
 .dp-door-area {
   width: 100%;
   display: flex;
+  padding: auto;
   justify-content: center;
 }
 
@@ -198,7 +201,7 @@
 .annotation {
   position: absolute;
   top: 18%;
-  right: 4%;
+  right: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -343,4 +346,569 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to   { opacity: 1; transform: scale(1);    }
+}
+.system-door-page {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  direction: rtl;
+}
+
+.dp-content-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 55vh;
+}
+
+.dp-door-area {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* כל סצנת הדלת */
+.door-scene {
+  position: relative;
+  width: min(420px, 78vw);
+  min-height: 390px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+/* המסגרת שמחזיקה דלת ופתח */
+.door-wrapper {
+  position: relative;
+  width: min(260px, 52vw);
+  height: min(360px, 68vw);
+  transform-style: preserve-3d;
+}
+
+/* הפתח מאחורי הדלת */
+.doorway {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: rgba(255, 244, 200, 0.65);
+  border: 3px solid #003f9e;
+  overflow: hidden;
+  transform: scale(0.92);
+  opacity: 0;
+  transition: transform 0.45s ease, opacity 0.45s ease;
+  z-index: 1;
+}
+
+.doorway.grow {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.doorway-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* התמונה הפנימית — למשל דלת אחורית */
+.door-inner-image {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+}
+
+/* הדלת עצמה */
+.door {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transform-origin: right center;
+  transition: transform 1s ease;
+}
+
+/* פתיחת הדלת */
+.door.open-door {
+  transform: rotateY(105deg);
+}
+
+/* הצד הקדמי של הדלת */
+.door-front-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff4c8;
+  border: 3px solid #003f9e;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/*
+  זה החלק שמונע מהתמונה של דלת הצד
+  להיראות הפוכה בזמן פתיחת הדלת.
+*/
+.door-back-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: #f0dfaa;
+  border: 3px solid #003f9e;
+
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* תמונת הדלת החיצונית */
+.door-outer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* טקסט על הדלת */
+.door-title-on-image {
+  position: absolute;
+  bottom: 14px;
+  right: 50%;
+  transform: translateX(50%);
+  color: #003f9e;
+  font-weight: 900;
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.door-label {
+  position: absolute;
+  bottom: -28px;
+  margin: 0;
+  color: #003f9e;
+  font-weight: 900;
+  font-size: 1.05rem;
+}
+
+.door-hint-text {
+  position: absolute;
+  top: -34px;
+  margin: 0;
+  font-size: 0.95rem;
+  color: #111;
+  text-align: center;
+}
+
+/* הערה וחץ */
+.annotation {
+  position: absolute;
+  left: -160px;
+  top: 42%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.annotation-text {
+  white-space: pre-line;
+  color: #111;
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.annotation-arrow {
+  width: 80px;
+  height: 2px;
+  background: #111;
+  position: relative;
+}
+
+.annotation-arrow::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 50%;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid #111;
+  border-right: 2px solid #111;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.dp-warning-text {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  margin: 8px auto 0;
+  text-align: center;
+  color: #111;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+/* רספונסיביות */
+@media (max-width: 900px) {
+  .door-scene {
+    width: 80vw;
+    min-height: 360px;
+  }
+
+  .door-wrapper {
+    width: min(240px, 54vw);
+    height: min(330px, 70vw);
+  }
+
+  .annotation {
+    left: -110px;
+  }
+
+  .annotation-arrow {
+    width: 54px;
+  }
+}
+
+@media (max-width: 600px) {
+  .dp-content-area {
+    min-height: 50vh;
+  }
+
+  .door-scene {
+    width: 96vw;
+    min-height: 330px;
+  }
+
+  .door-wrapper {
+    width: min(220px, 62vw);
+    height: min(300px, 82vw);
+  }
+
+  .annotation {
+    position: static;
+    margin-top: 24px;
+    justify-content: center;
+  }
+
+  .annotation-arrow {
+    display: none;
+  }
+
+  .door-scene {
+    flex-direction: column;
+  }
+
+  .door-label {
+    bottom: -24px;
+  }
+}
+.door-wrapper {
+  position: relative;
+  width: min(260px, 52vw);
+  height: min(360px, 68vw);
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.doorway {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: rgba(255, 244, 200, 0.65);
+  border: 3px solid #003f9e;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 1;
+}
+
+.doorway.grow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.doorway-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.door-inner-image {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+}
+
+.door {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  transform-origin: right center;
+  transform-style: preserve-3d;
+  transition: transform 0.9s ease, opacity 0.2s ease;
+}
+
+/* פתיחה אחת בלבד */
+.door.open-door {
+  transform: rotateY(-105deg);
+}
+
+/* הצד הקדמי בלבד */
+.door-front-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff4c8;
+  border: 3px solid #003f9e;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* לא להשתמש בזה יותר */
+.door-back-face {
+  display: none;
+}
+
+.door-outer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.door-title-on-image {
+  position: absolute;
+  bottom: 14px;
+  right: 50%;
+  transform: translateX(50%);
+  color: #003f9e;
+  font-weight: 900;
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+.door.open-door .door-front-face {
+  opacity: 0;
+  transition: opacity 0.15s ease 0.45s;
+}
+
+.door:not(.open-door) .door-front-face {
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+.door-click-area {
+  position: relative;
+  width: min(260px, 52vw);
+  height: min(360px, 68vw);
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1200px;
+}
+
+.door-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.doorway {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: rgba(255, 244, 200, 0.65);
+  border: 3px solid #003f9e;
+  overflow: hidden;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 1;
+}
+
+.doorway.grow {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.doorway-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.door-inner-image {
+  width: 86%;
+  height: 86%;
+  object-fit: contain;
+}
+
+.door {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+  transform-origin: right center;
+  transform-style: preserve-3d;
+  transition: transform 0.9s ease;
+  pointer-events: none;
+}
+
+.door.open-door {
+  transform: rotateY(-105deg);
+}
+
+.door-front-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff4c8;
+  border: 3px solid #003f9e;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.door.open-door .door-front-face {
+  opacity: 0;
+  transition: opacity 0.15s ease 0.45s;
+}
+
+.door:not(.open-door) .door-front-face {
+  opacity: 1;
+  transition: opacity 0.15s ease;
+}
+
+.door-outer-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.door-title-on-image {
+  position: absolute;
+  bottom: 14px;
+  right: 50%;
+  transform: translateX(50%);
+  color: #003f9e;
+  font-weight: 900;
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+  text-align: center;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+
+/* ===== Door final overrides ===== */
+
+.door-click-area {
+  position: relative;
+  width: min(260px, 52vw);
+  height: min(360px, 68vw);
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  perspective: 1200px;
+}
+
+.door-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.door {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: transparent;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  transition: transform 0.9s ease;
+  pointer-events: none;
+}
+
+.door.open-door {
+  transform: rotateY(-105deg);
+}
+
+.door-front-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff4c8;
+  border: 3px solid #003f9e;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.door-outer-image,
+.door-inner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+  user-select: none;
+}
+
+.door-inner-image {
+  padding: 7%;
+  box-sizing: border-box;
+}
+
+.door.show-open-image {
+  transform: none;
+}
+
+.door.show-open-image .door-front-face {
+  opacity: 1;
+}
+
+.door.open-door .door-front-face {
+  opacity: 0;
+  transition: opacity 0.15s ease 0.45s;
+}
+
+.door:not(.open-door) .door-front-face {
+  opacity: 1;
+  transition: opacity 0.15s ease;
 }

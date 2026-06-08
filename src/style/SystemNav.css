@@ -29,25 +29,25 @@
 
 .driving-types-layout {
   display: grid;
-  grid-template-columns: 260px 1fr 260px;
-  gap: 24px;
+  grid-template-rows: 60px 1fr 60px;
   align-items: start;
-  margin-top: 34px;
+  margin-top: 10px;
 }
 
 .driving-selector-panel,
 .driving-content-panel,
 .driving-image-panel {
-  background: rgba(255, 255, 255, 0.42);
-  border: 1px solid rgba(0, 58, 153, 0.12);
+  /* background: rgba(255, 255, 255, 0.42); */
+  /* border: 1px solid rgba(0, 58, 153, 0.12); */
   border-radius: 24px;
   padding: 22px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); */
   backdrop-filter: blur(4px);
 }
 
 .driving-panel-title {
   margin: 0;
+    font-family: "assistant-extraBold";
   font-size: 1.2rem;
   color: #003a99;
 }
@@ -61,12 +61,13 @@
 
 .driving-modes-list {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 12px;
 }
 
 .driving-mode-btn {
-  width: 100%;
+  width: 20%;
+  height: 5%;
   border: none;
   border-radius: 16px;
   padding: 14px 16px;
@@ -84,13 +85,12 @@
 
 .driving-mode-btn:hover {
   transform: translateY(-2px);
-  background: #e8eefc;
+  background: #ccdbff;
 }
 
 .driving-mode-btn--active {
-  background: #003a99;
+  background: #003f9e;
   color: white;
-  box-shadow: 0 10px 22px rgba(0, 58, 153, 0.22);
 }
 
 .driving-mode-btn--viewed {
@@ -116,7 +116,6 @@
 .driving-empty-state {
   width: 100%;
   min-height: 316px;
-  border: 2px dashed rgba(0, 58, 153, 0.18);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -133,8 +132,14 @@
 }
 
 .driving-mode-card {
-  width: 100%;
-  animation: drivingFadeIn 0.35s ease;
+  position: relative;
+  right: 10%;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  width: 80%;
+  margin-top: 100px;
+  /* animation: drivingFadeIn 0.35s ease; */
 }
 
 @keyframes drivingFadeIn {
@@ -148,7 +153,7 @@
   }
 }
 
-.driving-mode-badge {
+/* .driving-mode-badge {
   display: inline-block;
   background: rgba(0, 58, 153, 0.1);
   color: #003a99;
@@ -157,12 +162,13 @@
   padding: 8px 14px;
   font-size: 0.85rem;
   margin-bottom: 14px;
-}
+} */
 
 .driving-mode-title {
   margin: 0 0 16px;
   font-size: 1.8rem;
-  color: #003a99;
+      font-family: "assistant-extraBold";
+
 }
 
 .driving-mode-description {
@@ -203,7 +209,12 @@
 }
 
 .driving-image-placeholder {
-  width: 100%;
+  width: 12%;
+  height: 10%;
+  margin-top: 30px;
+  position: relative;
+  right: 50%;
+  transform: translate(50%);
   aspect-ratio: 1 / 1;
   border-radius: 22px;
   border: 2px dashed rgba(0, 58, 153, 0.22);
@@ -215,7 +226,7 @@
   padding: 16px;
   color: #666;
   font-weight: 700;
-  min-height: 260px;
+  min-height: 200px;
 }
 
 /* טאבלט */
@@ -277,13 +288,17 @@
    Prefix: sys-
    כדי לא לדרוס CSS של עמודים אחרים
 ========================================================= */
-
+.sys-types-page{
+  width: 100%;
+  height: 100vh;
+}
 /* Header ייחודי כדי לא להידרס מ-tigris-general-title */
 .sys-types-header {
   position: relative;
+    top: clamp(3.9rem, 9vh, 5.9rem);
+
   z-index: 2;
   width: min(82%, 46rem);
-  margin: clamp(3.9rem, 9vh, 5.9rem) auto clamp(1rem, 10vh, 4.8rem);
   text-align: center;
 
   display: flex;
@@ -293,9 +308,8 @@
 
 .sys-types-subtitle {
   order: 2;
-  width: 100%;
-  margin-top:0.5rem;
-
+  position: relative;
+  top:8rem;
   text-align: center;
   color: #111;
   font-size: clamp(0.85rem, 1.25vw, 1.05rem);
@@ -305,6 +319,8 @@
 
 .sys-types-title {
   top: clamp(3.9rem, 9vh, 5.9rem);
+    margin: clamp(3.9rem, 9vh, 5.9rem) auto clamp(1rem, 10vh, 4.8rem);
+
   right: 50%;
   transform: translateX(50%);
   margin: 0;
@@ -314,10 +330,7 @@
   text-align: center;
   white-space: nowrap;
 
-
-
   order: 1;
-  /* width: 100%; */
 
   text-align: center;
   line-height: 1.05;
@@ -327,7 +340,7 @@
 .sys-types-carousel {
   position: relative;
   z-index: 2;
-
+  top:20%;
   width: min(70vw, 54rem);
   min-height: clamp(13rem, 42vh, 24rem);
 
@@ -486,7 +499,7 @@
   color: #111;
   text-align: center;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18);
-  animation: sys-popup-in 0.28s ease forwards;
+  /* animation: sys-popup-in 0.28s ease forwards; */
 }
 
 @keyframes sys-popup-in {
@@ -779,6 +792,8 @@
   color: #003f9e;
   font-size: clamp(0.95rem, 1.65vw, 1.25rem);
   font-weight: 900;
+      font-family: "assistant-extraBold";
+
 }
 
 .sys-simple-text {

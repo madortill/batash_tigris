@@ -31,22 +31,17 @@ const End = () =>  {
 
     <header className="driving-types-header">
           <h1 className="tigris-general-title effect-underline">{title}</h1>
-          <p className="driving-types-intro">{introText}</p>
         </header>
       {/* <img className="end-warning" src={warning} alt="warning" /> */}
       {/* <img className="end-road" src={road} alt="road" /> */}
       <div className="galEnd galBubble">
-        <img
-          src={data.End[0].galSrc}
-          className="galTechnicalBubble galHighlixRedBubble"
-          alt="galBubble"
-        />
-        <img
-          className="galTechnicalImg galEndImg"
-          src={galGalgal}
-          alt="galGalgal"
-        />
+     
+      
       </div>
+                        <div className="textBox end-gal" style={{ width: "clamp(12vw, 18vw, 44vw)"}}>
+                          <p className="bubbleText">{introText}</p>
+                    <img className="galTechnicalImg galEndImg" src={galGalgal} alt="galGalgal" />
+                      </div>
       <button
         className="nextBtn tigris-next-btn nextBtnEnd"
         onClick={() => {

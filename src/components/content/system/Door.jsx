@@ -1,59 +1,107 @@
 import { useState } from "react";
 import "../../../style/SystemDoor.css";
 
-const Door = ({ doorImage, doorLabel, hintText, annotationText, onDoorOpened }) => {
-  const [openDoorAnimation, setOpenDoorAnimation] = useState(false);
-  const [growAnimation, setGrowAnimation]         = useState(false);
-  const [showOpening, setShowOpening]             = useState(true);
- 
-  const openDoor = () => {
-    if (openDoorAnimation) return;
-    setOpenDoorAnimation(true);
-    setShowOpening(false);
- 
-    setTimeout(() => {
-      setGrowAnimation(true);
-      if (onDoorOpened) onDoorOpened();
-    }, 1000);
-  };
- 
-    return (
-    <>
-      <div className="door-scene">
+const OPEN_IMAGE_DELAY = 350;
+
+const Door = ({
+  doorImage,
+  openDoorImage,
+  innerImage,
+  doorLabel,
+  innerDoorLabel,
+  hintText,
+  annotationText,
+  innerAnnotationText,
+  onDoorOpened,
+}) => {
+  const [isDoorOpen, setIsDoorOpen] = useState(false);
+  const [showOpenImage, setShowOpenImage] = useState(false);
+
+  // const toggleDoor = () => {
+  //   if (isDoorOpen || showOpenImage) return;
+
+  //   setShowOpenImage(true);
+  //   onDoorOpened?.();
+
+  //   setTimeout(() => {
+  //     setIsDoorOpen(true);
+  //     setShowOpenImage(false);
+  //   }, OPEN_IMAGE_DELAY);
+  // };
+  const toggleDoor = () => {
+  if (showOpenImage) return;
+
+  // אם הדלת פתוחה — לסגור אותה בלחיצה נוספת
+  if (isDoorOpen) {
+    setIsDoorOpen(false);
+    return;
+  }
+
+  // פתיחה ראשונה: מציגים רגע את תמונת הדלת הפתוחה
+  setShowOpenImage(true);
+  onDoorOpened?.();
+
+  setTimeout(() => {
+    setIsDoorOpen(true);
+    setShowOpenImage(false);
+  }, OPEN_IMAGE_DELAY);
+};
+
+  const currentLabel = isDoorOpen ? innerDoorLabel : doorLabel;
+  const currentAnnotation = isDoorOpen
+    ? innerAnnotationText || annotationText
+    : annotationText;
+
+  const displayedDoorImage = showOpenImage && openDoorImage
+    ? openDoorImage
+    : doorImage;
+
+  return (
+    <div className="door-scene">
+      <button
+        type="button"
+        className="door-click-area"
+        onClick={toggleDoor}
+        aria-label={currentLabel}
+      >
         <div className="door-wrapper">
-          {/* ── תוכן מאחורי הדלת ── */}
-          <div className={`doorway ${growAnimation ? "grow" : ""}`}>
-            {growAnimation && (
-              <div className="doorway-content">
-                <img src={doorImage} alt={doorLabel} className="door-inner-image" />
-              </div>
-            )}
+          <div className={`doorway ${isDoorOpen ? "grow" : ""}`}>
+            <div className="doorway-content">
+              <img
+                src={innerImage}
+                alt={innerDoorLabel}
+                className="door-inner-image"
+              />
+            </div>
           </div>
-   
-          {/* ── הדלת עצמה ── */}
+
           <div
-            className={`door ${openDoorAnimation ? "open-door" : ""}`}
-            onClick={openDoor}
+            className={`door ${
+              isDoorOpen ? "open-door" : ""
+            } ${showOpenImage ? "show-open-image" : ""}`}
           >
-            {/* 
-            <div className="door-panel door-panel-top" />
-            <div className="door-panel door-panel-bottom" />
-            <div className="hinge hinge-top" />
-            <div className="hinge hinge-bottom" />
-            <div className="door-handle" />
-            */}
+            <span className="door-front-face">
+              <img
+                src={displayedDoorImage}
+                alt=""
+                className="door-outer-image"
+                aria-hidden="true"
+              />
+            </span>
           </div>
         </div>
-   
-        <p className="door-label">{doorLabel}</p>
-        <div className="annotation">
-          <span className="annotation-text">{annotationText}</span>
-          <div className="annotation-arrow" />
-        </div>
+      </button>
+
+      {hintText && <p className="door-hint-text">{hintText}</p>}
+
+      <p className="door-label">{currentLabel}</p>
+
+      <div className="annotation">
+        <span className="annotation-text">{currentAnnotation}</span>
+        <div className="annotation-arrow" />
       </div>
-    </>
+    </div>
   );
 };
- 
+
 export default Door;
- 

@@ -61,7 +61,6 @@ const GearboxTransfer = ({ changeToPage, startPage, changeToSection }) => {
             <h4 className="gb-semi-title">{text}</h4>
             <div className="gb-lever-clickzone" onClick={() => setIsOpen(true)}>
               <img src={GearLeverImg} alt="ידית הילוכים" className="gb-lever-img gb-lever-pulse" />
-              <p className="gb-click-hint">{galText}</p>
             </div>
             <div className="gal-locker-div">
               <div className="textBox gear-gal" style={{ width: "clamp(12vw,18vw,44vw)" }}>

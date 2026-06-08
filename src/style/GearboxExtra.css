@@ -335,6 +335,17 @@
   left: 50%;
   transform:translateX(-50%);
   animation: none;
+  border: 0rem;
+    color: #FFF2B4;
+    background-color: #E69907;
+    font-family: "assistant-extraBold";
+    font-size: 1.5rem;
+    border-radius: 8px;
+    height: 3.5rem;
+    width: 5.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.8s ease;
 }
 .locker-btn:hover {
    transform: none; 
