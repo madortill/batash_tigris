@@ -3,6 +3,8 @@ import "../../../style/SystemNav.css";
 import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 
+const DRIVING_TYPES_STORAGE_KEY = "drivingTypesProgress";
+
 const DrivingTypes = ({ changeToPage, changeToSection }) => {
   const { data } = useData();
 
@@ -10,12 +12,9 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
   const nextBtn = data?.general?.[1]?.text || "המשך";
   const pageData = data?.System?.[0] || {};
 
-  const [selectedModeIndex, setSelectedModeIndex] = useState(null);
-  const [viewedModes, setViewedModes] = useState([]);
-  const [canContinue, setCanContinue] = useState(true);
-
   const title = pageData?.title || "";
   const introText = pageData?.text || "";
+  const Semititle = pageData?.Semititle || "";
 
   const drivingModes = useMemo(() => {
     return (pageData?.drivingTypes || []).map((item, index) => {
@@ -41,12 +40,42 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
     });
   }, [pageData]);
 
-  // useEffect(() => {
-  //   setCanContinue(viewedModes.length === drivingModes.length && drivingModes.length > 0);
-  // }, [viewedModes, drivingModes]);
+  const getSavedDrivingState = () => {
+    try {
+      return JSON.parse(sessionStorage.getItem(DRIVING_TYPES_STORAGE_KEY)) || {};
+    } catch {
+      return {};
+    }
+  };
+
+  const savedState = getSavedDrivingState();
+
+  const [selectedModeIndex, setSelectedModeIndex] = useState(() => {
+    return savedState.selectedModeIndex ?? null;
+  });
+
+  const [viewedModes, setViewedModes] = useState(() => {
+    return savedState.viewedModes || [];
+  });
 
   const activeMode =
     selectedModeIndex !== null ? drivingModes[selectedModeIndex] : null;
+
+  const allModesViewed =
+    drivingModes.length > 0 &&
+    drivingModes.every((mode) => viewedModes.includes(mode.id));
+
+  const canContinue = allModesViewed;
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      DRIVING_TYPES_STORAGE_KEY,
+      JSON.stringify({
+        selectedModeIndex,
+        viewedModes,
+      })
+    );
+  }, [selectedModeIndex, viewedModes]);
 
   const handleSelectMode = (index) => {
     setSelectedModeIndex(index);
@@ -64,6 +93,7 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
   };
 
   const nextPage = () => {
+    if (!canContinue) return;
     changeToPage(1);
   };
 
@@ -74,7 +104,7 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
         <p className="backBtnText">{backBtnText}</p>
       </div>
 
-       <div className="driving-types-wrapper">
+      <div className="driving-types-wrapper">
         <header className="driving-types-header">
           <h1 className="tigris-general-title effect-underline">{title}</h1>
           <p className="driving-types-intro">{introText}</p>
@@ -82,9 +112,8 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
 
         <div className="driving-types-layout">
           <aside className="driving-selector-panel">
-            <h2 className="driving-panel-title">בורר מצבי נהיגה</h2>
-            <p className="driving-panel-subtitle">
-            </p>
+            <h2 className="driving-panel-title">{Semititle}</h2>
+            <p className="driving-panel-subtitle"></p>
 
             <div className="driving-modes-list">
               {drivingModes.map((mode, index) => {
@@ -100,7 +129,10 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
                     } ${isViewed ? "driving-mode-btn--viewed" : ""}`}
                     onClick={() => handleSelectMode(index)}
                   >
-                    <span className="driving-mode-btn-name">{mode.modeName}</span>
+                    <span className="driving-mode-btn-name">
+                      {mode.modeName}
+                    </span>
+
                     {isViewed && <span className="driving-mode-check">✓</span>}
                   </button>
                 );
@@ -108,36 +140,32 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
             </div>
           </aside>
 
-          {/* <section className="driving-content-panel"> */}
-            {!activeMode ? (
-              <div className="driving-empty-state">
-                <p>
-                </p>
-              </div>
-            ) : (
-              <div key={activeMode.id} className="driving-mode-card">
-                <h2 className="driving-mode-title">{activeMode.modeName}</h2>
-                <p className="driving-mode-description">
-                  {activeMode.description}
-                </p>
-
-                {activeMode.extra && (
-                  <div className="driving-mode-extra">
-                    <span className="driving-mode-extra-icon">i</span>
-                    <p>{activeMode.extra}</p>
-                  </div>
-                )}
-              </div>
-            )}
-          {/* </section> */}
-
-          {/* <aside className="driving-image-panel"> */}
-            <div className="driving-image-placeholder">
-              <span>לתמונה</span>
+          {!activeMode ? (
+            <div className="driving-empty-state">
+              <p></p>
             </div>
-          {/* </aside> */}
+          ) : (
+            <div key={activeMode.id} className="driving-mode-card">
+              <h2 className="driving-mode-title">{activeMode.modeName}</h2>
+
+              <p className="driving-mode-description">
+                {activeMode.description}
+              </p>
+
+              {activeMode.extra && (
+                <div className="driving-mode-extra">
+                  <span className="driving-mode-extra-icon">i</span>
+                  <p>{activeMode.extra}</p>
+                </div>
+              )}
+            </div>
+          )}
+
+          <div className="driving-image-placeholder">
+            <span>לתמונה</span>
+          </div>
         </div>
-      </div> 
+      </div>
 
       <button
         className={`nextBtn tigris-next-btn ${

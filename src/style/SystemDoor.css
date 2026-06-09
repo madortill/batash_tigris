@@ -212,7 +212,7 @@
   font-size: clamp(9px, 2.5vw, 11px);
   font-weight: 700;
   color: #1a3a6a;
-  background: rgba(255, 255, 255, 0.82);
+  background: rgb(255, 255, 255);
   padding: 2px 7px;
   border-radius: 4px;
   direction: rtl;
@@ -222,23 +222,11 @@
 }
 
 .annotation-arrow {
-  width: 36px;
-  height: 1.5px;
-  background: #1a3a6a;
   align-self: flex-start;
   position: relative;
   margin-right: 8px;
 }
 
-.annotation-arrow::before {
-  content: "";
-  position: absolute;
-  left: -1px;
-  top: -4px;
-  border-top: 4px solid transparent;
-  border-bottom: 4px solid transparent;
-  border-right: 6px solid #1a3a6a;
-}
 
 /* ── Door panel ── */
 .door {
@@ -512,13 +500,29 @@
   font-size: 0.95rem;
   color: #111;
   text-align: center;
+  animation: flash 1s 0.5s infinite ;
+}
+.door-hint-text-press{
+  animation: none;
+}
+@keyframes flash{
+  0%{
+    opacity: 1;
+  }
+  50%{
+    opacity:0.8;
+  }
+
+  100%{
+      opacity: 1;
+  }
 }
 
 /* הערה וחץ */
 .annotation {
   position: absolute;
-  left: -160px;
-  top: 42%;
+  left: -120px;
+  top: 38%;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -533,8 +537,8 @@
 }
 
 .annotation-arrow {
-  width: 80px;
-  height: 2px;
+  width: 90px;
+  height: 3px;
   background: #111;
   position: relative;
 }

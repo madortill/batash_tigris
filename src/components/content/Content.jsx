@@ -60,8 +60,8 @@ useEffect(() => {
     1: 0,
     2: 1,
     3: 5,
-    4: 0,
-    5: 0
+    4: 2,
+    5: 1
   };
   const markSectionCompleted = (sectionNumber) => {
   setCompletedSections((prev) => ({

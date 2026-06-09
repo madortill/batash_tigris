@@ -17,8 +17,8 @@ const ContentStart=({ changeToSection })=> {
         <TiresNavbar className="navbar-start" contentStart={true} changeToSection={changeToSection}/>
       </div>
     </div>
-        {/* <img src={tigrisJeep} className="jeep-start"></img> */}
-        <JeepTracks/>
+        <img src={tigrisJeep} className="jeep-start"></img>
+        {/* <JeepTracks/> */}
     </>
   );
 }

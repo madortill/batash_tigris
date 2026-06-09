@@ -13,6 +13,7 @@ import { small } from "framer-motion/client";
 
 const MODES = ["2H", "4H", "4L"];
 
+const TRANSFER_CASE_STORAGE_KEY = "transferCaseBoxState";
 
 const Wheel = ({ active, slow, className = "" }) => {
   return (
@@ -102,6 +103,7 @@ const TransferCaseBox = ({ changeToPage, startPage }) => {
 // const [showWarningText, setShowWarningText] = useState(false);
 const STORAGE_KEY = "TransferCaseBoxState";
 
+
 const savedState = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "{}");
 
 const [showPopUp, setShowPopUp] = useState(savedState.showPopUp ?? false);
@@ -165,19 +167,20 @@ useEffect(() => {
   };
 
   const handleModeClick = (mode) => {
-    const modeEntry = transferBox.find((m) => m.btn === mode);
-    setSelectedMode(mode);
-    setModeText(modeEntry?.text || null);
-    setIsMoving(true);
+  const modeEntry = transferBox.find((m) => m.btn === mode);
 
-    if (mode === "4L" && !clickedModes.includes("4L")) {
-      setShowPopUp(true);
-    }
+  setSelectedMode(mode);
+  setModeText(modeEntry?.text || null);
+  setIsMoving(true);
 
-    setClickedModes((prev) =>
-      prev.includes(mode) ? prev : [...prev, mode]
-    );
-  };
+  setClickedModes((prev) =>
+    prev.includes(mode) ? prev : [...prev, mode]
+  );
+
+  if (mode === "4L") {
+    setShowPopUp(true);
+  }
+};
 
   const allStepsChecked =
     checkedSteps.length === (popUpSteps?.steps?.length || 0);
@@ -261,14 +264,6 @@ useEffect(() => {
         <div className="tcb-overlay">
           <div className="tcb-popup">
             <img src={bigWarning} alt="warning" className="tcb-popup-bg" />
-            <button
-              className="tcb-popup-close"
-              onClick={() =><> setShowPopUp(false)
-                    setShowWarningText(true);
-              </>}
-            >
-              ×
-            </button>
             <div className="tcb-popup-body">
               <h3 className="tcb-popup-title">{popUpHeader?.title}</h3>
               <h3 className="tcb-popup-title">{popUpHeader?.action}</h3>
@@ -287,6 +282,7 @@ useEffect(() => {
                     <span className="tcb-step-text">{step}</span>
                   </div>
                 ))}
+                <p className="tcb-popup-extra">{popUpHeader?.textExtra}</p>
               </div>
               {allStepsChecked && (
                     <button
@@ -299,7 +295,6 @@ useEffect(() => {
                       {popUpSteps?.closePopUp || "עברתי"}
                     </button>
                   )}
-              <p className="tcb-popup-extra">{popUpHeader?.textExtra}</p>
             </div>
           </div>
         </div>

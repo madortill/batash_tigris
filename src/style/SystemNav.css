@@ -1,4 +1,6 @@
 /* //עמוד מצבי נהיגה */
+
+
 .driving-types-page {
   min-height: 100vh;
   width: 100vw;
@@ -37,11 +39,8 @@
 .driving-selector-panel,
 .driving-content-panel,
 .driving-image-panel {
-  /* background: rgba(255, 255, 255, 0.42); */
-  /* border: 1px solid rgba(0, 58, 153, 0.12); */
   border-radius: 24px;
   padding: 22px;
-  /* box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06); */
   backdrop-filter: blur(4px);
 }
 
@@ -153,22 +152,12 @@
   }
 }
 
-/* .driving-mode-badge {
-  display: inline-block;
-  background: rgba(0, 58, 153, 0.1);
-  color: #003a99;
-  font-weight: 700;
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 0.85rem;
-  margin-bottom: 14px;
-} */
 
 .driving-mode-title {
   margin: 0 0 16px;
   font-size: 1.8rem;
-      font-family: "assistant-extraBold";
-
+  font-family: "assistant-extraBold";
+  
 }
 
 .driving-mode-description {
@@ -228,54 +217,168 @@
   font-weight: 700;
   min-height: 200px;
 }
-
-/* טאבלט */
-@media (max-width: 1100px) {
-  .driving-types-layout {
-    grid-template-columns: 240px 1fr;
+@media (min-width: 800px) and (max-width: 1100px) {
+  .driving-types-page {
+    width: 100%;
+    max-width: 100vw;
+    margin-inline: 0;
+    padding: 95px clamp(24px, 4vw, 42px) 110px;
+    overflow-x: hidden;
+    box-sizing: border-box;
   }
 
-  .driving-image-panel {
-    grid-column: 1 / -1;
+  .driving-types-wrapper {
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+
+  .driving-types-header {
+    margin-bottom: 20px;
+  }
+
+  .driving-types-intro {
+    max-width: 760px;
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+
+  .driving-types-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 22px;
+    align-items: stretch;
+    margin-top: 0;
+  }
+
+  .driving-selector-panel {
+    width: 100%;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .driving-panel-title {
+    text-align: center;
+    margin-bottom: 14px;
+    font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  }
+
+  .driving-panel-subtitle {
+    display: none;
+  }
+
+  .driving-modes-list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .driving-mode-btn {
+    width: auto;
+    height: auto;
+    min-height: 48px;
+    flex: 1 1 calc(25% - 12px);
+    max-width: 210px;
+    min-width: 140px;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    justify-content: center;
+    text-align: center;
+    font-size: clamp(0.88rem, 1.2vw, 0.98rem);
+    line-height: 1.25;
+  }
+
+  .driving-mode-btn-name {
+    flex: initial;
+  }
+
+  .driving-mode-check {
+    margin-right: 6px;
+    flex-shrink: 0;
+  }
+
+  .driving-mode-card {
+    position: static;
+    right: auto;
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    box-sizing: border-box;
+  }
+
+  .driving-empty-state {
+    width: 100%;
+    min-height: 220px;
+    padding: 22px;
+    box-sizing: border-box;
+  }
+
+  .driving-mode-title {
+    font-size: clamp(1.45rem, 2vw, 1.75rem);
+    margin-bottom: 12px;
+  }
+
+  .driving-mode-description {
+    font-size: clamp(0.98rem, 1.3vw, 1.05rem);
+    line-height: 1.75;
+  }
+
+  .driving-mode-extra {
+    margin-top: 18px;
+    padding: 14px;
   }
 
   .driving-image-placeholder {
+    position: static;
+    right: auto;
+    transform: none;
+    width: min(420px, 60vw);
+    height: auto;
+    min-height: 160px;
     aspect-ratio: 16 / 6;
-    min-height: 180px;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
 }
+
 
 /* מובייל */
 @media (max-width: 768px) {
   .driving-types-page {
     padding: 95px 16px 110px;
   }
-
+  
   .driving-types-layout {
     grid-template-columns: 1fr;
     gap: 18px;
   }
-
+  
   .driving-selector-panel,
   .driving-content-panel,
   .driving-image-panel {
     padding: 18px;
     border-radius: 18px;
   }
-
+  
   .driving-mode-title {
     font-size: 1.45rem;
   }
-
+  
   .driving-mode-description {
     font-size: 1rem;
     line-height: 1.8;
   }
-
+  
   .driving-empty-state {
     min-height: 240px;
   }
-
+  
   .driving-image-placeholder {
     aspect-ratio: 4 / 3;
     min-height: 200px;
@@ -284,9 +387,9 @@
 
 
 /* =========================================================
-   SYSTEM TYPES PAGE
-   Prefix: sys-
-   כדי לא לדרוס CSS של עמודים אחרים
+SYSTEM TYPES PAGE
+Prefix: sys-
+כדי לא לדרוס CSS של עמודים אחרים
 ========================================================= */
 .sys-types-page{
   width: 100%;
@@ -295,12 +398,12 @@
 /* Header ייחודי כדי לא להידרס מ-tigris-general-title */
 .sys-types-header {
   position: relative;
-    top: clamp(3.9rem, 9vh, 5.9rem);
-
+  top: clamp(3.9rem, 9vh, 5.9rem);
+  
   z-index: 2;
   width: min(82%, 46rem);
   text-align: center;
-
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -319,8 +422,8 @@
 
 .sys-types-title {
   top: clamp(3.9rem, 9vh, 5.9rem);
-    margin: clamp(3.9rem, 9vh, 5.9rem) auto clamp(1rem, 10vh, 4.8rem);
-
+  margin: clamp(3.9rem, 9vh, 5.9rem) auto clamp(1rem, 10vh, 4.8rem);
+  
   right: 50%;
   transform: translateX(50%);
   margin: 0;
@@ -329,9 +432,9 @@
   font-size: clamp(2rem, 2.5vw, 3rem);
   text-align: center;
   white-space: nowrap;
-
+  
   order: 1;
-
+  
   text-align: center;
   line-height: 1.05;
 }
@@ -343,47 +446,47 @@
   top:20%;
   width: min(70vw, 54rem);
   min-height: clamp(13rem, 42vh, 24rem);
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
   gap: clamp(0.75rem, 2.2vw, 1.35rem);
-
+  
   margin: 0 auto;
   transform: translateX(-5vw);
 }
 
 .sys-types-cards {
   width: min(56vw, 38rem);
-
+  
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
   gap: clamp(0.75rem, 2.6vw, 1.7rem);
-
+  
   overflow: visible;
 }
 
 .sys-types-arrow {
   flex: 0 0 auto;
   padding: 0 0.35rem;
-
+  
   border: none;
   background: none;
-
+  
   color: #111;
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1;
-
+  
   cursor: pointer;
   z-index: 10;
-
+  
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .sys-types-arrow:hover:not(.sys-types-arrow--disabled) {
-  transform: scale(1.16);
+  transform: scale(1.1);
 }
 
 .sys-types-arrow--disabled,
@@ -397,23 +500,23 @@
   position: relative;
   width: clamp(7.2rem, 14vw, 13rem);
   box-sizing: border-box;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
   padding: 0;
   border: 2px solid transparent;
   background: transparent;
-
+  
   overflow: visible;
-
+  
   transition:
-    transform 0.35s ease,
-    opacity 0.25s ease,
-    filter 0.25s ease,
-    box-shadow 0.25s ease,
-    border-color 0.25s ease;
+  transform 0.35s ease,
+  opacity 0.25s ease,
+  filter 0.25s ease,
+  box-shadow 0.25s ease,
+  border-color 0.25s ease;
 }
 
 .sys-types-card-img {
@@ -434,13 +537,12 @@
   transform: scale(1.06);
   opacity: 1;
   cursor: pointer;
-  border-color: #00bcff;
+  border-color: #fffeac;
   border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0, 188, 255, 0.3);
 }
 
 .sys-types-card-btn--active:hover {
-  transform: scale(1.12);
+  transform: scale(1.05);
 }
 
 .sys-types-card-btn--completed .sys-types-card-img {
@@ -457,36 +559,36 @@
   top: -0.8rem;
   right: -0.8rem;
   z-index: 5;
-
+  
   width: clamp(1.65rem, 3vw, 2.2rem);
   height: clamp(1.65rem, 3vw, 2.2rem);
   border-radius: 50%;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
   background-color: #28a745;
   color: white;
-
+  
   font-weight: 900;
   font-size: clamp(0.9rem, 1.6vw, 1.2rem);
-
+  
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 /* =========================================================
-   POPUP COMMON
+POPUP COMMON
 ========================================================= */
 
 .sys-popup-overlay {
   position: fixed;
   inset: 0;
   z-index: 250;
-
+  
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
   direction: rtl;
   background: rgba(80, 75, 55, 0.35);
   backdrop-filter: blur(1.5px);
@@ -507,7 +609,7 @@
     opacity: 0;
     transform: scale(0.92) translateY(10px);
   }
-
+  
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -517,40 +619,40 @@
 .sys-popup-understood-btn {
   display: block;
   margin: 0.7rem auto 0;
-
+  
   min-width: 76px;
   height: 34px;
   padding: 0 1rem;
 
   border: none;
   border-radius: 6px;
-
+  
   color: white;
-
+  
   font-weight: 900;
   cursor: pointer;
-
+  
   box-shadow: 0 3px 0 rgba(120, 70, 0, 0.25);
   transition: transform 0.15s ease, filter 0.15s ease;
-
-
-      border: 0rem;
-    color: #FFF2B4;
-    background-color: #E69907;
-    font-family: "assistant-extraBold";
-    font-size: 1.1rem;
-    border-radius: 8px;
-    height: 2.5rem;
-    width: 4.5rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    cursor: pointer;
-    transition: transform 0.8s ease;
+  
+  
+  border: 0rem;
+  color: #FFF2B4;
+  background-color: #E69907;
+  font-family: "assistant-extraBold";
+  font-size: 1.1rem;
+  border-radius: 8px;
+  height: 2.5rem;
+  width: 4.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.8s ease;
   
 }
 
 .sys-popup-understood-btn:hover {
   filter: brightness(1.05);
-    transform: scale(1.25);
+  transform: scale(1.25);
   transform: translateY(-1px);
 }
 
@@ -559,7 +661,7 @@
 }
 
 /* =========================================================
-   EB POPUP
+EB POPUP
 ========================================================= */
 
 .sys-eb-card {
@@ -584,7 +686,7 @@
   color: #003f9e;
   font-size: clamp(0.95rem, 1.7vw, 1.25rem);
   font-weight: 900;
-      font-family: "assistant-extraBold";
+  font-family: "assistant-extraBold";
   direction: ltr;
 }
 
@@ -593,15 +695,15 @@
   color: #003f9e;
   font-size: clamp(0.82rem, 1.35vw, 1rem);
   font-weight: 900;
-        font-family: "assistant-extraBold";
-
+  font-family: "assistant-extraBold";
+  
 }
 
 .sys-eb-text {
   width: 88%;
   margin: 0.35rem auto;
   
-
+  
   font-size: clamp(0.72rem, 1.15vw, 0.9rem);
   line-height: 1.45;
   font-weight: 600;
@@ -614,21 +716,21 @@
   min-width: min(250px, 82%);
   min-height: 32px;
   padding: 0.25rem 0.75rem;
-
+  
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-
+  
   border: 1.5px solid #d58d1a;
   border-radius: 999px;
   background: #ffe7ac;
   color: #111;
-
+  
   cursor: pointer;
   font-weight: 700;
   font-size: 0.78rem;
-
+  
   transition: transform 0.18s ease, filter 0.18s ease;
 }
 
@@ -656,7 +758,7 @@
     transform: scale(1);
     filter: drop-shadow(0 0 4px rgba(255, 196, 0, 0.55));
   }
-
+  
   50% {
     opacity: 0.85;
     transform: scale(1.12);
@@ -669,10 +771,10 @@
   max-width: 80%;
   margin: 0.35rem auto 0;
   padding: 0.35rem 0.6rem;
-
+  
   border-radius: 8px;
   background: #fff2c7;
-
+  
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -682,21 +784,21 @@
   width: 62px;
   height: 24px;
   margin: 0.7rem auto 0;
-
+  
   display: flex;
   flex-direction: column;
   gap: 0;
   align-items: center;
   justify-content: center;
-
+  
   border: none;
   background: transparent;
   color: #111;
-
+  
   cursor: pointer;
   font-size: 1.65rem;
   line-height: 0.55;
-
+  
   animation: sys-eb-arrow-bounce 1.1s ease-in-out infinite;
 }
 
@@ -704,7 +806,7 @@
   0%, 100% {
     transform: translateY(0);
   }
-
+  
   50% {
     transform: translateY(4px);
   }
@@ -731,15 +833,15 @@
 .sys-eb-tab {
   width: 120px;
   height: 32px;
-
+  
   border: 1.5px solid #003f9e;
   background: white;
   color: #003f9e;
-
+  
   font-weight: 900;
   cursor: pointer;
-        font-family: "assistant-extraBold";
-
+  font-family: "assistant-extraBold";
+  
 }
 
 .sys-eb-tab:first-child {
@@ -760,10 +862,10 @@
   min-height: 72px;
   margin: 0 auto 0.9rem;
   padding: 0.75rem 0.9rem;
-
+  
   display: grid;
   place-items: center;
-
+  
   border-radius: 8px;
   background: #fff4ca;
   border: 1px solid rgba(0, 0, 0, 0.25);
@@ -777,7 +879,7 @@
 }
 
 /* =========================================================
-   SIMPLE POPUPS - AntiBrake + TC
+SIMPLE POPUPS - AntiBrake + TC
 ========================================================= */
 
 .sys-simple-card {
@@ -792,14 +894,14 @@
   color: #003f9e;
   font-size: clamp(0.95rem, 1.65vw, 1.25rem);
   font-weight: 900;
-      font-family: "assistant-extraBold";
-
+  font-family: "assistant-extraBold";
+  
 }
 
 .sys-simple-text {
   width: 86%;
   margin: 0 auto 1rem;
-
+  
   font-size: clamp(0.78rem, 1.2vw, 0.95rem);
   line-height: 1.55;
   font-weight: 600;
@@ -808,12 +910,12 @@
 .sys-tc-extra {
   width: 90%;
   margin: 0.3rem auto 1rem;
-
+  
   display: flex;
   align-items: flex-start;
   justify-content: center;
   gap: 0.45rem;
-
+  
   text-align: right;
 }
 
@@ -828,20 +930,20 @@
   width: 20px;
   height: 20px;
   flex: 0 0 20px;
-
+  
   display: grid;
   place-items: center;
-
+  
   border-radius: 50%;
   background: #d8c48b;
   color: #fff;
-
+  
   font-weight: 900;
   font-size: 0.8rem;
 }
 
 /* =========================================================
-   RESPONSIVE
+RESPONSIVE
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -849,44 +951,44 @@
     width: 86%;
     margin-top: clamp(0.75rem, 3vh, 1.5rem);
   }
-
+  
   .sys-types-carousel {
     width: 82vw;
     gap: 0.5rem;
     transform: translateX(-4vw);
   }
-
+  
   .sys-types-cards {
     width: 66vw;
     gap: 0.65rem;
   }
-
+  
   .sys-types-card-btn {
     width: clamp(5.8rem, 20vw, 9rem);
   }
-
+  
   .sys-types-card-btn--inactive {
     transform: scale(0.72);
   }
-
+  
   .sys-types-card-btn--active {
     transform: scale(1);
   }
-
+  
   .sys-types-card-btn--active:hover {
     transform: scale(1.04);
   }
-
+  
   .sys-eb-card,
   .sys-simple-card {
     width: min(86vw, 520px);
     padding: 1.2rem 1rem 1rem;
   }
-
+  
   .sys-eb-card--tabs {
     width: min(84vw, 430px);
   }
-
+  
   .sys-eb-text,
   .sys-simple-text {
     width: 94%;
@@ -897,47 +999,57 @@
   .sys-types-page {
     padding-inline: 0.5rem;
   }
-
+  
   .sys-types-title {
     font-size: clamp(1.45rem, 8vw, 2rem);
   }
-
+  
   .sys-types-carousel {
     width: 94vw;
     min-height: 12rem;
     transform: none;
   }
-
+  
   .sys-types-arrow {
     font-size: 1.8rem;
     padding-inline: 0.1rem;
   }
-
+  
   .sys-types-cards {
     width: 76vw;
     gap: 0.35rem;
   }
-
+  
   .sys-types-card-btn {
     width: clamp(4.8rem, 25vw, 7rem);
   }
-
+  
   .sys-types-checkmark {
     top: -0.55rem;
     right: -0.55rem;
   }
-
+  
   .sys-eb-title,
   .sys-simple-title {
     font-size: 0.9rem;
   }
-
+  
   .sys-eb-text,
   .sys-simple-text {
     font-size: 0.72rem;
   }
-
+  
   .sys-eb-tab {
     width: 100px;
   }
+  /* .driving-mode-badge {
+    display: inline-block;
+    background: rgba(0, 58, 153, 0.1);
+    color: #003a99;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    margin-bottom: 14px;
+  } */
 }

@@ -1,64 +1,77 @@
+import { useEffect, useState } from "react";
 import "../../../style/UsesNav.css";
-import { useState, useEffect } from "react";
 
 const UseHotspotPopup = ({ popup, onClose }) => {
-  const [isShootingOpen, setIsShootingOpen] = useState(false);
+  const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
-    setIsShootingOpen(false);
-  }, [popup]);
+    setIsRevealed(false);
+  }, [popup?.id]);
 
   if (!popup) return null;
 
-  const isShootingPopup = popup.id === "middle";
-  const shouldShowShootingIntro = isShootingPopup && !isShootingOpen;
+  const isMiddleShootingHole = popup.id === "middle" && Boolean(popup.openImage);
+
+  const isButtonRevealPopup =
+    popup.requiresRevealBeforeClose && Boolean(popup.openImage);
+
+  const hasRevealStep = isMiddleShootingHole || isButtonRevealPopup;
 
   const currentImage =
-    isShootingPopup && isShootingOpen && popup.openImage
-      ? popup.openImage
-      : popup.image;
+    hasRevealStep && isRevealed ? popup.openImage : popup.image;
 
-  const handleOpenShooting = () => {
-    if (isShootingPopup && !isShootingOpen) {
-      setIsShootingOpen(true);
+  const currentButtonText =
+    isButtonRevealPopup && !isRevealed
+      ? popup.openText || "הראה מיקום"
+      : popup.buttonText || "הבנתי";
+
+  const handleImageClick = () => {
+    if (isMiddleShootingHole && !isRevealed) {
+      setIsRevealed(true);
     }
+  };
+
+  const handleButtonClick = () => {
+    if (isButtonRevealPopup && !isRevealed) {
+      setIsRevealed(true);
+      return;
+    }
+
+    onClose();
   };
 
   return (
     <div className="uses-popup-overlay" onClick={onClose}>
       <div className="uses-popup-card" onClick={(e) => e.stopPropagation()}>
-        <div className="uses-popup-img-wrap">
-          <img
-            src={currentImage}
-            alt={popup.title}
-            className="uses-popup-img"
-          />
+        <img
+          src={currentImage}
+          alt={popup.title || ""}
+          className={`uses-popup-img ${
+            isMiddleShootingHole && !isRevealed
+              ? "uses-popup-img-clickable"
+              : ""
+          }`}
+          onClick={handleImageClick}
+        />
 
-          {shouldShowShootingIntro && (
-            <button
-              type="button"
-              className="uses-popup-image-click-zone"
-              onClick={handleOpenShooting}
-              aria-label={popup.openText || "לחצו לפתיחת חור הירי"}
-            />
-          )}
-        </div>
-
-        <h3 className="uses-popup-title">{popup.title}</h3>
-
-        {shouldShowShootingIntro ? (
-          <p className="uses-popup-shooting-text">
-            {popup.openText || "לחצו לפתיחת חור הירי"}
-          </p>
-        ) : (
-          <button
-            type="button"
-            className="uses-popup-btn"
-            onClick={onClose}
-          >
-            {popup.buttonText || "הבנתי"}
-          </button>
+<h3 className="uses-popup-title">
+  {isMiddleShootingHole && isRevealed
+    ? popup.titleOpen || popup.title
+    : popup.title}
+</h3>
+        {isMiddleShootingHole && !isRevealed && popup.openText && (
+          <p className="uses-popup-text">{popup.openText}</p>
         )}
+
+        {popup.text && <p className="uses-popup-text">{popup.text}</p>}
+
+        <button
+          type="button"
+          className="uses-popup-btn"
+          onClick={handleButtonClick}
+        >
+          {currentButtonText}
+        </button>
       </div>
     </div>
   );

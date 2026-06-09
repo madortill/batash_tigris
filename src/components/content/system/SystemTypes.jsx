@@ -4,9 +4,9 @@ import { useData } from "../../../context/DataContext";
 
 import backBtn from "../../../assets/images/backBtn.svg";
 
-import ABSCard from "../../../assets/images/ABSCard.svg";
-import EXCard from "../../../assets/images/ABSCard.svg";
-import TCCard from "../../../assets/images/ABSCard.svg";
+import ABSCard from "../../../assets/images/AbsCard.png";
+import EXCard from "../../../assets/images/EbCard.png";
+import TCCard from "../../../assets/images/TcCard.png";
 
 import SystemPopup from "./SystemPopup";
 
@@ -57,7 +57,7 @@ const SystemTypes = ({ changeToPage, isCompleted = false, onComplete }) => {
     if (isCompleted) return ["exhaust", "abs", "tc"];
 
     try {
-      return JSON.parse(localStorage.getItem(SYSTEM_COMPLETED_KEY)) || [];
+      return JSON.parse(sessionStorage.getItem(SYSTEM_COMPLETED_KEY)) || [];
     } catch {
       return [];
     }
@@ -66,7 +66,7 @@ const SystemTypes = ({ changeToPage, isCompleted = false, onComplete }) => {
   const canContinue = completedCards.length === cards.length;
 
   useEffect(() => {
-    localStorage.setItem(SYSTEM_COMPLETED_KEY, JSON.stringify(completedCards));
+    sessionStorage.setItem(SYSTEM_COMPLETED_KEY, JSON.stringify(completedCards));
 
     if (completedCards.length === cards.length) {
       onComplete?.();

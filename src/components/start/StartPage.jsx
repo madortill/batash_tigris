@@ -50,7 +50,7 @@ const StartPage = ({onSendData}) => {
       </div>
       <div className="start-main-content">
         <p className="start-main-content-text">ג'יפ טיגריס</p>
-        <img src={TigrisCard} alt="davidCard" className="davidCard"/>
+        <img src={TigrisCard} alt="TigrisCard" className="davidCard"/>
       </div>
       <img src={letsStartBtn} alt="startBtn" className="letsStartBtn" onClick={nextPage}/>
     </div>

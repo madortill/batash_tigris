@@ -38,10 +38,10 @@ const End = () =>  {
      
       
       </div>
-                        <div className="textBox end-gal" style={{ width: "clamp(12vw, 18vw, 44vw)"}}>
-                          <p className="bubbleText">{introText}</p>
-                    <img className="galTechnicalImg galEndImg" src={galGalgal} alt="galGalgal" />
-                      </div>
+       <div className="textBox-end end-gal" style={{ width: "clamp(12vw, 18vw, 44vw)"}}>
+      <p className="bubbleText-end">{introText}</p>
+      <img className="galTechnicalImg galEndImg" src={galGalgal} alt="galGalgal" />
+     </div>
       <button
         className="nextBtn tigris-next-btn nextBtnEnd"
         onClick={() => {

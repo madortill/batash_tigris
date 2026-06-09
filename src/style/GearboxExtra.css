@@ -174,6 +174,8 @@
 }
 
 
+
+
 /* -------------------------------------------------------------------- */
 .locker-popup-overlay {
   position: fixed;
@@ -354,9 +356,9 @@
 
 .textBox {
     position: relative;
-    right: 0rem;
-    width: clamp(20vw, 22vw, 45vw);
-    height: 12vh;
+    right: -1.1rem;
+    width: clamp(18vw, 20vw, 20vw);
+    height: 13vh;
     background-color: #4769a7;
     border-radius: 30px;
     top: clamp(0rem, 0vh, 18rem);
@@ -368,11 +370,12 @@
     padding: 1.1vw;
     box-sizing: border-box;
     z-index: 1;
+    margin-bottom: 11px;
 }
 .textBox::after {
     content: "";
     position: absolute;
-    bottom: -3.8rem; 
+    bottom: -3.2rem; 
     left: 7%; 
     width: 4rem;
     height: 4rem;
@@ -393,13 +396,50 @@
 
 .gal-locker-div {
     width: 15rem;
-    height: 20rem;
+    height: 18rem;
     position: absolute;
-    bottom: 3rem;
-    left: 5rem;
+    bottom: 8rem;
+    left: 7rem;
 }
 .gal-locker-img {
- height: 10rem;
- width: 10rem;
+ height: 9rem;
+ width: 9rem;
  position: relative;
+}
+@media (max-width: 1400px) {
+  .gal-locker-div {
+        width: 15rem;
+    height: 18rem;
+    position: absolute;
+    bottom: 4rem;
+    left: 1.5rem;
+  }
+  .textBox {
+    position: relative;
+    right: 2rem;
+    width: clamp(18vw, 18vw, 20vw);
+    height: 13vh;
+    background-color: #4769a7;
+    border-radius: 40px;
+    top: clamp(0rem, 0vh, 18rem);
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 1;
+    margin-bottom: 11px;
+}
+
+}
+.locker-popup-btn {
+    font-weight: 900;
+    height: 3.5rem;
+    width: 5.5rem;
+    position: relative;
+    top:2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.8s ease;
+}
+.locker-popup-btn{
+transform: scale(0.92);
 }

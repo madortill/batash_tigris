@@ -18,7 +18,7 @@
 }
 
 .nextBtnEnd {
-    height: 4rem;
+height: 4rem !important;
     width: 8rem;
     font-size: 2rem;
     bottom: 1.5rem;
@@ -49,3 +49,43 @@
     padding-top: 10px;
     gap: 40px;
 }
+
+
+.textBox-end {
+    position: relative;
+    width: clamp(18vw, 18vw, 20vw);
+    height: 11vh;
+    background-color: #4769a7;
+    border-radius: 30px;
+    top: clamp(18rem, 32vh, 25rem);
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.8vw;
+    box-sizing: border-box;
+    z-index: 1;
+}
+.textBox-end::after {
+    content: "";
+    position: absolute;
+    bottom: -3.4rem; 
+    left: 7%; 
+    width: 4rem;
+    height: 4rem;
+    background-color: #4769A7;
+    clip-path: path('M 0 0 C 10 10 15 15 15 30 C 15 35 10 40 10 40 C 30 35 40 20 40 0 Z');
+    transform: scaleX(-1) rotate(15deg) scale(1.6);
+    z-index: -1;
+    aspect-ratio: 1 / 1;
+}
+.bubbleText-end {
+    color: #fff5c3;
+    font-size: clamp(1rem, 1.2vw, 1.2rem);
+    font-weight: 600;
+    text-align: center;
+    line-height: 1.4;
+    margin: 0;
+}
+

@@ -66,7 +66,6 @@ const manualTitle = pageData.lockers?.[1]?.title;
 const manualText = pageData.lockers?.[1]?.text;
 
 
-// 5. שליפת ה-popUp (הוא נמצא באינדקס ה-4 במערך Gearbox)
   const popUp = pageData.popUp;
 const popUpNext = pageData.gotIt;
 const galText = pageData.galText;
@@ -217,10 +216,9 @@ const handleclosepopup=()=>{
 
       <div className="locker-popup-card">
         <p>{popUp}</p>
-
-        <button
+            <button
           type="button"
-          className="nextBtn tigris-next-btn locker-btn"
+          className="uses-popup-btn locker-popup-btn "
           onClick={handleclosepopup}
         >
           {popUpNext}

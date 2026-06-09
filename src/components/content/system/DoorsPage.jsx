@@ -7,7 +7,7 @@ import sideDoor from "../../../assets/images/sideDoor.svg";
 import backDoor from "../../../assets/images/backDoor.svg";
 import sideDoorOpen from "../../../assets/images/opendoorSide.svg";
 import Door from "./Door.jsx";
-
+// door-hint-text-press
 const DoorsPage = ({ changeToPage, changeToSection }) => {
   const [hasVisitedDoorPage, setHasVisitedDoorPage] = useState(
     sessionStorage.getItem("hasVisitedDoorPage") === "true"
@@ -19,7 +19,7 @@ const DoorsPage = ({ changeToPage, changeToSection }) => {
   const nextBtnText = data.general[1].text;
 
   const pageData = data.System[2];
-  const title = data.System[0].title;
+  const title = data.System[2].title;
   const Semititle = pageData.Semititle;
 
   const nextPage = () => changeToSection(5);
@@ -54,6 +54,7 @@ const DoorsPage = ({ changeToPage, changeToSection }) => {
               pageData.backAnnotation ?? "מנגנון נעילה\nדלת אחורית"
             }
             onDoorOpened={handleDoorOpened}
+            shouldFlashHint={!hasVisitedDoorPage}
           />
         </div>
       </div>

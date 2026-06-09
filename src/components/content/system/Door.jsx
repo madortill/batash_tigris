@@ -13,6 +13,8 @@ const Door = ({
   annotationText,
   innerAnnotationText,
   onDoorOpened,
+    shouldFlashHint = true,
+
 }) => {
   const [isDoorOpen, setIsDoorOpen] = useState(false);
   const [showOpenImage, setShowOpenImage] = useState(false);
@@ -31,13 +33,11 @@ const Door = ({
   const toggleDoor = () => {
   if (showOpenImage) return;
 
-  // אם הדלת פתוחה — לסגור אותה בלחיצה נוספת
   if (isDoorOpen) {
     setIsDoorOpen(false);
     return;
   }
 
-  // פתיחה ראשונה: מציגים רגע את תמונת הדלת הפתוחה
   setShowOpenImage(true);
   onDoorOpened?.();
 
@@ -92,7 +92,15 @@ const Door = ({
         </div>
       </button>
 
-      {hintText && <p className="door-hint-text">{hintText}</p>}
+      {hintText && (
+    <p
+          className={`door-hint-text ${
+            !shouldFlashHint ? "door-hint-text-press" : ""
+          }`}
+        >
+          {hintText}
+        </p>
+      )}
 
       <p className="door-label">{currentLabel}</p>
 

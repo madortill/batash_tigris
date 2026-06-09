@@ -1,6 +1,8 @@
-import React, { useState, lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import "./style/App.css";
 import { Route, Routes } from "react-router-dom";
+
+import MobileWarningOverlay from "./components/MobileWarningOverlay.jsx";
 
 const Start = lazy(() => import("./components/start/Start.jsx"));
 const Content = lazy(() => import("./components/content/Content.jsx"));
@@ -12,13 +14,15 @@ import bahad6 from "./assets/images/bahad6.png";
 function App() {
   return (
     <>
-      <div className="app">
-      </div>
+      <MobileWarningOverlay />
+
+      <div className="app"></div>
+
       <div className="symbols">
         <img src={bahad6} alt="bahad6" className="bahad6" />
         <img src={til} alt="til" className="til" />
       </div>
-      
+
       <Suspense fallback={<div>טוען...</div>}>
         <Routes>
           <Route path="/" element={<Start />} />
@@ -30,4 +34,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

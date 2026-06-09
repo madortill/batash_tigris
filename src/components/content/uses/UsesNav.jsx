@@ -1,6 +1,6 @@
 
 import JeepInside from "./JeepInside"
-import ChangingTire from "./JeepInside"
+import ChangingTire from "./ChangingTire"
 import { useData } from "../../../context/DataContext";
 import { useState, useEffect } from "react";
 import "../../../style/UsesNav.css"
@@ -15,9 +15,7 @@ const UsesNav= ({ changeToSection, startingPage }) => {
   const { data } = useData();
   const pagesMap = {
     0: 0,
-    1: 2,
-    2: 0,
-    3: 0,
+    1: 0,
   };
 
 
@@ -57,7 +55,7 @@ const handleChangeSection = (section, returnToLast = false) => {
 
   changeToSection(section, returnToLast);
 };
-  console.log("Rendering SystemNav. Current page:", page, "Type of page:", typeof page);
+  console.log("Rendering useNav. Current page:", page, "Type of page:", typeof page);
 
   return (
     <div className='UsesNav'>
@@ -68,11 +66,10 @@ const handleChangeSection = (section, returnToLast = false) => {
      {page == 4 && <Gearbox changeToPage={handleChangePage}/>}
      {page == 5 && <GearboxTransfer changeToPage={handleChangePage} startPage={startPage}/>}
      {page == 6 && <HighlixDoors changeToPage={handleChangePage} changeToSection={handleChangeSection}/>} */}
-     {page !== 0 && page !== 1 && page !== 2 && (
+     {page !== 0 && page !== 1 && (
       <div style={{ color: "red", textAlign: "center", marginTop: "100px", fontSize: "20px" }}>
         <h3>שגיאת ניווט!</h3>
         <p>ניסית לגשת לעמוד מספר: <strong>{String(page)}</strong></p>
-        <p>עמוד זה אינו קייםוד.</p>
         <button 
           onClick={() => handleChangePage(0)}
           style={{ padding: "10px 20px", marginTop: "10px", cursor: "pointer" }}

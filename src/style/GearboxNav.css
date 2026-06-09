@@ -141,6 +141,8 @@
     fill: #A4704C; 
 }
  */
+
+/* 
 .boxContainer {
   cursor: pointer;
   width: 260px;
@@ -160,7 +162,6 @@
   height: auto;
 }
 
-/* כנפיים - מצב בסיס */
 .lid {
   opacity: 0;
   transform-box: fill-box;
@@ -169,7 +170,6 @@
     opacity 0.25s ease;
 }
 
-/* פתיחה ב-hover */
 .closedBox:hover .lid {
   opacity: 1;
 }
@@ -184,7 +184,6 @@
   transform-origin: bottom right;
 }
 
-/* תיבה פתוחה קבוע - לפעם השנייה */
 .openBox .lid {
   opacity: 1;
 }
@@ -199,7 +198,6 @@
   transform-origin: bottom right;
 }
 
-/* אנימציה קטנה ונעימה לתיבה שכבר פתוחה */
 .openBox:hover .lidLeft {
   transform: rotate(-122deg) translate(-29px, -18px);
 }
@@ -208,13 +206,11 @@
   transform: rotate(122deg) translate(29px, -18px);
 }
 
-/* תיבה פעילה */
 .activeBox {
   opacity: 1;
   pointer-events: auto;
 }
 
-/* תיבה לא מאופשרת - בפעם הראשונה */
 .disabledBox {
   pointer-events: none;
   opacity: 0.55;
@@ -226,14 +222,119 @@
   transform: none;
 }
 
-/* טקסט מתחת לקופסה */
 .boxLabel {
   transition: fill 0.3s ease;
 }
 
 .activeBox:hover .boxLabel {
   fill: #A4704C;
+} */
+
+/* ===== box visual override - flat realistic opening ===== */
+/* ===== final select box design ===== */
+
+.divBoxWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: clamp(70px, 11vw, 130px);
+  margin-top: 52px;
 }
+
+.boxContainer {
+  width: 270px;
+  cursor: pointer;
+  transition: transform 0.25s ease, opacity 0.25s ease, filter 0.25s ease;
+}
+
+.boxContainer:hover {
+  transform: translateY(-4px);
+}
+
+.select-box-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* מצב רגיל: סגור */
+.select-box-open-top {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+
+.select-box-closed-top {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, transform 0.25s ease;
+}
+
+/* ב-hover או אחרי ביקור: פתוח */
+.closedBox:hover .select-box-open-top,
+.openBox .select-box-open-top {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.closedBox:hover .select-box-closed-top,
+.openBox .select-box-closed-top {
+  opacity: 0;
+  transform: translateY(14px);
+}
+
+/* תיבה חסומה */
+.disabledTransferBox,
+.disabledBox {
+  pointer-events: none;
+  opacity: 0.5;
+  filter: grayscale(0.25);
+  cursor: default;
+}
+
+.disabledTransferBox:hover,
+.disabledBox:hover {
+  transform: none;
+}
+
+.disabledTransferBox .select-box-open-top,
+.disabledBox .select-box-open-top {
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.disabledTransferBox .select-box-closed-top,
+.disabledBox .select-box-closed-top {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* רספונסיביות */
+@media (max-width: 900px) {
+  .boxContainer {
+    width: 230px;
+  }
+
+  .divBoxWrapper {
+    gap: 50px;
+  }
+}
+
+@media (max-width: 650px) {
+  .divBoxWrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    margin-top: 28px;
+  }
+
+  .boxContainer {
+    width: min(250px, 74vw);
+  }
+}
+
+
+
 
 .stop-sign-overlay {
     position: fixed;
@@ -426,7 +527,7 @@
 .tcb-box {
   width: min(64vw, 48rem);
   aspect-ratio: 1.52 / 1;
-  background: #f7d77a;
+  background: #ffe494;
   border-radius: 0.6rem;
   position: relative;
   margin: 0 auto;
@@ -442,7 +543,7 @@
 /* ── Info text inside box ── */
 .tcb-info-text {
   text-align: center;
-  font-size: clamp(0.9rem, 2vw, 7rem);
+  font-size: clamp(0.9rem, 1.5vw, 7rem);
   font-weight: 600;
   color: #2c2c2c;
   min-height: 1.4em;
@@ -981,10 +1082,11 @@ box-shadow: 0px 0px 73px 19px rgba(71,71,71,0.46);
   align-items: center;
   gap: 2px;
   position: relative;
-  top: clamp(2rem, 6vw, 7rem);
+  top: clamp(2rem, 5vw, 7rem);
   right: clamp(5rem, 25vw, 30rem);
   margin-top: clamp(1rem, 3vw, 3rem);
   direction: rtl;
+  width:clamp(10rem, 30vw, 27rem) ;
   font-size: 1rem;
 }
 
