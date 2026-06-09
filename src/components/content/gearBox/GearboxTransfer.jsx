@@ -1,5 +1,4 @@
-import { useState } from "react";
-import "../../../style/GearBox.css";
+import { useState, useEffect } from "react";import "../../../style/GearBox.css";
 import { useData } from "../../../context/DataContext";
 import backBtn from "../../../assets/images/backBtn.svg";
 import galGalgal from "../../../assets/images/galGalgal.png";
@@ -24,11 +23,26 @@ const LABEL_KEY = {
   manual:  "manual",
 };
 const GearboxTransfer = ({ changeToPage, startPage, changeToSection }) => {
-  const [isOpen,      setIsOpen]      = useState(false);
-  const [activeState, setActiveState] = useState(null);
-  const [visited,     setVisited]     = useState(new Set());
-  const [warnOpen,    setWarnOpen]    = useState(false);
+const STORAGE_KEY = "GearboxTransferState";
 
+const savedState = JSON.parse(sessionStorage.getItem(STORAGE_KEY) || "{}");
+
+const [isOpen, setIsOpen] = useState(savedState.isOpen ?? false);
+const [activeState, setActiveState] = useState(savedState.activeState ?? null);
+const [visited, setVisited] = useState(new Set(savedState.visited ?? []));
+const [warnOpen, setWarnOpen] = useState(savedState.warnOpen ?? false);
+
+useEffect(() => {
+  sessionStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      isOpen,
+      activeState,
+      visited: Array.from(visited),
+      warnOpen,
+    })
+  );
+}, [isOpen, activeState, visited, warnOpen]);
   const { data } = useData();
   const backBtnText = data.general[0].text;
   const nextBtn     = data.general[1].text;
@@ -43,7 +57,7 @@ const GearboxTransfer = ({ changeToPage, startPage, changeToSection }) => {
     setVisited(prev => new Set([...prev, key]));
     setWarnOpen(false);
   };
-
+const canContinue = STATE_KEYS.every((key) => visited.has(key));
   const activeObj   = activeState ? stateMap[activeState] : null;
   const activeLabel = activeObj?.[activeState] ?? "";
   const activeText  = activeObj?.text ?? "";
@@ -160,15 +174,16 @@ const GearboxTransfer = ({ changeToPage, startPage, changeToSection }) => {
 </div>
 
       <div className="backBtn">
-        <img src={backBtn} alt="backBtn" className="backBtnImg" onClick={() => changeToPage(2)} />
+        <img src={backBtn} alt="backBtn" className="backBtnImg" onClick={() => changeToPage(1)} />
         <p className="backBtnText">{backBtnText}</p>
       </div>
       <button
-        className="nextBtn tigris-next-btn"
-        onClick={() => changeToPage(4)}
-      >
-        {nextBtn}
-      </button>
+  className={`nextBtn tigris-next-btn ${!canContinue ? "nextBtnDisable" : ""}`}
+  disabled={!canContinue}
+  onClick={() => changeToPage(3)}
+>
+  {nextBtn}
+</button>
     </>
   );
 };

@@ -89,7 +89,7 @@ const DrivingTypes = ({ changeToPage, changeToSection }) => {
   };
 
   const previousPage = () => {
-    changeToSection(3);
+    changeToSection(3, true);
   };
 
   const nextPage = () => {

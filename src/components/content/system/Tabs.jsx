@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./Tabs.module.css";
 
 const Tabs = ({
@@ -11,13 +11,25 @@ const Tabs = ({
     inactiveTextColor = "#FFF2B4",
     activeTextColor = "#073799",
     contentBg = "#F9DB88",
+    onAllTabsVisited,
 }) => {
     const [activeTab, setActiveTab] = useState(0);
-
+const [visitedTabs, setVisitedTabs] = useState([0]);
+useEffect(() => {
+    if (visitedTabs.includes(0) && visitedTabs.includes(1)) {
+        onAllTabsVisited?.();
+    }
+}, [visitedTabs, onAllTabsVisited]);
     const bubbleRadius = activeTab === 0
         ? "30px 30px 0px 30px"
         : "30px 30px 30px 0px";
+const handleTabClick = (tabIndex) => {
+    setActiveTab(tabIndex);
 
+    setVisitedTabs((prev) =>
+        prev.includes(tabIndex) ? prev : [...prev, tabIndex]
+    );
+};
     return (
         <div className={styles.tabContainer} style={{ borderColor }}>
             <div className={styles.tabHeaders} style={{ backgroundColor: borderColor }}>
@@ -31,15 +43,15 @@ const Tabs = ({
                     }}
                 />
                 {/* Tab 1 */}
-                <div className={styles.tab} onClick={() => setActiveTab(0)} >
-                    <p className={styles.tabLabel} style={{ color: activeTab === 0 ? activeTextColor : inactiveTextColor }} >
+<div className={styles.tab} onClick={() => handleTabClick(0)}>
+                        <p className={styles.tabLabel} style={{ color: activeTab === 0 ? activeTextColor : inactiveTextColor }} >
                         {tab1Label}
                     </p>
                 </div>
 
                 {/* Tab 2 */}
-                <div className={styles.tab} onClick={() => setActiveTab(1)} >
-                    <p className={styles.tabLabel} style={{ color: activeTab === 1 ? activeTextColor : inactiveTextColor }} >
+                <div className={styles.tab} onClick={() => handleTabClick(1)}>
+                        <p className={styles.tabLabel} style={{ color: activeTab === 1 ? activeTextColor : inactiveTextColor }} >
                         {tab2Label}
                     </p>
                 </div>

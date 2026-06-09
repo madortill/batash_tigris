@@ -266,7 +266,7 @@ useEffect(() => {
             <img src={bigWarning} alt="warning" className="tcb-popup-bg" />
             <div className="tcb-popup-body">
               <h3 className="tcb-popup-title">{popUpHeader?.title}</h3>
-              <h3 className="tcb-popup-title">{popUpHeader?.action}</h3>
+              <h3 className="tcb-popup-semititle">{popUpHeader?.action}</h3>
               <div className="tcb-popup-steps">
                 {popUpSteps?.steps?.map((step, i) => (
                   <div
@@ -282,8 +282,6 @@ useEffect(() => {
                     <span className="tcb-step-text">{step}</span>
                   </div>
                 ))}
-                <p className="tcb-popup-extra">{popUpHeader?.textExtra}</p>
-              </div>
               {allStepsChecked && (
                     <button
                       className="tcb-popup-done-btn"
@@ -295,6 +293,8 @@ useEffect(() => {
                       {popUpSteps?.closePopUp || "עברתי"}
                     </button>
                   )}
+                <p className="tcb-popup-extra">{popUpHeader?.textExtra}</p>
+              </div>
             </div>
           </div>
         </div>

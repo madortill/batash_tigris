@@ -713,10 +713,10 @@ EB POPUP
 /* כפתור הנורה */
 .sys-eb-lamp-btn {
   margin: 0.7rem auto 0.3rem;
-  min-width: min(250px, 82%);
   min-height: 32px;
   padding: 0.25rem 0.75rem;
-  
+width: 7%;  
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -760,10 +760,13 @@ EB POPUP
   }
   
   50% {
-    opacity: 0.85;
-    transform: scale(1.12);
+    opacity: 0.95;
+    transform: scale(1.10);
     filter: drop-shadow(0 0 12px rgba(255, 196, 0, 1));
   }
+}
+.next-arrow-popUp{
+  transform: rotate(90deg);
 }
 
 .sys-eb-extra-text {
@@ -877,7 +880,155 @@ EB POPUP
   line-height: 1.4;
   font-weight: 600;
 }
+/* קפסולת נורת אזהרה - מחלקות נפרדות כדי לא לדרוס דברים אחרים */
+.sys-eb-warning-pill {
+  width: min(82%, 370px);
+  min-height: 42px;
+  margin: 0.75rem auto 0.45rem;
+  padding: 0.25rem 0.85rem;
 
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+
+  border: 2px solid #d85f1e;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff4c8 0%, #ffd879 100%);
+  box-shadow:
+    inset 0 0 10px rgba(255, 255, 255, 0.45),
+    0 2px 5px rgba(0, 0, 0, 0.12);
+
+  cursor: pointer;
+  direction: rtl;
+}
+
+.sys-eb-warning-pill:hover {
+  filter: brightness(1.03);
+}
+
+.sys-eb-warning-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  object-fit: contain;
+  animation: sys-eb-lamp-blink 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 196, 0, 0.75));
+}
+
+.sys-eb-warning-text {
+  margin: 0;
+  color: #111;
+  font-size: clamp(0.78rem, 1.25vw, 1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  font-family: rubik, assistant, sans-serif;
+  white-space: normal;
+}
+
+/* חצים למטה - מחלקה חדשה שלא קשורה ל-sys-types-arrow */
+.sys-eb-next-arrows {
+  width: 60px;
+  height: 50px;
+  margin: 0.45rem auto 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+
+  animation: sys-eb-next-arrows-bounce 1.2s 0.5s ease-in-out infinite;
+}
+
+.sys-eb-next-arrows span {
+  width: 22px;
+  height: 22px;
+
+  border-right: 3px solid #111;
+  border-bottom: 3px solid #111;
+
+  transform: rotate(45deg);
+  margin-top: -7px;
+}
+
+@keyframes sys-eb-next-arrows-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(5px);
+  }
+}
+/* אזור נורה + טקסט קטן - מחלקות חדשות שלא דורסות */
+.sys-eb-warning-area {
+  width: fit-content;
+  max-width: 82%;
+  margin: 0.7rem auto 0.35rem;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+
+  direction: rtl;
+}
+
+.sys-eb-lamp-only-btn {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+
+  display: grid;
+  place-items: center;
+
+  padding: 0;
+  border: 2px solid #d85f1e;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff4c8 0%, #ffd879 100%);
+
+  cursor: pointer;
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.12);
+}
+
+.sys-eb-lamp-only-icon {
+  width: 21px;
+  height: 21px;
+  object-fit: contain;
+  animation: sys-eb-lamp-blink 1s ease-in-out infinite;
+  filter: drop-shadow(0 0 5px rgba(255, 196, 0, 0.75));
+}
+
+.sys-eb-warning-small-text {
+  max-width: 320px;
+  padding: 0.28rem 0.6rem;
+
+  border: 2px solid #d85f1e;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #fff4c8 0%, #ffd879 100%);
+
+  color: #111;
+  font-size: clamp(0.62rem, 1vw, 0.78rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  font-family: rubik, assistant, sans-serif;
+
+  box-shadow:
+    inset 0 0 8px rgba(255, 255, 255, 0.45),
+    0 2px 4px rgba(0, 0, 0, 0.12);
+}
 /* =========================================================
 SIMPLE POPUPS - AntiBrake + TC
 ========================================================= */

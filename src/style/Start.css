@@ -96,7 +96,7 @@
 
 .start-main-content-text {
     font-family: "rubik";
-    font-size: 3.1rem;
+    font-size: 3rem;
     color: #E69907;
 }
 
@@ -111,13 +111,13 @@
 }
 
 .davidCard {
-    height: 30rem;
+    height: 27rem;
     border-radius: 17px;
     margin-top: 1rem;
 }
 
 .letsStartBtn {
-    height: 7rem;
+    height: 6rem;
     position: relative;
     top: 35rem;
     right: 20rem;

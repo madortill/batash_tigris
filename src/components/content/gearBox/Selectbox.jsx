@@ -3,7 +3,10 @@ import { useData } from "../../../context/DataContext";
 import "../../../style/Boxes.css";
 import backBtn from "../../../assets/images/backBtn.svg";
 
-const SELECTBOX_VISITED_KEY = "tigrisSelectboxVisited";
+const SELECTBOX_VISITED_KEY = "tigrisSelectboxGearboxVisited";
+const SELECTBOX_TRANSFER_VISITED_KEY = "tigrisSelectboxTransferVisited";
+const SELECTBOX_GEARBOX_VISITED_KEY = "tigrisSelectboxGearboxVisited";
+
 const BoxSvg = ({ label }) => {
   return (
     <svg
@@ -121,9 +124,13 @@ const BoxSvg = ({ label }) => {
 const Selectbox = ({ changeToPage, changeToSection, step = "first" }) => {
   const { data } = useData();
 
-  const [hasVisitedSelectbox, setHasVisitedSelectbox] = useState(() => {
-    return sessionStorage.getItem(SELECTBOX_VISITED_KEY) === "true";
-  });
+const [hasVisitedGearbox, setHasVisitedGearbox] = useState(() => {
+  return sessionStorage.getItem(SELECTBOX_GEARBOX_VISITED_KEY) === "true";
+});
+
+const [hasVisitedTransfer, setHasVisitedTransfer] = useState(() => {
+  return sessionStorage.getItem(SELECTBOX_TRANSFER_VISITED_KEY) === "true";
+});
 
   const isFirstStep = step === "first";
   const isSecondStep = step === "second";
@@ -137,12 +144,14 @@ const Selectbox = ({ changeToPage, changeToSection, step = "first" }) => {
   const textbox1 = pageData[0].textBox1;
   const textbox2 = pageData[0].textBox2;
 
-  const bothBoxesEnabled = isSecondStep || hasVisitedSelectbox;
+const bothBoxesEnabled = isSecondStep || hasVisitedGearbox;
 
-  useEffect(() => {
-    sessionStorage.setItem(SELECTBOX_VISITED_KEY, "true");
-    setHasVisitedSelectbox(true);
-  }, []);
+useEffect(() => {
+  if (isSecondStep) {
+    sessionStorage.setItem(SELECTBOX_GEARBOX_VISITED_KEY, "true");
+    setHasVisitedGearbox(true);
+  }
+}, [isSecondStep]);
 
   const goBack = () => {
     if (isFirstStep && !hasVisitedSelectbox) {
@@ -160,19 +169,21 @@ const Selectbox = ({ changeToPage, changeToSection, step = "first" }) => {
     }
   };
 
-  const handleGearboxClick = () => {
-    sessionStorage.setItem(SELECTBOX_VISITED_KEY, "true");
-    setHasVisitedSelectbox(true);
-    changeToPage(1);
-  };
+const handleGearboxClick = () => {
+  sessionStorage.setItem(SELECTBOX_GEARBOX_VISITED_KEY, "true");
+  setHasVisitedGearbox(true);
+  changeToPage(1);
+};
 
-  const handleTransferClick = () => {
-    if (!bothBoxesEnabled) return;
+const handleTransferClick = () => {
+  if (!bothBoxesEnabled) return;
 
-    sessionStorage.setItem(SELECTBOX_VISITED_KEY, "true");
-    setHasVisitedSelectbox(true);
-    changeToPage(4);
-  };
+  sessionStorage.setItem(SELECTBOX_TRANSFER_VISITED_KEY, "true");
+  setHasVisitedTransfer(true);
+  changeToPage(4);
+};
+// sessionStorage.removeItem("tigrisSelectboxGearboxVisited");
+// localStorage.removeItem("tigrisSelectboxVisited");
 
   return (
     <div className="tigris-general-page">
@@ -193,21 +204,24 @@ const Selectbox = ({ changeToPage, changeToSection, step = "first" }) => {
       <div className="divBoxWrapper">
         {/* תיבת העברה - שמאל */}
         <div
-          className={`boxContainer transferBox ${
-            bothBoxesEnabled ? "openBox activeTransferBox" : "closedBox disabledTransferBox"
-          }`}
-          onClick={handleTransferClick}
-          role="button"
-          tabIndex={bothBoxesEnabled ? 0 : -1}
-          aria-disabled={!bothBoxesEnabled}
-        >
-          <BoxSvg label={textbox2} />
-        </div>
-
+className={`boxContainer transferBox ${
+  !bothBoxesEnabled
+    ? "closedBox disabledTransferBox"
+    : hasVisitedTransfer
+      ? "openBox activeTransferBox"
+      : "closedBox activeTransferBox"
+}`}
+  onClick={handleTransferClick}
+  role="button"
+  tabIndex={bothBoxesEnabled ? 0 : -1}
+  aria-disabled={!bothBoxesEnabled}
+>
+  <BoxSvg label={textbox2} />
+</div>
         {/* תיבת הילוכים - ימין */}
         <div
           className={`boxContainer gearboxBox ${
-            bothBoxesEnabled ? "openBox activeGearboxBox" : "closedBox activeGearboxBox"
+        bothBoxesEnabled ? "openBox activeGearboxBox" : "closedBox activeGearboxBox"
           }`}
           onClick={handleGearboxClick}
           role="button"

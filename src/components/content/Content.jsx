@@ -20,7 +20,6 @@ const [sectionStartPages, setSectionStartPages] = useState(() => {
   }
 });
 
-// 2. שמירת המפה בכל שינוי
 useEffect(() => {
   localStorage.setItem("tigrisStartPages", JSON.stringify(sectionStartPages));
 }, [sectionStartPages]);  // const [navSection, setNavSection] = useState(0);
@@ -94,30 +93,47 @@ useEffect(() => {
 
   setNavSection((prev) => (targetSection > prev ? targetSection : prev));
 };
+const saveLastPageInSection = (sectionNumber, pageNumber) => {
+  setSectionStartPages((prev) => ({
+    ...prev,
+    [sectionNumber]: pageNumber,
+  }));
+};
+
   return (
     <div className="content">
       {section === 0 && <ContentStart changeToSection={handleChangeSection} />}
      {section === 1 && <GeneralBack changeToSection={handleChangeSection}
           startingPage={sectionStartPages[1] ?? 0}
            isCompleted={!!completedSections[1]}
-    onComplete={() => markSectionCompleted(1)}/>}
+    onComplete={() => markSectionCompleted(1)}
+      onPageChange={(pageNumber) => saveLastPageInSection(1, pageNumber)}
+/>}
       {section === 2 && (
         <TecnichalManager
           changeToSection={handleChangeSection}
           startingPage={sectionStartPages[2] ?? 0}
+            onPageChange={(pageNumber) => saveLastPageInSection(2, pageNumber)}
+
         />
       )}
       {section === 3 && <GearboxNav changeToSection={handleChangeSection}
-          startingPage={sectionStartPages[3] ?? 0}/>}
+          startingPage={sectionStartPages[3] ?? 0}
+            onPageChange={(pageNumber) => saveLastPageInSection(3, pageNumber)}
+/>}
 
           {section === 4 && (
             <SystemNav 
               changeToSection={handleChangeSection}
-              startingPage={sectionStartPages[4] ?? 0} // <--- התיקון החשוב ביותר!
+              startingPage={sectionStartPages[4] ?? 0} 
+                  onPageChange={(pageNumber) => saveLastPageInSection(4, pageNumber)}
+
             />
           )}      
-              {section == 5 && <Uses changeToSection={handleChangeSection}/>}
-              {section == 6 && <End changeToSection={handleChangeSection}/>}
+              {section == 5 && <Uses changeToSection={handleChangeSection}
+                onPageChange={(pageNumber) => saveLastPageInSection(5, pageNumber)}
+/>}
+              {section == 6 && <End changeToSection={handleChangeSection} />}
       
       {section !== 0 && (
         <NavBar

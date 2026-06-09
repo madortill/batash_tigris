@@ -38,13 +38,16 @@ const StartPage = ({onSendData}) => {
         {showAbout && (
           <>
             <h3 className="list-text-about">מפתחת ראשית:</h3>
+            <p className="list-text-about">רעות מנה</p>
             <h3 className="list-text-about">גרפיקה:</h3>
+            <p className="list-text-about">רעות מנה</p>
             <h3 className="list-text-about">מומחי תוכן:</h3>
             <p className="list-text-about">רס"ל עדן מאיר</p>
             <p className="list-text-about">רנ"ג יוסי אלוני</p>
             <h3 className="list-text-about">רמ"ד טי"ל:</h3>
+            <p className="list-text-about">קטיה מדבדב</p>
             <h3 className="list-text-about">גרסה:</h3>
-            <p className="list-text-about">אפריל 2026</p>
+            <p className="list-text-about">יוני 2026</p>
           </>
         )}
       </div>

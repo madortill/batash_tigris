@@ -143,7 +143,7 @@ const JeepInside = ({ changeToPage, changeToSection }) => {
     swichLigthInside,
   ];
 
-  const previousPage = () => changeToSection(4);
+  const previousPage = () => changeToSection(4,true);
 
   const nextPage = () => {
     if (!canContinue) return;

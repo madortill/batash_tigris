@@ -136,6 +136,8 @@ const BDriveA = ({ changeToPage, startPage, changeToSection }) => {
     );
   }, [hasEverClickedSign, startCheckedSteps, endCheckedSteps, canContinue]);
 
+
+  
   const popupContent = useMemo(() => {
     if (activePopup === POPUP_TYPES.START) {
       return {
@@ -269,7 +271,10 @@ const BDriveA = ({ changeToPage, startPage, changeToSection }) => {
             onClick={handleSignClick}
             aria-label="פתח סדר פעולות"
           >
-            {!hasEverClickedSign && !carDriving && !activePopup && (
+            {
+            // !hasEverClickedSign &&
+             currentSign!=stopSignAfter &&
+             !carDriving && !activePopup && (
               <p className="press-me">{pressMe}</p>
             )}
 
