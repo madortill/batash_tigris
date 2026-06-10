@@ -48,7 +48,13 @@ const [completedSections, setCompletedSections] = useState(() => {
     return {};
   }
 });
-
+useEffect(() => {
+  localStorage.removeItem("tigrisSection");
+  localStorage.removeItem("tigrisNavSection");
+  localStorage.removeItem("tigrisStartPages");
+  localStorage.removeItem("tigrisCompletedSections");
+  localStorage.removeItem("tigrisLastPagesBySection");
+}, []);
 useEffect(() => {
   sessionStorage.setItem(
     "tigrisCompletedSections",
