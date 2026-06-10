@@ -281,10 +281,14 @@ const navItemClass = (targetSection) => {
             className={navSection > 1 ? "cls-4" : "cls-2"}
             d="M16.64,243l-3.32,6s2.68,1.35,3.75,1.61c.59.14,1.38.44,2.39.29.72-.11,1.02-.57,1.22-1.1.17-.44.73-1.74.73-1.74l-4.21-.67-.56-4.4Z"
           />
-          <text className="cls-text" transform="translate(56.54 281.96)">
-            <tspan x="90" y="0">
-              {tecnichalData}
-            </tspan>
+            <text
+            className="cls-text navbar-text-technical navbar-text-technical-one-line"
+            x="104"
+            y="280"
+            textAnchor="middle"
+            dominantBaseline="middle"
+          >
+            {tecnichalData}
           </text>
         </g>
         <g
@@ -381,7 +385,7 @@ const navItemClass = (targetSection) => {
             d="M18.27,170.03s-3.18,5.73-3.32,6-4.65,8.64-4.65,8.64l-2.02,7.36,3.13,4.5,6.47-.91,9.04-11.6-.71-11.43-7.94-2.56Z"
           />
           <text className="cls-text" transform="translate(24.06 205.35)">
-            <tspan x="150" y="0">
+            <tspan x="140" y="4">
               {knowCar}
             </tspan>
           </text>
@@ -472,7 +476,7 @@ const navItemClass = (targetSection) => {
             d="M3.99,330.5c1.75.03,3.51.07,5.26.1-.04.36-.09.71-.13,1.07l2.56-1.11c.17.17.34.34.51.51-1.22,1.43-2.44,2.86-3.66,4.29-1.5-1.64-4.69-1.69-4.53-4.86h0Z"
           />
           <text className="cls-text" transform="translate(52.14 356.25)">
-            <tspan x="95" y="0">
+            <tspan x="100" y="0">
               {boxes}
             </tspan>
           </text>
@@ -571,7 +575,7 @@ const navItemClass = (targetSection) => {
             d="M13.87,397.01c1,3.46,3.67,7.04-.81,9.94,2.03-3.22-1.56-6.81.81-9.94Z"
           />
           <text className="cls-text" transform="translate(44.53 431.49)">
-            <tspan x="110" y="0">
+            <tspan x="130" y="0">
               {system}
             </tspan>
           </text>
@@ -666,7 +670,7 @@ const navItemClass = (targetSection) => {
             d="M13.87,469.61c1,3.46,3.67,7.04-.81,9.94,2.03-3.22-1.56-6.81.81-9.94Z"
           />
           <text className="cls-text" transform="translate(61.03 502.03)">
-            <tspan x="75" y="0">
+            <tspan x="87" y="0">
               {uses}
             </tspan>
           </text>

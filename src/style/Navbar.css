@@ -130,3 +130,6 @@
 .navbar-section--active {
   filter: brightness(1.18);
 }
+.navbar-text-technical-one-line {
+  font-size: 28x;
+}

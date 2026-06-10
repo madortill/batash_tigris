@@ -519,7 +519,7 @@
 
 .uses-switches-main-btn .uses-switches-image {
   margin: 0 auto;
-  animation: switchesEnterCenter 0.75s cubic-bezier(0.2, 0.85, 0.25, 1) both, Pulse 1.7s infinite ease-out;;
+  animation: switchesEnterCenter 0.75s cubic-bezier(0.2, 0.85, 0.25, 1) both, Pulse 1.7s infinite ease-out;
 }
 .uses-switches-image-animation-none {
 animation: none !important;

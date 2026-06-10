@@ -205,16 +205,44 @@
 /* ── טקסט שמאל ── */
 .gb-texts-col { flex: 1; display: flex; flex-direction: column; gap: 0; direction: rtl; }
 .gb-text-row  { min-height: 60px; display: flex; align-items: center; direction: rtl; }
-.gb-text-empty{ min-height: 60px; width: 100%; }
+.gb-text-empty{ min-height: 70px; width: 100%; }
 .gb-text-content { direction: rtl; }
 .gb-text-line { font-size: clamp(0.68rem,2.5vw,1.1rem); color: #222; line-height: 1.6; margin: 0; }
 .gb-text-label{ font-weight: 800; color: #1a4a8a; }
 .gb-text-body { font-weight: 400; }
 .gb-warn-line { display: flex; align-items: flex-start; gap: 5px; margin-top: 3px; cursor: pointer; direction: rtl; }
-.gb-warn-icon { font-size: 0.9rem; flex-shrink: 0; }
-.gb-warn-txt  { font-size: clamp(0.62rem,0.9vw,0.75rem); color: #7a5500; line-height: 1.5; margin: 0; }
+
+
+.gb-warn-icon { font-size: 1.5rem; 
+  flex-shrink: 0;
+  animation: pulse 1.4s infinite ease-out;
+ }
+@keyframes Pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  }
+  50% {
+    transform: scale(1.05); 
+    opacity: 0.8; 
+    box-shadow: 0 0 25px rgba(0, 123, 255, 0.8); /* הזוהר בשיאו */
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+  }
+}
+
+
+.gb-warn-icon-pressed{
+  animation: none;
+}
+
+.gb-warn-txt  { font-size: clamp(0.82rem,1.2vw,0.75rem); color: #7a5500; line-height: 1.5; margin: 0; }
 .gb-warn-hint { font-size: clamp(0.62rem,0.9vw,0.75rem); color: #b8860b; font-weight: 700; margin: 0; }
-.gb-extra     { font-size: clamp(0.62rem,0.9vw,0.75rem); color: #555; line-height: 1.5; margin: 2px 0 0; }
+.gb-extra     { font-size: clamp(0.62rem,1.2vw,0.75rem); color: #555; line-height: 1.5; margin: 2px 0 0; }
 
 /* ── ידית + כפתורים ימין ── */
 .gb-lever-section {
@@ -223,7 +251,10 @@
     align-items: flex-start; 
     gap: 0px; 
   }
-.gb-state-buttons { display: flex; flex-direction: column; gap: 0; }
+
+.gb-state-buttons { display: flex;
+   flex-direction: column; 
+   gap: 8px; }
 .gb-btn-wrap      { height: 60px; display: flex; align-items: center; }
 .gb-state-btn {
   display: flex; align-items: center; justify-content: space-between;

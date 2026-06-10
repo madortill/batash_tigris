@@ -56,6 +56,7 @@ const GeneralBack = ({changeToSection, startingPage, isCompleted, onComplete}) =
   return (
     <div className="tigris-general-page">
       <h1 className="tigris-general-title effect-underline">{pageData.title}</h1>
+      <p className="hint">{pageData.move}</p>
 
       <div className="backBtn">
               <img

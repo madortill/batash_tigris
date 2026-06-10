@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "../../../style/SystemDoor.css";
 
-const OPEN_IMAGE_DELAY = 350;
+const OPEN_IMAGE_DELAY = 450;
 
 const Door = ({
   doorImage,
