@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useData } from "../../../context/DataContext";
 import Selectbox from "./Selectbox.jsx" 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../../../style/GearboxNav.css"
 import TransferCaseBox from "./TransferCaseBox.jsx";
 import Gearbox from "./Gearbox.jsx";
@@ -9,9 +9,12 @@ import Lockers from "./Lockers.jsx";
 import BDriveA from "./BDriveA.jsx";
 import GearboxTransfer from "./GearboxTransfer.jsx";
 
-const GearboxNav= ({ changeToSection, startingPage }) => {
-  const [page, setPage] = useState(startingPage);
+const GearboxNav = ({ changeToSection, startingPage = 0, onPageChange }) => {
+    const [page, setPage] = useState(startingPage);
   const [startPage, setStartPage] = useState(0);
+  useEffect(() => {
+  setPage(startingPage);
+}, [startingPage]);
   const navigate = useNavigate();
 
   const { data } = useData();
@@ -36,6 +39,7 @@ const GearboxNav= ({ changeToSection, startingPage }) => {
   }
 
   setPage(targetPage);
+  onPageChange?.(targetPage);
 
   if (returnToLast) {
     setStartPage(pagesMap[targetPage]);

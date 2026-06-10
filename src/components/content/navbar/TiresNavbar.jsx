@@ -18,7 +18,7 @@ function TiresNavbar({ contentStart, changeToSection, navSection, currentSection
 
     if (!isAllowed) return;
 
-    changeToSection(targetSection, true);
+    changeToSection(targetSection);
   };
 const navItemClass = (targetSection) => {
     const isAllowed = targetSection <= navSection;

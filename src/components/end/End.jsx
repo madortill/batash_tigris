@@ -14,7 +14,7 @@ const End = () =>  {
   const { data } = useData();
   const btnText = data.End[0].btnText;
   const title = data.End[0].title;
-  const warning = data.End[0].warning;
+  const warning = data.End[0].textWarning;
     const backBtnText = data?.general?.[0]?.text || "חזור";
   const nextBtn = data?.general?.[1]?.text || "הבא";
   const introText = data?.End?.[0]?.text || "הבא";
@@ -35,7 +35,6 @@ const End = () =>  {
       {/* <img className="end-warning" src={warning} alt="warning" /> */}
       {/* <img className="end-road" src={road} alt="road" /> */}
       <div className="galEnd galBubble">
-     
       
       </div>
        <div className="textBox-end end-gal" style={{ width: "clamp(12vw, 18vw, 44vw)"}}>
@@ -47,9 +46,10 @@ const End = () =>  {
         onClick={() => {
           window.location.href = "https://madortill.github.io/batash-package/";
         }}
-      >
+        >
         {btnText}
       </button>
+      <p className="end-warning">{warning}</p>
     </div>
   );
 }

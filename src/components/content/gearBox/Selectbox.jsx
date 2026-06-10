@@ -131,7 +131,12 @@ const [hasVisitedGearbox, setHasVisitedGearbox] = useState(() => {
 const [hasVisitedTransfer, setHasVisitedTransfer] = useState(() => {
   return sessionStorage.getItem(SELECTBOX_TRANSFER_VISITED_KEY) === "true";
 });
+const canContinue = hasVisitedGearbox && hasVisitedTransfer;
+const nextPage = () => {
+  if (!canContinue) return;
 
+  changeToSection(4);
+};
   const isFirstStep = step === "first";
   const isSecondStep = step === "second";
 
@@ -143,6 +148,7 @@ const [hasVisitedTransfer, setHasVisitedTransfer] = useState(() => {
 
   const textbox1 = pageData[0].textBox1;
   const textbox2 = pageData[0].textBox2;
+  const nextChapter = pageData[0].nextChapter;
 
 const bothBoxesEnabled = isSecondStep || hasVisitedGearbox;
 
@@ -153,21 +159,17 @@ useEffect(() => {
   }
 }, [isSecondStep]);
 
-  const goBack = () => {
-    if (isFirstStep && !hasVisitedSelectbox) {
-      changeToSection(2, true);
-      return;
-    }
+const goBack = () => {
+  if (isFirstStep) {
+    changeToSection(2, true);
+    return;
+  }
 
-    if (isFirstStep && hasVisitedSelectbox) {
-      changeToSection(2, true);
-      return;
-    }
-
-    if (isSecondStep) {
-      changeToPage(2);
-    }
-  };
+  if (isSecondStep) {
+    changeToPage(2);
+    return;
+  }
+};
 
 const handleGearboxClick = () => {
   sessionStorage.setItem(SELECTBOX_GEARBOX_VISITED_KEY, "true");
@@ -230,7 +232,17 @@ className={`boxContainer transferBox ${
           <BoxSvg label={textbox1} />
         </div>
       </div>
+     <button
+  className={`nextBtn tigris-next-btn ${
+    !canContinue ? "nextBtnDisable" : ""
+  }`}
+  disabled={!canContinue}
+  onClick={nextPage}
+>
+  {nextChapter}
+</button>
     </div>
+    
   );
 };
 

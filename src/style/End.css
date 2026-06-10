@@ -12,8 +12,9 @@
 
 .end-warning {
     position: relative;
-    top: 4rem;
-    left: 26rem;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 2rem;
     width: 18rem;
 }
 

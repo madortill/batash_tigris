@@ -122,132 +122,149 @@
 
 /* id---------------------*/
 
+.technicalData-title {
+  font-family: "rubik-black";
+  font-size: clamp(1.6rem, 3vw, 2.7rem);
+  position: relative;
+  top: clamp(1rem, 4vh, 3.5rem);
+  right: clamp(1rem, 19vw, 20rem);
+  z-index: 20;
+  width: fit-content;
+  color: #073799;
+}
+
 /* ── Wrapper ── */
 .vc-wrapper {
-    position: relative;
-   top:-5rem;
+  position: relative;
+  top: clamp(1rem, 2vh, 2rem);
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* כניסה מלמעלה עם נדנוד */
-  animation: vcDrop 0.85s cubic-bezier(0.34, 1.45, 0.64, 1) both;
+  animation: vcDrop 0.75s cubic-bezier(0.34, 1.45, 0.64, 1) both;
 }
 
 @keyframes vcDrop {
-  0%   { transform: translateY(-140px) rotate(-5deg); opacity: 0; }
-  45%  { transform: translateY(12px)   rotate(3deg);  opacity: 1; }
-  65%  { transform: translateY(-7px)   rotate(-2deg); }
-  82%  { transform: translateY(4px)    rotate(1deg);  }
-  100% { transform: translateY(0)      rotate(0deg);  }
+  0% {
+    transform: translateY(-80px) rotate(-3deg);
+    opacity: 0;
+  }
+
+  55% {
+    transform: translateY(8px) rotate(1.5deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
 }
 
 /* ── שרוך ── */
 .vc-lanyard {
   position: relative;
-  width: clamp(200px, 14vw, 140px);
-  height: clamp(200px, 7vw, 72px);
+  width: clamp(160px, 16vw, 260px);
+  height: clamp(82px, 15vh, 150px);
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  margin-bottom: -2px; /* חיבור חלק לכרטיס */
-  z-index: 1;
+  margin-bottom: -1px;
+  z-index: 2;
 }
 
-/* שני חוטים אלכסוניים */
 .vc-lanyard-left,
 .vc-lanyard-right {
   position: absolute;
   bottom: 0;
-  width: clamp(8px, 0.4vw, 4px);
-  height: 100%;
-  background: #293A5E;
-  border-radius: 2px;
+  width: clamp(5px, 0.55vw, 8px);
+  height: 112%;
+  background: #293a5e;
+  border-radius: 999px;
 }
 
 .vc-lanyard-left {
   left: 50%;
   transform-origin: bottom center;
-  transform: translateX(-50%) rotate(-18deg);
+  transform: translateX(-50%) rotate(-20deg);
 }
 
 .vc-lanyard-right {
   left: 50%;
   transform-origin: bottom center;
-  transform: translateX(-50%) rotate(18deg);
+  transform: translateX(-50%) rotate(20deg);
 }
 
 .vc-lanyard-knot {
   position: absolute;
-  top: 100%;
+  top: 96%;
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(8px, 1.4vw, 14px);
-  height: clamp(8px, 1.4vw, 14px);
-  background: #FFF2B4;
+  width: clamp(10px, 1.2vw, 16px);
+  height: clamp(10px, 1.2vw, 16px);
+  background: #fff2b4;
   border-radius: 50%;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  z-index: 5;
 }
 
-/* ── Scene – perspective ── */
+/* ── Scene ── */
 .vc-scene {
-  width:  clamp(850px, 44vw, 900px);
-  min-height: 400px;
-  max-height: 700px;
-  height: clamp(400px, 40vw, 650px);
+  width: clamp(420px, 52vw, 820px);
+  height: clamp(250px, 42vw, 500px);
   perspective: 1200px;
   cursor: pointer;
 }
 
-/* ── Body – מה שמסתובב ── */
+/* ── Body ── */
 .vc-body {
   width: 100%;
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
-  /* filter: drop-shadow(0 10px 22px rgba(57, 36, 23, 0.28)); */
 }
 
 .vc-body--flipped {
   transform: rotateY(180deg);
 }
 
-/* ── פנים משותף ── */
+/* ── פנים משותפים ── */
 .vc-face {
   position: absolute;
   inset: 0;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-   transform-style: preserve-3d; 
-  /* רקע מה-SVG – gradient radial בדיוק כמו בקובץ */
-  background: radial-gradient(
-    ellipse at 60% 37%,
-    #CAEFFF 2%,
-    rgba(64, 80, 96, 0.76) 100%
-  );
+  transform-style: preserve-3d;
 
-  /* border כפול כמו ב-SVG */
-  border-radius: clamp(18px, 3vw, 40px);
-  border: 2.5px solid #000;
-  outline: 2.5px solid #000;
-  outline-offset: clamp(8px, 1.4vw, 16px);
+  background:
+    radial-gradient(circle at 62% 28%, rgba(255, 255, 255, 0.5) 0 12%, transparent 35%),
+    linear-gradient(135deg, #c8f0ff 0%, #a9d8e8 48%, #8eb6c4 100%);
+
+  border-radius: clamp(18px, 2.5vw, 36px);
+  border: clamp(2px, 0.25vw, 3px) solid #000;
+  outline: clamp(2px, 0.25vw, 3px) solid #000;
+  outline-offset: clamp(7px, 0.8vw, 13px);
 
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
   direction: rtl;
+
+  box-shadow:
+    0 10px 22px rgba(0, 0, 0, 0.18),
+    inset 0 0 24px rgba(255, 255, 255, 0.25);
 }
 
 .vc-face--back {
-transform: rotateY(180deg) translateZ(1px); 
+  transform: rotateY(180deg) translateZ(1px);
 }
 
-/* ── Header – פס כחול כהה למעלה ── */
+/* ── פס עליון ── */
 .vc-header {
   width: 100%;
-  background: #1a3c6e;
-  padding: clamp(7px, 1.2vw, 14px) 0;
+  min-height: clamp(34px, 4vw, 56px);
+  background: #1e467a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -256,154 +273,304 @@ transform: rotateY(180deg) translateZ(1px);
 
 .vc-header-text {
   color: #f5f0e8;
-  font-family: 'Assistant', 'Heebo', sans-serif;
-  font-size: clamp(13px, 1.8vw, 22px);
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-family: "Assistant", "Heebo", sans-serif;
+  font-size: clamp(0.8rem, 1.35vw, 1.15rem);
+  font-weight: 900;
+  letter-spacing: 0.3px;
 }
 
-/* ── Inner content ── */
+/* ── תוכן פנימי ── */
 .vc-inner {
   flex: 1;
   width: 100%;
-  display: flex;
-  flex-direction: column;
+  padding: clamp(0.65rem, 1.4vw, 1.2rem);
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 38% 1fr;
+  grid-template-rows: auto 1fr auto;
+  column-gap: clamp(0.7rem, 2vw, 2.2rem);
   align-items: center;
-  padding: clamp(10px, 1.8vw, 20px) clamp(12px, 2vw, 24px);
 }
 
 .vc-subtitle {
-  font-size: clamp(40px, 1.6vw, 20px);
-  font-weight: 700;
-  color: #1a2840;
-  /* margin: 0 0 clamp(8px, 1.4vw, 16px); */
+  grid-column: 1 / -1;
+  margin: 0 0 clamp(0.3rem, 1vw, 0.8rem);
+  color: #17263f;
   text-align: center;
+      font-family: "assistant-extraBold";
+
+  font-size: clamp(1.1rem, 2vw, 2rem);
+  font-weight: 300;
 }
 
-/* ── Front: תמונה ── */
+/* ── תמונה קדמית ── */
+.vc-face--front .vc-inner {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+}
+
 .vc-image-wrap {
-  flex: 1;
+  width: min(76%, 360px);
+  justify-self: center;
+  align-self: center;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 70%;
+
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
 }
 
 .vc-image {
   width: 100%;
-  max-height: 60%;
+  max-height: clamp(110px, 16vw, 210px);
   object-fit: contain;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
 }
 
 .vc-flip-hint {
-  font-size: clamp(40px, 2.2vw, 26px);
-  color: #1a3c6e;
-  opacity: 0.45;
-  transition: opacity 0.2s;
-  margin-top: auto;
-}
-.vc-scene:hover .vc-flip-hint {
-  opacity: 0.95;
+  justify-self: center;
+  align-self: end;
+  width: clamp(42px, 5vw, 64px);
+  height: clamp(28px, 3vw, 42px);
+  margin-top: 0.35rem;
+  display: grid;
+  place-items: center;
+
+  border-radius: 999px;
+  background: rgba(60, 66, 70, 0.68);
+  color: #ffffff;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1;
+  transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-/* ── Back: טבלת נתונים ── */
+.vc-scene:hover .vc-flip-hint {
+  transform: scale(1.06);
+}
+/* ── צד אחורי ── */
+.vc-face--back .vc-inner {
+  grid-template-columns: 40% 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(0.75rem, 1.8vw, 2.3rem);
+  align-items: center;
+
+  direction: ltr;
+}
+
+.vc-face--back .vc-subtitle {
+  grid-column: 1 / -1;
+  margin-bottom: clamp(0.2rem, 0.3vw, 0.55rem);
+  font-size: clamp(1rem, 2vw, 1.8rem);
+
+  direction: rtl;
+  text-align: center;
+}
+
+.vc-image-wrap-back {
+  grid-column: 1;
+  grid-row: 2;
+
+  width: 87%;
+  max-width: 280px;
+  justify-self: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: clamp(0.25rem, 1vw, 0.85rem);
+  border-radius: clamp(14px, 2vw, 24px);
+  border: 3px solid #d6a55a;
+  background: rgba(235, 223, 167, 0.9);
+}
+
+ .vc-image-wrap-back {
+  grid-column: 1;
+  grid-row: 2;
+
+  width: 87%;
+  max-width: 280px;
+  aspect-ratio: 1.45 / 1;
+  justify-self: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: clamp(0.35rem, 0.8vw, 0.65rem);
+
+  border-radius: clamp(10px, 1.4vw, 18px);
+  border: 2px solid #c89b45;
+  outline: 1.5px solid rgba(255, 255, 255, 0.75);
+  outline-offset: -6px;
+
+  background:
+    linear-gradient(135deg, rgba(255, 244, 199, 0.95), rgba(233, 214, 151, 0.92));
+/* 
+  box-shadow:
+    inset 0 0 0 1px rgba(120, 91, 38, 0.22),
+    inset 0 10px 18px rgba(255, 255, 255, 0.22),
+    0 3px 8px rgba(0, 0, 0, 0.18); */
+
+  overflow: hidden;
+  position: relative;
+} 
+.vc-image-back {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.25)); */
+  position: relative;
+  z-index: 1;
+}
+
+
 .vc-specs {
-  width: 70%;
+  grid-column: 2;
+  grid-row: 2;
+
+  width: 100%;
+  max-width: 420px;
+  justify-self: center;
+  height: 98%;
   display: flex;
   flex-direction: column;
-  border-radius: clamp(6px, 1vw, 12px);
   overflow: hidden;
-  border: 1px solid rgba(26, 60, 110, 0.25);
-  margin-top: clamp(4px, 0.8vw, 8px);
+
+  border-radius: 10px;
+  border: 0.5px solid rgba(26, 60, 110, 0.35);
+  background: rgba(255, 255, 255, 0.712);
+
+  direction: rtl;
+  
 }
+
 
 .vc-spec-row {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
   align-items: center;
-  padding: clamp(10px, 0.9vw, 18px) clamp(10px, 1.6vw, 18px);
+
+  min-height: clamp(27px, 3.1vw, 44px);
+  padding: 0 clamp(0.45rem, 1vw, 1rem);
+
   background: rgba(255, 255, 255, 0.55);
-  font-family: 'Assistant', 'Heebo', sans-serif;
-  font-size: clamp(11px, 1.3vw, 20px);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.18);
+
+  font-family: "Assistant", "Heebo", sans-serif;
+  font-size: clamp(0.7rem, 1.15vw, 1rem);
   color: #1a2840;
   direction: rtl;
-      border-bottom: 3px solid rgba(0, 0, 0, 0.2); /* קו מפריד עדין */
-
-}
-.vc-spec-row:hover {
-transform: scale(1.06);
 }
 
+.vc-spec-row:last-child {
+  border-bottom: none;
+}
 
 .vc-spec-row--even {
-  background: rgba(202, 239, 255, 0.45);
+  background: rgba(202, 239, 255, 0.44);
 }
 
 .vc-spec-label {
-  font-weight: 700;
+  font-weight: 900;
   color: #0f1b2e;
+  text-align: right;
 }
 
 .vc-spec-value {
   color: #1a3c6e;
-  font-weight: 600;
+  font-weight: 800;
+  text-align: right;
+  direction: rtl;
 }
 
+/* hover עדין */
+.vc-spec-row:hover {
+  background: rgba(255, 242, 180, 0.7);
+}
 
-/* הגדרות ספציפיות לצד האחורי בלבד */
+/* ── רספונסיביות למסכים נמוכים/קטנים ── */
+@media (max-width: 1100px) {
+  .vc-wrapper {
+    top: clamp(-1.5rem, -3vh, -0.5rem);
+  }
+
+  .vc-scene {
+    width: clamp(390px, 70vw, 640px);
+    height: clamp(235px, 42vw, 360px);
+  }
+
+  .vc-lanyard {
+    height: clamp(66px, 12vh, 110px);
+  }
+}
+
+@media (max-width: 700px) {
+  .technicalData-title {
+    right: 1rem;
+    top: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .vc-scene {
+    width: min(88vw, 430px);
+    height: clamp(300px, 70vw, 430px);
+  }
 .vc-face--back .vc-inner {
-    flex-direction: row-reverse; /* טבלה מימין, תמונה משמאל */
-    flex-wrap: wrap;            /* מאפשר לכותרת להיות למעלה והשאר מתחתיה */
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
+  grid-template-columns: 36% 1fr;
+  grid-template-rows: auto 1fr;
+  column-gap: clamp(0.75rem, 2vw, 2.3rem);
+  align-items: center;
+  direction: ltr;
 }
 
-/* גורם לכותרת בצד האחורי לתפוס את כל הרוחב למעלה */
-.vc-face--back .vc-subtitle {
-    width: 100%;
-    margin-bottom: 15px;
-}
-
-/* מצמצם את רוחב הטבלה בצד האחורי כדי שיהיה מקום לתמונה */
-.vc-face--back .vc-specs {
-    width: 55%; 
-    margin-top: 0;
-}
-
-/* הגדרות לתמונה בצד האחורי */
-.vc-face--back .vc-image-wrap {
-    width: 30%;
-    flex: none; /* מונע מהתמונה להימתח */
-}
 .vc-image-wrap-back {
-    width: 35%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  grid-column: 1;
+  grid-row: 2;
 }
 
-.vc-image-back {
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-    /* המסגרת המעוגלת שרואים בתמונה */
-    border-radius: 20px; 
-    border: 3px solid #D6A55A;
-        background-color: #EBDFA7;
-
+.vc-specs {
+  grid-column: 2;
+  grid-row: 2;
+  direction: rtl;
+}
+  .vc-spec-row {
+    min-height: 28px;
+    font-size: 0.72rem;
+  }
 }
 
+@media (max-height: 780px) and (min-width: 701px) {
+  .vc-wrapper {
+    top: -3rem;
+  }
 
-@media (max-width: 1300px) {
-    .vc-scene {
-  width:  clamp(700px, 40vw, 900px);
-  height: clamp(500px, 50vw, 700px);
-    }
+  .vc-lanyard {
+    height: 82px;
+  }
+
+  .vc-scene {
+    width: clamp(520px, 48vw, 700px);
+    height: clamp(265px, 29vw, 360px);
+  }
+
+  .vc-header {
+    min-height: 34px;
+  }
+
+  .vc-subtitle {
+    font-size: clamp(1rem, 1.8vw, 1.55rem);
+  }
+
+  .vc-spec-row {
+    min-height: 28px;
+    font-size: clamp(0.68rem, 1vw, 0.88rem);
+  }
 }
-
-
 /* ═══════════════════════════════════════════════════
    LicenseTigris.css
    קומפוננטת כרטיס הפיכה — נתוני רישיון טיגריס

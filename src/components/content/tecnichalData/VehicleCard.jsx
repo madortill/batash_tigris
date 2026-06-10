@@ -1,5 +1,5 @@
 import { useState } from "react";
-import tigrisJeep from "../../../assets/images/idTigris.svg";
+import tigrisJeep from "../../../assets/images/learningJeep.png";
 import "../../../style/TecnichalData.css";
 
 export default function VehicleCard({ pageData, onFlipped }) {

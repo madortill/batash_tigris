@@ -58,7 +58,7 @@ useEffect(() => {
   const SECTION_RETURN_PAGE_MAP = {
     1: 0,
     2: 1,
-    3: 5,
+    3: 6,
     4: 2,
     5: 1
   };
@@ -68,38 +68,75 @@ useEffect(() => {
     [sectionNumber]: true,
   }));
 };
-  const handleChangeSection = (targetSection, returnToLast = false) => {
+
+//   const handleChangeSection = (targetSection, returnToLast = false) => {
+//   if (targetSection === 6) {
+//     setSection(0);
+//     return;
+//   }
+
+//   setSection(targetSection);
+
+//   setSectionStartPages((prev) => {
+//     if (returnToLast) {
+//       return {
+//         ...prev,
+//         [targetSection]:
+//           prev[targetSection] ?? SECTION_RETURN_PAGE_MAP[targetSection] ?? 0,
+//       };
+//     }
+
+//     return {
+//       ...prev,
+//       [targetSection]: 0,
+//     };
+//   });
+
+//   setNavSection((prev) => (targetSection > prev ? targetSection : prev));
+// };
+const [lastPagesBySection, setLastPagesBySection] = useState(() => {
+  try {
+    return JSON.parse(localStorage.getItem("tigrisLastPagesBySection")) || {};
+  } catch {
+    return {};
+  }
+});
+
+useEffect(() => {
+  localStorage.setItem(
+    "tigrisLastPagesBySection",
+    JSON.stringify(lastPagesBySection)
+  );
+}, [lastPagesBySection]);
+
+
+const handleChangeSection = (targetSection, returnToLast = false) => {
   if (targetSection === 6) {
     setSection(0);
     return;
   }
 
+  const startPage = returnToLast
+    ? lastPagesBySection[targetSection] ?? SECTION_RETURN_PAGE_MAP[targetSection] ?? 0
+    : 0;
+
+  setSectionStartPages((prev) => ({
+    ...prev,
+    [targetSection]: startPage,
+  }));
+
   setSection(targetSection);
-
-  setSectionStartPages((prev) => {
-    if (returnToLast) {
-      return {
-        ...prev,
-        [targetSection]:
-          prev[targetSection] ?? SECTION_RETURN_PAGE_MAP[targetSection] ?? 0,
-      };
-    }
-
-    return {
-      ...prev,
-      [targetSection]: 0,
-    };
-  });
 
   setNavSection((prev) => (targetSection > prev ? targetSection : prev));
 };
+
+
 const saveLastPageInSection = (sectionNumber, pageNumber) => {
-  setSectionStartPages((prev) => ({
+  setLastPagesBySection((prev) => ({
     ...prev,
     [sectionNumber]: pageNumber,
   }));
 };
-
   return (
     <div className="content">
       {section === 0 && <ContentStart changeToSection={handleChangeSection} />}
@@ -130,9 +167,13 @@ const saveLastPageInSection = (sectionNumber, pageNumber) => {
 
             />
           )}      
-              {section == 5 && <Uses changeToSection={handleChangeSection}
-                onPageChange={(pageNumber) => saveLastPageInSection(5, pageNumber)}
-/>}
+              {section === 5 && (
+          <Uses
+            changeToSection={handleChangeSection}
+            startingPage={sectionStartPages[5] ?? 0}
+            onPageChange={(pageNumber) => saveLastPageInSection(5, pageNumber)}
+          />
+        )}
               {section == 6 && <End changeToSection={handleChangeSection} />}
       
       {section !== 0 && (

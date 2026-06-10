@@ -65,13 +65,13 @@ const UseHotspotPopup = ({ popup, onClose }) => {
 
         {popup.text && <p className="uses-popup-text">{popup.text}</p>}
 
-        <button
+        {!isMiddleShootingHole && <button
           type="button"
           className="uses-popup-btn"
           onClick={handleButtonClick}
         >
           {currentButtonText}
-        </button>
+        </button>}
       </div>
     </div>
   );
