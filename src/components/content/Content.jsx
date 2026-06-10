@@ -14,43 +14,43 @@ const  Content= () => {
   // const [section, setSection] = useState(0);
 const [sectionStartPages, setSectionStartPages] = useState(() => {
   try {
-    return JSON.parse(localStorage.getItem("tigrisStartPages")) || {};
+    return JSON.parse(sessionStorage.getItem("tigrisStartPages")) || {};
   } catch {
     return {};
   }
 });
 
 useEffect(() => {
-  localStorage.setItem("tigrisStartPages", JSON.stringify(sectionStartPages));
+  sessionStorage.setItem("tigrisStartPages", JSON.stringify(sectionStartPages));
 }, [sectionStartPages]);  // const [navSection, setNavSection] = useState(0);
 
   const [section, setSection] = useState(() => {
-  return Number(localStorage.getItem("tigrisSection")) || 0;
+  return Number(sessionStorage.getItem("tigrisSection")) || 0;
 });
 
 const [navSection, setNavSection] = useState(() => {
-  return Number(localStorage.getItem("tigrisNavSection")) || 0;
+  return Number(sessionStorage.getItem("tigrisNavSection")) || 0;
 });
 
 useEffect(() => {
-  localStorage.setItem("tigrisSection", String(section));
+  sessionStorage.setItem("tigrisSection", String(section));
 }, [section]);
 
 useEffect(() => {
-  localStorage.setItem("tigrisNavSection", String(navSection));
+  sessionStorage.setItem("tigrisNavSection", String(navSection));
 }, [navSection]);
 
 
 const [completedSections, setCompletedSections] = useState(() => {
   try {
-    return JSON.parse(localStorage.getItem("tigrisCompletedSections")) || {};
+    return JSON.parse(sessionStorage.getItem("tigrisCompletedSections")) || {};
   } catch {
     return {};
   }
 });
 
 useEffect(() => {
-  localStorage.setItem(
+  sessionStorage.setItem(
     "tigrisCompletedSections",
     JSON.stringify(completedSections)
   );
@@ -96,14 +96,14 @@ useEffect(() => {
 // };
 const [lastPagesBySection, setLastPagesBySection] = useState(() => {
   try {
-    return JSON.parse(localStorage.getItem("tigrisLastPagesBySection")) || {};
+    return JSON.parse(sessionStorage.getItem("tigrisLastPagesBySection")) || {};
   } catch {
     return {};
   }
 });
 
 useEffect(() => {
-  localStorage.setItem(
+  sessionStorage.setItem(
     "tigrisLastPagesBySection",
     JSON.stringify(lastPagesBySection)
   );
