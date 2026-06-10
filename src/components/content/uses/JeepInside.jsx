@@ -28,7 +28,7 @@ const JEEP_INSIDE_STORAGE_KEY = "jeepInsideProgress";
 
 const getSavedJeepInsideState = () => {
   try {
-    return JSON.parse(localStorage.getItem(JEEP_INSIDE_STORAGE_KEY)) || {};
+    return JSON.parse(sessionStorage.getItem(JEEP_INSIDE_STORAGE_KEY)) || {};
   } catch {
     return {};
   }
@@ -125,7 +125,7 @@ const JeepInside = ({ changeToPage, changeToSection }) => {
     requiredHotspotIds.every((id) => visitedHotspots.includes(id));
 
   useEffect(() => {
-    localStorage.setItem(
+    sessionStorage.setItem(
       JEEP_INSIDE_STORAGE_KEY,
       JSON.stringify({
         hasVisitedPage,
